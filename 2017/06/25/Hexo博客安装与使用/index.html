@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Hexo博客安装与使用 | 关于工程仿真的学习笔记</title><link rel="stylesheet" type="text/css" href="/Minzhun_Blog/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/Minzhun_Blog/favicon.ico"><link rel="apple-touch-icon" href="/Minzhun_Blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/Minzhun_Blog/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Hexo博客安装与使用</h1><a id="logo" href="/Minzhun_Blog/.">关于工程仿真的学习笔记</a><p class="description">by Minzhun</p></div><div id="nav-menu"><a href="/Minzhun_Blog/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/Minzhun_Blog/contents"><i class="fa fa-user"> 内容简介</i></a><a href="/Minzhun_Blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/Minzhun_Blog/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Hexo博客安装与使用</h1><div class="post-meta">Jun 25, 2017</div><div class="post-content"><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.isetsuna.com/categories/Hexo/" target="_blank" rel="external">Setsuna’s Blog</a></li>
+<li><a href="http://www.bestcax.top/categories/博客配置/" target="_blank" rel="external">CFD仿真之道</a></li>
+<li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">屠城</a></li>
+</ul>
+<h3 id="Step-1-前置软件"><a href="#Step-1-前置软件" class="headerlink" title="Step 1 前置软件"></a>Step 1 前置软件</h3><ul>
+<li>安装 <a href="https://nodejs.org/en/download/" target="_blank" rel="external">Node.js</a></li>
+<li>安装 <a href="https://git-scm.com/downloads/" target="_blank" rel="external">Git</a></li>
+</ul>
+<h3 id="Step-2-Hexo安装"><a href="#Step-2-Hexo安装" class="headerlink" title="Step 2 Hexo安装"></a>Step 2 Hexo安装</h3><ul>
+<li>新建文件夹（例如【\Blog】），进入后右键，选择 【Git Bash Here】</li>
+<li>依次执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm –registry=http://r.cnpmjs.org</div><div class="line">hexo init</div><div class="line">cnpm install</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Step-3-Codeing-net"><a href="#Step-3-Codeing-net" class="headerlink" title="Step 3 Codeing.net"></a>Step 3 Codeing.net</h3><ul>
+<li>注册账号</li>
+<li>新建Pages服务</li>
+</ul>
+<h3 id="Step-4-博客配置"><a href="#Step-4-博客配置" class="headerlink" title="Step 4 博客配置"></a>Step 4 博客配置</h3><ul>
+<li>修改【\Blog\_config.yml】文件</li>
+<li><p>最关键的配置为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: </div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</li>
+<li><p>repo为Coding.net提供的仓库地址</p>
+</li>
+</ul>
+<h3 id="Step-5-主题安装"><a href="#Step-5-主题安装" class="headerlink" title="Step 5 主题安装"></a>Step 5 主题安装</h3><ul>
+<li><p>安装主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</div><div class="line">cnpm install hexo-renderer-jade@0.3.0 --save</div><div class="line">cnpm install hexo-renderer-sass --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改【\Blog\_config.yml】文件中的主题名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: maupassant</div></pre></td></tr></table></figure>
+</li>
+<li><p>主题设置：修改【\Blog\themes\maupassant\_config.yml】文件</p>
+</li>
+</ul>
+<h3 id="Step-6-博客写作"><a href="#Step-6-博客写作" class="headerlink" title="Step 6 博客写作"></a>Step 6 博客写作</h3><ul>
+<li>写作语言：markdown</li>
+<li>文章在【\Blog\source\_post】文件夹下</li>
+<li>文件后缀为【.md】</li>
+</ul>
+<h3 id="Step-7-部署博客"><a href="#Step-7-部署博客" class="headerlink" title="Step 7 部署博客"></a>Step 7 部署博客</h3><ul>
+<li><p>进入【\Blog】文件夹，右键，选择 【Git Bash Here】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;xxxx@email.com&quot; </div><div class="line">git config --global user.name &quot;xxxx&quot;</div><div class="line"># Coding.net的邮箱和用户名</div></pre></td></tr></table></figure>
+</li>
+<li><p>本地测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo s -p 5000 ## 选一个未被占用的端口号</div><div class="line"># http://localhost:5000/</div></pre></td></tr></table></figure>
+</li>
+<li><p>部署到网络</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</div><div class="tags"><a href="/Minzhun_Blog/tags/Hexo/">Hexo</a></div><div class="post-nav"><a href="/Minzhun_Blog/2017/06/21/hello-world/" class="next">Hello World</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://minzhun.coding.me/Minzhun_Blog"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/Minzhun_Blog/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/Minzhun_Blog/." rel="nofollow">关于工程仿真的学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/Minzhun_Blog/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/Minzhun_Blog/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/Minzhun_Blog/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/Minzhun_Blog/js/smartresize.js?v=0.0.0"></script></div></body></html>
