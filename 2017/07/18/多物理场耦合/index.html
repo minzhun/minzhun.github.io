@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>多物理场耦合 | 关于工程仿真的学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">多物理场耦合</h1><a id="logo" href="/.">关于工程仿真的学习笔记</a><p class="description">by Minzhun</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 内容简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">多物理场耦合</h1><div class="post-meta">Jul 18, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="多物理场耦合现象"><a href="#多物理场耦合现象" class="headerlink" title="多物理场耦合现象"></a><em>多物理场耦合现象</em></h2><ul>
+<li>下面所列出的两场耦合可以互相组合，形成多物理场耦合现象</li>
+</ul>
+<h3 id="结构-流体"><a href="#结构-流体" class="headerlink" title="- 结构-流体"></a>- 结构-流体</h3><ul>
+<li>流体：流体载荷作用在结构上</li>
+<li>结构：结构变形改变流场边界</li>
+<li>分析域不重合，在界面耦合</li>
+</ul>
+<h3 id="结构-热"><a href="#结构-热" class="headerlink" title="- 结构-热"></a>- 结构-热</h3><ul>
+<li>热：使结构变形；影响结构材料本构</li>
+<li>结构：塑形变形生热；接触摩擦生热；热传导影响温度分布</li>
+<li>分析域可重合，在分析域的重合部分或界面耦合</li>
+</ul>
+<h3 id="结构-电"><a href="#结构-电" class="headerlink" title="- 结构-电"></a>- 结构-电</h3><p>-</p>
+<h3 id="流体-热"><a href="#流体-热" class="headerlink" title="- 流体-热"></a>- 流体-热</h3><p>-</p>
+<h3 id="流体-电磁"><a href="#流体-电磁" class="headerlink" title="- 流体-电磁"></a>- 流体-电磁</h3><p>-</p>
+<h3 id="热-电"><a href="#热-电" class="headerlink" title="- 热-电"></a>- 热-电</h3><p>-</p>
+<h2 id="流固耦合-（Fluid-Structure-Interaction，FSI）分析方法"><a href="#流固耦合-（Fluid-Structure-Interaction，FSI）分析方法" class="headerlink" title="流固耦合 （Fluid Structure Interaction，FSI）分析方法"></a><em>流固耦合 （Fluid Structure Interaction，FSI）分析方法</em></h2><ul>
+<li><em>FSI</em>使用的耦合分析方法，也适用于具有类似耦合特点的其他耦合分析</li>
+</ul>
+<h3 id="单向耦合与双向耦合"><a href="#单向耦合与双向耦合" class="headerlink" title="单向耦合与双向耦合"></a>单向耦合与双向耦合</h3><ul>
+<li>单向耦合：结构在流场中受力，但结构的位移或变形对流场的影响可以忽略</li>
+<li>双向耦合：结构的位移或变形对流场的影响不能忽略</li>
+</ul>
+<h3 id="直接耦合（强耦合）"><a href="#直接耦合（强耦合）" class="headerlink" title="直接耦合（强耦合）"></a>直接耦合（强耦合）</h3><ul>
+<li>直接求解流场与结构的耦合控制方程</li>
+<li>同时获得所有待求解变量</li>
+<li>耦合条件（力、位移）在控制方程及其系数矩阵层面得到满足</li>
+<li>适用于耦合程度非常高的流固耦合问题，这些问题往往只能通过直接耦合方法求解，例如，<ul>
+<li>流场中的柔性结构</li>
+<li>边界可变的封闭区域中的不可压缩流体</li>
+</ul>
+</li>
+<li>消耗计算资源多，对于大规模问题可能无法接受</li>
+<li>可实现直接耦合的软件<ul>
+<li><em>ADINA</em></li>
+<li><em>INTESIM</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代耦合（弱耦合）"><a href="#迭代耦合（弱耦合）" class="headerlink" title="迭代耦合（弱耦合）"></a>迭代耦合（弱耦合）</h3><ul>
+<li>分别求解流场与结构的控制方程</li>
+<li>耦合条件通过界面处流场与结构之间力、位移的传递与迭代实现</li>
+<li>适用于耦合程度不高的问题</li>
+<li>消耗计算资源相对较少，对于大规模问题更加适合，前提是迭代耦合能够求解此类问题</li>
+<li>在迭代耦合与直接耦合均能够求解时，二者应能给出相同的答案</li>
+<li>可实现迭代耦合的软件<ul>
+<li><em>ADINA</em></li>
+<li><em>INTESIM</em></li>
+<li><em>ANSYS Workbench</em></li>
+<li>通过<em>MpCCI</em>（接口软件）实现 [^LaTeX]</li>
+</ul>
+</li>
+</ul>
+<h3 id="FSI中的网格"><a href="#FSI中的网格" class="headerlink" title="FSI中的网格"></a><em>FSI</em>中的网格</h3><ul>
+<li><em>FSI</em>中，除控制方程的求解及耦合条件的实现外，流场的网格变形问题也是一个难点</li>
+<li>常用的解决方案：<em>ALE</em>动网格、自适应网格重划</li>
+</ul>
+<hr>
+<p><strong>2017.07.18：ver.1</strong></p>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href=""><em>《多物理场仿真：数值方法及工程应用（英文版）》</em></a></li>
+</ul>
+<hr>
+</div><div class="tags"><a href="/tags/多物理场耦合/">多物理场耦合</a><a href="/tags/流固耦合/">流固耦合</a></div><div class="post-nav"><a href="/2017/07/17/ADINA中的湍流模型/" class="next">ADINA中的湍流模型</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：操作/">CAE之技：操作</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/参考文献/">参考文献</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/多物理场耦合/" style="font-size: 15px;">多物理场耦合</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">关于工程仿真的学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

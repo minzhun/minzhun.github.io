@@ -1,8 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>湍流与湍流模型 | 关于工程仿真的学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">湍流与湍流模型</h1><a id="logo" href="/.">关于工程仿真的学习笔记</a><p class="description">by Minzhun</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 内容简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">湍流与湍流模型</h1><div class="post-meta">Jul 17, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h4 id="2017-07-17：第一次编辑"><a href="#2017-07-17：第一次编辑" class="headerlink" title="2017.07.17：第一次编辑"></a>2017.07.17：第一次编辑</h4><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
-<li><a href=""><em>《An Introduction to Computational Fluid Dynamics: the Finite Volume Method (2nd Edition)》</em></a></li>
-<li><a href=""><em>《数值传热学（第二版）》</em></a></li>
-</ul>
-<h2 id="什么是湍流？"><a href="#什么是湍流？" class="headerlink" title="什么是湍流？"></a>什么是湍流？</h2><ul>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>湍流与湍流模型 | 关于工程仿真的学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">湍流与湍流模型</h1><a id="logo" href="/.">关于工程仿真的学习笔记</a><p class="description">by Minzhun</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 内容简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">湍流与湍流模型</h1><div class="post-meta">Jul 17, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="什么是湍流？"><a href="#什么是湍流？" class="headerlink" title="什么是湍流？"></a><em>什么是湍流？</em></h2><ul>
 <li>流体的流动状态<ul>
 <li>层流：有秩序的分层流动</li>
 <li>湍流：随机、杂乱的流动</li>
@@ -23,8 +19,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="湍流的模拟"><a href="#湍流的模拟" class="headerlink" title="湍流的模拟"></a>湍流的模拟</h2><ul>
-<li>按对涡（<em>Eddy</em>）的处理，可以分为模型化的（<em>modeled</em>）方法和直接求解的（<em>resolved</em>）方法<ul>
+<h2 id="湍流的模拟"><a href="#湍流的模拟" class="headerlink" title="湍流的模拟"></a><em>湍流的模拟</em></h2><ul>
+<li>按照对涡（<em>Eddy</em>）的处理，可以分为模型化的（<em>modeled</em>）处理方法和辨析的（<em>resolved，resolve：make clearly visible</em>）处理方法<ul>
 <li><em>RANS</em>：对流场内的涡全部进行模型化处理（<em>modeled</em>）</li>
 <li><em>DNS</em>：直接求解，辨析出所有尺度的涡（<em>resolved</em>）</li>
 <li><em>LES</em>：设定一个尺度，该尺度之上的涡直接求解，该尺度之下的涡进行模型化处理</li>
@@ -38,7 +34,8 @@
 <li><em>RANS</em>方程与<em>NS</em>方程形式相同，但附加了雷诺应力相关的项</li>
 <li>雷诺应力</li>
 <li>\[ {\tau}_{ij}=-\rho \overline{ {u}_{i}’ {u}_{j}’ } \]</li>
-<li>雷诺应力的处理：建立封闭模型直接求解；建立与平均流动的关系，转化为求解湍流粘性系数的问题</li>
+<li>雷诺应力的处理：建立封闭模型直接求解；建立与平均流动的关系，转化为求解湍流粘度的问题</li>
+<li>湍流粘度不是流体的物性，而是流动状态所决定</li>
 <li><em>Boussinesq</em>假设</li>
 <li>该假设隐含了雷诺正应力各向相同</li>
 </ul>
@@ -52,71 +49,96 @@
 <li>求解的对象就是<em>NS</em>方程，对方程不进行其他处理</li>
 <li>需要在空间尺度和时间尺度上辨析出最小尺度的涡，所以计算量巨大</li>
 </ul>
-<h3 id="DES（Detached-Eddy-Simulation）：LES与RANS的结合"><a href="#DES（Detached-Eddy-Simulation）：LES与RANS的结合" class="headerlink" title="- DES（Detached Eddy Simulation）：LES与RANS的结合"></a>- <em>DES</em>（<em>Detached Eddy Simulation</em>）：<em>LES</em>与<em>RANS</em>的结合</h3><ul>
+<h3 id="DES（Detached-Eddy-Simulation）：LES与RANS的组合"><a href="#DES（Detached-Eddy-Simulation）：LES与RANS的组合" class="headerlink" title="- DES（Detached Eddy Simulation）：LES与RANS的组合"></a>- <em>DES</em>（<em>Detached Eddy Simulation</em>）：<em>LES</em>与<em>RANS</em>的组合</h3><ul>
 <li>在近壁面使用<em>RANS</em>，其他区域使用<em>LES</em></li>
 <li>通过距壁面的距离进行判断</li>
-<li>目的是减少近壁面的网格数量</li>
 </ul>
 <h2 id="RANS中的湍流模型"><a href="#RANS中的湍流模型" class="headerlink" title="RANS中的湍流模型"></a><em>RANS</em>中的湍流模型</h2><ul>
-<li>根据在<em>RANS</em>方程基础上附加的方程个数（不考虑传热问题），湍流模型可分为<ul>
+<li>根据在<em>RANS</em>方程基础上附加的方程个数，湍流模型可分为<ul>
 <li>零方程模型：混合长度模型</li>
 <li>两方程模型：标准 \(k-\epsilon\) 模型，等</li>
 <li>七方程模型：雷诺应力模型</li>
 </ul>
 </li>
-<li>零方程模型和两方程模型均假设湍流粘度各向相同</li>
 </ul>
 <h3 id="混合长度模型"><a href="#混合长度模型" class="headerlink" title="- 混合长度模型"></a>- 混合长度模型</h3><ul>
-<li>湍流运动粘性系数具有长度（称为混合长度）平方乘以速度梯度的量纲</li>
-<li>速度梯度由流动本身决定</li>
-<li>混合长度与流动的特征长度相关，可通过实验建立其代数关系</li>
-<li>适用性<ul>
-<li>形式简单的流动：平面射流、平面混合流、平面尾迹、边界层、管道流动等</li>
+<li>量纲上，湍流运动粘度= 长度平方 X 速度梯度</li>
+<li>该长度称作混合长度，它与流动的特征长度有关，可通过实验建立其代数关系</li>
+<li>适用情况<ul>
+<li>简单的二维流动，流动沿流向变化较慢</li>
+<li>混合长度可以与流动的特征长度建立某种关系</li>
 </ul>
 </li>
 <li>优点<ul>
 <li>实现简单，计算代价小</li>
 </ul>
 </li>
-<li>缺点<ul>
+<li>问题<ul>
 <li>适用范围有限</li>
-<li>对于分离和回流现象无法描述</li>
+<li>无法描述湍流相关变量的输运（<em>transport</em>）</li>
 </ul>
 </li>
 </ul>
 <h3 id="标准-k-epsilon-模型及其发展"><a href="#标准-k-epsilon-模型及其发展" class="headerlink" title="- 标准 \(k-\epsilon\) 模型及其发展"></a>- 标准 \(k-\epsilon\) 模型及其发展</h3><ul>
-<li>湍流粘度的表达形式</li>
+<li>湍流粘度表达式：隐含湍流粘度在各个方向上相同</li>
 <li>\(k\) 方程</li>
 <li>\(\epsilon\) 方程</li>
-<li>适用性<ul>
+<li>常数</li>
+<li>适用情况<ul>
 <li>高<em>Re</em>数流动</li>
 <li>边界条件中需要使用壁面函数</li>
-<li>对于旋转流动不适用</li>
+<li>湍动能的产生速率与耗散速率大致相当的情况</li>
 </ul>
 </li>
 <li>优点<ul>
-<li>形式最简单的两方程模型</li>
-<li>工程中使用和验证范围最广的模型</li>
-<li>在边界层型流动、管内流动、剪切流动、平面倾斜冲击流动、有回流的流动、渐扩/渐缩方形截面管道内的流动与换热、方形截面扭转通道中的流动与换热等分析中，取得了相当的成功</li>
+<li>最简单的两方程模型</li>
+<li>工程中被广泛使用和验证，例如，管内流动</li>
 </ul>
 </li>
-<li>存在的问题：低<em>Re</em>数流动<ul>
-<li>使用对数律的壁面函数不再准确，需要将 \(k\) 与 \(\epsilon\) 直接积分至壁面</li>
-<li>直接积分需要大量网格，同时需要引入非线性的衰减函数（<em>damping function</em>）</li>
-<li>改进模型：双层 \(k-\epsilon\) 模型<ul>
-<li>分为粘性区（靠近壁面）与完全湍流区</li>
-<li>粘性区：\(k\) 正常计算，但使用类似混合长度模型的方法计算 \(\epsilon\)</li>
+<li><p>问题：主要来源于<em>Boussinesq</em>假设与各想相同的湍流粘度假设</p>
+<ul>
+<li>低<em>Re</em>数流动</li>
+<li>存在强逆压梯度与分离的流动</li>
+<li>受雷诺正应力各向异性影响较大的流动</li>
+<li>附加变形影响雷诺应力的流动，例如，旋转流动、弯曲边界</li>
+</ul>
+</li>
+<li><p>双层 \(k-\epsilon\) 模型</p>
+<ul>
+<li>低<em>Re</em>数情况下对壁面处理的改进</li>
+<li>低<em>Re</em>数情况下，使用对数律的壁面函数将不再准确，需要将 \(k\) 与 \(\epsilon\) 直接积分至壁面</li>
+<li>直接积分需要大量网格，并且需要引入非线性的衰减函数（<em>damping function</em>），造成计算对网格的依赖与数值不稳定</li>
+<li>双层 \(k-\epsilon\) 模型将流场分为粘性区（靠近壁面）与完全湍流区</li>
+<li>粘性区：\(k\) 正常计算， \(\epsilon\) 使用类似混合长度模型的方法计算</li>
 <li>完全湍流区：使用标准 \(k-\epsilon\) 模型</li>
-<li>使用组合函数（<em>blending function</em>）保证湍流粘度的连续</li>
+<li>使用混合函数（<em>blending function</em>）使湍流粘度连续</li>
 </ul>
 </li>
+<li><p><em>Spalart-Allmaras</em>模型</p>
+</li>
+<li>\(k-\omega\) 模型</li>
+<li><em>SST</em> \(k-\omega\) 模型</li>
+<li>非线性 \(k-\epsilon\) 模型</li>
+<li><em>Realisable</em> \(k-\epsilon\) 模型</li>
+<li><em>RNG</em> \(k-\epsilon\) 模型</li>
+</ul>
+<h3 id="雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）及其简化"><a href="#雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）及其简化" class="headerlink" title="- 雷诺应力模型（Reynolds Stress Equation Model， RSM）及其简化"></a>- 雷诺应力模型（<em>Reynolds Stress Equation Model， RSM</em>）及其简化</h3><ul>
+<li>也称为二阶矩模型</li>
+<li>雷诺应力控制方程</li>
+<li>\(\epsilon\) 方程（湍流耗散率）</li>
+<li>优点<ul>
+<li>没有使用<em>Boussinesq</em>假设的<em>RANS</em>的“最简单”形式</li>
 </ul>
 </li>
-<li>存在的问题：强逆压梯度与分离现象</li>
-<li>存在的问题：湍流对变形率的敏感性、雷诺应力的各向异性</li>
+<li>问题<ul>
+<li>计算量大</li>
+<li>数值求解存在困难</li>
+<li>标准 \(k-\epsilon\) 模型中 \(\epsilon\) 方程所导致的问题同样存在</li>
 </ul>
-<h3 id="雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）及其简化"><a href="#雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）及其简化" class="headerlink" title="- 雷诺应力模型（Reynolds Stress Equation Model， RSM）及其简化"></a>- 雷诺应力模型（<em>Reynolds Stress Equation Model， RSM</em>）及其简化</h3><p>-</p>
-<h2 id="壁面函数与第一层网格高度"><a href="#壁面函数与第一层网格高度" class="headerlink" title="壁面函数与第一层网格高度"></a>壁面函数与第一层网格高度</h2><ul>
+</li>
+<li>代数应力模型（<em>Algebraic Stress Equation Model，ASM</em>）</li>
+</ul>
+<h2 id="湍流边界层与壁面函数"><a href="#湍流边界层与壁面函数" class="headerlink" title="湍流边界层与壁面函数"></a><em>湍流边界层与壁面函数</em></h2><ul>
 <li>湍流边界层结构<ul>
 <li>粘性子层（<em>viscous sub-layer</em>）</li>
 <li>缓冲层（<em>buffer layer</em>）</li>
@@ -125,7 +147,20 @@
 </ul>
 </li>
 </ul>
-<h2 id="湍流的边界条件与初始条件"><a href="#湍流的边界条件与初始条件" class="headerlink" title="湍流的边界条件与初始条件"></a>湍流的边界条件与初始条件</h2></div><div class="tags"><a href="/tags/湍流/">湍流</a></div><div class="post-nav"><a href="/2017/07/17/ADINA中的湍流模型/" class="pre">ADINA中的湍流模型</a><a href="/2017/07/01/参考书籍/" class="next">参考书籍</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：操作/">CAE之技：操作</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/参考文献/">参考文献</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">关于工程仿真的学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+<h2 id="湍流的边界条件与初始条件"><a href="#湍流的边界条件与初始条件" class="headerlink" title="湍流的边界条件与初始条件"></a><em>湍流的边界条件与初始条件</em></h2><ul>
+<li><em>LES</em>与<em>DNS</em></li>
+<li>\(k-\epsilon\) 模型</li>
+<li>雷诺应力模型</li>
+</ul>
+<hr>
+<p><strong>2017.07.17：ver.1</strong></p>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href=""><em>《An Introduction to Computational Fluid Dynamics: the Finite Volume Method (2nd Edition)》</em></a></li>
+<li><a href=""><em>《数值传热学（第二版）》</em></a></li>
+</ul>
+<hr>
+</div><div class="tags"><a href="/tags/湍流/">湍流</a></div><div class="post-nav"><a href="/2017/07/17/ADINA中的湍流模型/" class="pre">ADINA中的湍流模型</a><a href="/2017/07/01/参考书籍/" class="next">参考书籍</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：操作/">CAE之技：操作</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/参考文献/">参考文献</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/多物理场耦合/" style="font-size: 15px;">多物理场耦合</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">关于工程仿真的学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
