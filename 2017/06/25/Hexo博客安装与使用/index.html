@@ -4,30 +4,31 @@
 </ul>
 <h3 id="Step-2-Hexo安装"><a href="#Step-2-Hexo安装" class="headerlink" title="Step 2 Hexo安装"></a>Step 2 Hexo安装</h3><ul>
 <li>新建文件夹（例如【\Blog】），进入后右键，选择 【Git Bash Here】</li>
-<li>依次执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm –registry=http://r.cnpmjs.org</div><div class="line">hexo init</div><div class="line">cnpm install</div></pre></td></tr></table></figure>
-</li>
+<li>依次执行</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm –registry=http://r.cnpmjs.org</div><div class="line">hexo init</div><div class="line">cnpm install</div></pre></td></tr></table></figure>
 <h3 id="Step-3-Codeing-net"><a href="#Step-3-Codeing-net" class="headerlink" title="Step 3 Codeing.net"></a>Step 3 Codeing.net</h3><ul>
 <li>注册账号</li>
 <li>新建Pages服务</li>
 </ul>
 <h3 id="Step-4-博客配置"><a href="#Step-4-博客配置" class="headerlink" title="Step 4 博客配置"></a>Step 4 博客配置</h3><ul>
 <li>修改【\Blog\_config.yml】文件</li>
-<li><p>最关键的配置为</p>
+<li>最关键的配置为</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: </div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-</li>
-<li><p>repo为Coding.net提供的仓库地址</p>
-</li>
+<ul>
+<li>repo为Coding.net提供的仓库地址</li>
 </ul>
 <h3 id="Step-5-主题安装"><a href="#Step-5-主题安装" class="headerlink" title="Step 5 主题安装"></a>Step 5 主题安装</h3><ul>
-<li><p>安装主题</p>
+<li>安装主题</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</div><div class="line">cnpm install hexo-renderer-jade@0.3.0 --save</div><div class="line">cnpm install hexo-renderer-sass --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改【\Blog\_config.yml】文件中的主题名字</p>
+<ul>
+<li>修改【\Blog\_config.yml】文件中的主题名字</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: maupassant</div></pre></td></tr></table></figure>
-</li>
-<li><p>主题设置：修改【\Blog\themes\maupassant\_config.yml】文件</p>
-</li>
+<ul>
+<li>主题设置：修改【\Blog\themes\maupassant\_config.yml】文件</li>
 </ul>
 <h3 id="Step-6-博客写作"><a href="#Step-6-博客写作" class="headerlink" title="Step 6 博客写作"></a>Step 6 博客写作</h3><ul>
 <li>写作语言：markdown</li>
@@ -35,25 +36,47 @@
 <li>文件后缀为【.md】</li>
 </ul>
 <h3 id="Step-7-部署博客"><a href="#Step-7-部署博客" class="headerlink" title="Step 7 部署博客"></a>Step 7 部署博客</h3><ul>
-<li><p>进入【\Blog】文件夹，右键，选择 【Git Bash Here】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;xxxx@email.com&quot; </div><div class="line">git config --global user.name &quot;xxxx&quot;</div><div class="line"># Coding.net的邮箱和用户名</div></pre></td></tr></table></figure>
-</li>
-<li><p>本地测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo s -p 5000 ## 选一个未被占用的端口号</div><div class="line"># http://localhost:5000/</div></pre></td></tr></table></figure>
-</li>
-<li><p>部署到网络</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-</li>
+<li>进入【\Blog】文件夹，右键，选择 【Git Bash Here】</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;xxxx@email.com&quot; </div><div class="line">git config --global user.name &quot;xxxx&quot;</div><div class="line"># Coding.net的邮箱和用户名</div></pre></td></tr></table></figure>
+<ul>
+<li>本地测试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo s -p 5000 ## 选一个未被占用的端口号</div><div class="line"># http://localhost:5000/</div></pre></td></tr></table></figure>
+<ul>
+<li>部署到网络</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<h3 id="Step-8-更换Hexo渲染插件"><a href="#Step-8-更换Hexo渲染插件" class="headerlink" title="Step 8 更换Hexo渲染插件"></a>Step 8 更换Hexo渲染插件</h3><ul>
+<li>解决Latex公式中下划线被转义的问题</li>
+<li>首先，卸载原渲染器，并重新安装主题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cnpm uninstall hexo-renderer-marked --save</div><div class="line">cnpm install hexo-renderer-jade@0.3.0 --save</div><div class="line">cnpm install hexo-renderer-sass --save</div></pre></td></tr></table></figure>
+<ul>
+<li>然后，安装新的渲染器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-kramed --save</div></pre></td></tr></table></figure>
+<ul>
+<li>但是，新的渲染器行内公式渲染时仍然存在问题，需要直接修改正则表达式</li>
+<li>打开文件【\Blog\node_modules\kramed\lib\rules\inline.js】</li>
+<li>修改第11行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 双斜线表示注释</div><div class="line">// escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,  // 这是原来的</div><div class="line">escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,</div></pre></td></tr></table></figure>
+<ul>
+<li>修改第20行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,  //这是原来的</div><div class="line">em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</div></pre></td></tr></table></figure>
 <hr>
 <p><strong><em>Ref.</em></strong></p>
 <ul>
 <li><a href="http://www.isetsuna.com/categories/Hexo/" target="_blank" rel="external">Setsuna’s Blog</a></li>
 <li><a href="http://www.bestcax.top/categories/博客配置/" target="_blank" rel="external">CFD仿真之道</a></li>
 <li><a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="external">屠城</a></li>
+<li><a href="http://www.jianshu.com/p/7ab21c7f0674" target="_blank" rel="external">在Hexo中渲染MathJax数学公式</a></li>
+<li><a href="http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" target="_blank" rel="external">如何处理Hexo和MathJax的兼容问题</a></li>
 </ul>
 <hr>
-</div><div class="tags"><a href="/tags/Hexo/">Hexo</a></div><div class="post-nav"><a href="/2017/07/01/CAE软件们/" class="pre">CAE软件们</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">4</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/壁面函数法/" style="font-size: 15px;">壁面函数法</a> <a href="/tags/守恒定律/" style="font-size: 15px;">守恒定律</a> <a href="/tags/基本方程/" style="font-size: 15px;">基本方程</a> <a href="/tags/多物理场/" style="font-size: 15px;">多物理场</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"><a href="/tags/Hexo/">Hexo</a></div><div class="post-nav"><a href="/2017/07/01/CAE软件们/" class="pre">CAE软件们</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">4</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/壁面函数法/" style="font-size: 15px;">壁面函数法</a> <a href="/tags/守恒定律/" style="font-size: 15px;">守恒定律</a> <a href="/tags/基本方程/" style="font-size: 15px;">基本方程</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/多物理场/" style="font-size: 15px;">多物理场</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

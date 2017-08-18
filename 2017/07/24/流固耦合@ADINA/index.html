@@ -1,40 +1,40 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>流固耦合（FSI） @ADINA | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">流固耦合（FSI） @ADINA</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">流固耦合（FSI） @ADINA</h1><div class="post-meta">Jul 24, 2017<span> | </span><span class="category"><a href="/categories/CAE之技：实现/">CAE之技：实现</a></span></div><div class="post-content"><h2 id="1-方法相关"><a href="#1-方法相关" class="headerlink" title="1 方法相关"></a><em>1 方法相关</em></h2><ul>
 <li>下划线：表示流固耦合界面</li>
-<li>下标 \(f\) ：流场</li>
-<li>下标 \(s\) ：结构</li>
-<li>\(\mathbf{n}\) ：界面法向</li>
+<li>下标 $f$ ：流场</li>
+<li>下标 $s$ ：结构</li>
+<li>$\mathbf{n}$ ：界面法向</li>
 </ul>
 <h3 id="1-1-界面条件"><a href="#1-1-界面条件" class="headerlink" title="1.1 界面条件"></a>1.1 界面条件</h3><ul>
 <li>运动学条件（位移协调）</li>
 </ul>
-<p>\[ \underline d_{f} = \underline d_{s} \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\underline d_{f} = \underline d_{s}</script><ul>
 <li>运动学条件：<em>no-slip</em></li>
 </ul>
-<p>\[ \underline v = \underline {\dot{d}}_{s} \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\underline v = \underline {\dot{d}}_{s}</script><ul>
 <li>运动学条件：<em>slip</em></li>
 </ul>
-<p>\[ \mathbf{n} \cdot \underline v = \mathbf{n} \cdot \underline {\dot{d}}_{s} \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathbf{n} \cdot \underline v = \mathbf{n} \cdot \underline {\dot{d}}_{s}</script><ul>
 <li>动力学条件（力的平衡）</li>
 </ul>
-<p>\[ \mathbf{n} \cdot \underline \tau_{f} = \mathbf{n} \cdot \underline \tau_{s} \]</p>
-<h3 id="1-2-控制方程"><a href="#1-2-控制方程" class="headerlink" title="1.2 控制方程"></a>1.2 控制方程</h3><ul>
+<script type="math/tex; mode=display">
+\mathbf{n} \cdot \underline \tau_{f} = \mathbf{n} \cdot \underline \tau_{s}</script><h3 id="1-2-控制方程"><a href="#1-2-控制方程" class="headerlink" title="1.2 控制方程"></a>1.2 控制方程</h3><ul>
 <li>流场控制方程</li>
 </ul>
-<p>\[ \mathbf{F}_{f}[X_{f},0] = 0 \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathbf{F}_{f}[X_{f},0] = 0</script><ul>
 <li>结构控制方程</li>
 </ul>
-<p>\[ \mathbf{F}_{s}[X_{s},0] = 0 \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathbf{F}_{s}[X_{s},0] = 0</script><ul>
 <li>耦合控制方程</li>
 </ul>
-<p>\[ \mathbf{F}[X]=\begin{bmatrix} \mathbf{F}_{f}[X_{f},\underline d_{s}(X_{s})] \\ \mathbf{F}_{s}[X_{s},\underline \tau_{f}(X_{f})] \end{bmatrix} = 0 \]</p>
-<ul>
-<li>\( X_{f} \)：流场求解变量</li>
-<li>\( X_{s} \)：结构求解变量</li>
+<script type="math/tex; mode=display">
+\mathbf{F}[X]=\begin{bmatrix} \mathbf{F}_{f}[X_{f},\underline d_{s}(X_{s})] \\\ \mathbf{F}_{s}[X_{s},\underline \tau_{f}(X_{f})] \end{bmatrix} = 0</script><ul>
+<li>$ X_{f} $：流场求解变量</li>
+<li>$ X_{s} $：结构求解变量</li>
 </ul>
 <h3 id="1-3-空间映射"><a href="#1-3-空间映射" class="headerlink" title="1.3 空间映射"></a>1.3 空间映射</h3><ul>
 <li>流固耦合界面上<ul>
@@ -67,7 +67,7 @@
 <li><em>FSI</em> 收敛容差一般大于流场与结构各自迭代的容差</li>
 </ul>
 </li>
-<li>松弛系数（\(\lambda_{d} , \lambda_{\tau}\)）<ul>
+<li>松弛系数（$\lambda_{d} , \lambda_{\tau}$）<ul>
 <li>接近 0：可能会改善收敛性，但会增加迭代次数</li>
 <li>接近 1：能够收敛的情况下，迭代次数少，但有可能不易收敛</li>
 <li>合适的松弛系数需要试</li>
@@ -90,6 +90,7 @@
 <h2 id="3-双向耦合"><a href="#3-双向耦合" class="headerlink" title="3 双向耦合"></a><em>3 双向耦合</em></h2><ul>
 <li>流体单元与耦合方法</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -113,46 +114,50 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="3-1-迭代耦合流程（t-△t-时刻，第-k-次迭代）"><a href="#3-1-迭代耦合流程（t-△t-时刻，第-k-次迭代）" class="headerlink" title="3.1 迭代耦合流程（t+△t 时刻，第 k 次迭代）"></a>3.1 迭代耦合流程（<em>t+△t</em> 时刻，第 <em>k</em> 次迭代）</h3><ul>
-<li><strong>Step 1</strong>：求解流场控制方程，得到 \( X_{f}^{k} , \underline \tau_{f}^{k} \)</li>
+<li><strong>Step 1</strong>：求解流场控制方程，得到 $ X_{f}^{k} , \underline \tau_{f}^{k} $</li>
 </ul>
-<p>\[ \mathbf{F}_{f}[X_{f}^{k} , \lambda_{d} \underline d_{s}^{k-1} + (1-\lambda_{d}) \underline d_{s}^{k-2} ] = 0 \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathbf{F}_{f}[X_{f}^{k} , \lambda_{d} \underline d_{s}^{k-1} + (1-\lambda_{d}) \underline d_{s}^{k-2} ] = 0</script><ul>
 <li><p><strong>Step 2</strong>：检查是否满足应力收敛条件</p>
 </li>
-<li><p><strong>Step 3</strong>：求解结构控制方程，得到 \( X_{s}^{k} , \underline d_{s}^{k} \)</p>
+<li><p><strong>Step 3</strong>：求解结构控制方程，得到 $ X_{s}^{k} , \underline d_{s}^{k} $</p>
 </li>
 </ul>
-<p>\[ \mathbf{F}_{s}[X_{s}^{k} , \lambda_{\tau} \underline \tau_{f}^{k} + (1-\lambda_{\tau}) \underline \tau_{f}^{k-1} ] = 0 \]</p>
-<ul>
-<li><strong>Step 4</strong>：计算界面流场节点位移 \( \underline d_{f}^{k} \)</li>
+<script type="math/tex; mode=display">
+\mathbf{F}_{s}[X_{s}^{k} , \lambda_{\tau} \underline \tau_{f}^{k} + (1-\lambda_{\tau}) \underline \tau_{f}^{k-1} ] = 0</script><ul>
+<li><strong>Step 4</strong>：计算界面流场节点位移 $ \underline d_{f}^{k} $</li>
 </ul>
-<p>\[ \underline d_{f}^{k} = \lambda_{d} \underline d_{s}^{k} + (1-\lambda_{d}) \underline d_{s}^{k-1} \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\underline d_{f}^{k} = \lambda_{d} \underline d_{s}^{k} + (1-\lambda_{d}) \underline d_{s}^{k-1}</script><ul>
 <li><p><strong>Step 5</strong>：检查是否满足位移收敛条件</p>
 </li>
 <li><p><em>FCBI</em> 与 <em>FCBI-C</em></p>
 <ul>
-<li>两者均可用于迭代耦合，区别在于流场变量 \( X_{f}^{k} \) 的求解</li>
+<li>两者均可用于迭代耦合，区别在于流场变量 $ X_{f}^{k} $ 的求解</li>
 <li><em>FCBI-C</em>：采用分离式方法求解，依次得到速度与压力、温度、湍流相关变量等，并进行迭代</li>
 <li><em>FCBI</em>：采用<em>Newton-Raphson</em>方法求解，同时得到所有流场变量，并进行迭代</li>
 </ul>
 </li>
 </ul>
 <h3 id="3-2-直接耦合流程（t-△t-时刻，第-k-次迭代）"><a href="#3-2-直接耦合流程（t-△t-时刻，第-k-次迭代）" class="headerlink" title="3.2 直接耦合流程（t+△t 时刻，第 k 次迭代）"></a>3.2 直接耦合流程（<em>t+△t</em> 时刻，第 <em>k</em> 次迭代）</h3><ul>
-<li><strong>Step 1</strong>：组合耦合控制方程求解所需的系数矩阵 \( \mathbf{A}_{ij} \)</li>
+<li><strong>Step 1</strong>：组合耦合控制方程求解所需的系数矩阵 $ \mathbf{A}_{ij} $</li>
 </ul>
-<p>\[ \mathbf{A}_{ij} = \frac{\partial \mathbf{F}_{i}^{k}}{\partial X_{j}} (i,j = f,s) \]</p>
-<p>\[ \mathbf{F}_{f}^{k} = \mathbf{F}_{f}[X_{f}^{k} , \lambda_{d} \underline d_{s}^{k} + (1-\lambda_{d}) \underline d_{s}^{k-1} ] \]</p>
-<p>\[ \mathbf{F}_{s}^{k} = \mathbf{F}_{s}[X_{s}^{k} , \lambda_{\tau} \underline \tau_{f}^{k} + (1-\lambda_{\tau}) \underline \tau_{f}^{k-1} ] \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathbf{A}_{ij} = \frac{\partial \mathbf{F}_{i}^{k}}{\partial X_{j}} (i,j = f,s)</script><script type="math/tex; mode=display">
+\mathbf{F}_{f}^{k} = \mathbf{F}_{f}[X_{f}^{k} , \lambda_{d} \underline d_{s}^{k} + (1-\lambda_{d}) \underline d_{s}^{k-1} ]</script><script type="math/tex; mode=display">
+\mathbf{F}_{s}^{k} = \mathbf{F}_{s}[X_{s}^{k} , \lambda_{\tau} \underline \tau_{f}^{k} + (1-\lambda_{\tau}) \underline \tau_{f}^{k-1} ]</script><ul>
 <li><strong>Step 2</strong>：求解线性化的耦合控制方程组</li>
 </ul>
-<p>\[ \begin{bmatrix}<br>\mathbf{A}_{ff} &amp; \mathbf{A}_{fs} \\ \mathbf{A}_{sf} &amp; \mathbf{A}_{ss} \end{bmatrix}<br>\begin{bmatrix} \Delta X_{f}^{k} \\ \Delta X_{s}^{k} \end{bmatrix} =<br>\begin{bmatrix} \mathbf{B}_{f} \\ \mathbf{B}_{s} \end{bmatrix} \]</p>
-<p>\[ \mathbf{B}_{f} = -\mathbf{F}_{f}^{k} \]</p>
-<p>\[ \mathbf{B}_{s} = -\mathbf{F}_{s}^{k} \]</p>
-<p>\[ X^{k+1} = X^{k} + \Delta X^{k} \]</p>
-<ul>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\mathbf{A}_{ff} & \mathbf{A}_{fs} \\\ \mathbf{A}_{sf} & \mathbf{A}_{ss} \end{bmatrix} 
+\begin{bmatrix} \Delta X_{f}^{k} \\\ \Delta X_{s}^{k} \end{bmatrix} = 
+\begin{bmatrix} \mathbf{B}_{f} \\\ \mathbf{B}_{s} \end{bmatrix}</script><script type="math/tex; mode=display">
+\mathbf{B}_{f} = -\mathbf{F}_{f}^{k}</script><script type="math/tex; mode=display">
+\mathbf{B}_{s} = -\mathbf{F}_{s}^{k}</script><script type="math/tex; mode=display">
+X^{k+1} = X^{k} + \Delta X^{k}</script><ul>
 <li><strong>Step 3</strong>：检查是否满足位移、应力收敛条件</li>
 </ul>
 <h2 id="4-FSI-plus"><a href="#4-FSI-plus" class="headerlink" title="4 FSI plus"></a><em>4 FSI plus</em></h2><ul>
@@ -209,7 +214,7 @@
 <li><a href="">ADINA Theory and Modeling Guide Volume III: CFD &amp; FSI</a></li>
 </ul>
 <hr>
-</div><div class="tags"><a href="/tags/流固耦合/">流固耦合</a><a href="/tags/ADINA/">ADINA</a></div><div class="post-nav"><a href="/2017/07/28/守恒定律及其描述/" class="pre">守恒定律及其描述</a><a href="/2017/07/18/流固耦合分析方法/" class="next">流固耦合分析方法</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">4</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/壁面函数法/" style="font-size: 15px;">壁面函数法</a> <a href="/tags/守恒定律/" style="font-size: 15px;">守恒定律</a> <a href="/tags/基本方程/" style="font-size: 15px;">基本方程</a> <a href="/tags/多物理场/" style="font-size: 15px;">多物理场</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"><a href="/tags/流固耦合/">流固耦合</a><a href="/tags/ADINA/">ADINA</a></div><div class="post-nav"><a href="/2017/07/28/守恒定律及其描述/" class="pre">守恒定律及其描述</a><a href="/2017/07/18/流固耦合分析方法/" class="next">流固耦合分析方法</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">4</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/CAE软件/" style="font-size: 15px;">CAE软件</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/壁面函数法/" style="font-size: 15px;">壁面函数法</a> <a href="/tags/守恒定律/" style="font-size: 15px;">守恒定律</a> <a href="/tags/基本方程/" style="font-size: 15px;">基本方程</a> <a href="/tags/流固耦合/" style="font-size: 15px;">流固耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/多物理场/" style="font-size: 15px;">多物理场</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
