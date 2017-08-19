@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>湍流与湍流模型 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">湍流与湍流模型</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">湍流与湍流模型</h1><div class="post-meta">Jul 17, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="1-什么是湍流？"><a href="#1-什么是湍流？" class="headerlink" title="1 什么是湍流？"></a><em>1 什么是湍流？</em></h2><ul>
+<li>流体的流动状态<ul>
+<li>层流：有秩序的分层流动</li>
+<li>湍流：随机、杂乱的流动</li>
+</ul>
+</li>
+<li>流体存在剪切运动，是湍流得以产生和维持的原因</li>
+<li>雷诺数（<em>Re</em>）<ul>
+<li>$Re=UL/\nu$</li>
+<li>$L$：特征长度；$U$：来流速度；$\nu$：运动粘度</li>
+<li>流体所受惯性力与粘性力之比</li>
+<li>确定流体流动状态的最重要参数</li>
+</ul>
+</li>
+<li>湍流的结构：由不同尺度的涡（<em>Eddy</em>）构成<ul>
+<li>大涡：主要受惯性影响；各向异性，由流场边界情况决定</li>
+<li>小涡：主要受粘性影响；各向同性</li>
+<li>大涡与小涡的空间尺度、时间尺度、速度尺度的差异，随雷诺数增加而增加</li>
+<li>能量传递：从主流动、到大涡、再到小涡、直至耗散；大涡携带湍流的主要能量</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-湍流的模拟"><a href="#2-湍流的模拟" class="headerlink" title="2 湍流的模拟"></a><em>2 湍流的模拟</em></h2><ul>
+<li>按照对涡（<em>Eddy</em>）的处理，可以分为模型化的（<em>modeled</em>）处理方法和辨析的（<em>resolved，resolve：make clearly visible</em>）处理方法<ul>
+<li><em>RANS</em>：对流场内的涡全部进行模型化处理（<em>modeled</em>）</li>
+<li><em>DNS</em>：直接求解，辨析出所有尺度的涡（<em>resolved</em>）</li>
+<li><em>LES</em>：设定一个尺度，该尺度之上的涡直接求解，该尺度之下的涡进行模型化处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="RANS（Reynolds-Averaged-Navier-Stokes）：湍流的时间平均"><a href="#RANS（Reynolds-Averaged-Navier-Stokes）：湍流的时间平均" class="headerlink" title="- RANS（Reynolds-Averaged-Navier-Stokes）：湍流的时间平均"></a>- <em>RANS</em>（<em>Reynolds-Averaged-Navier-Stokes</em>）：湍流的时间平均</h3><ul>
+<li>统计平均意义上的流场信息，能够满足基本的工程设计需要</li>
+<li>雷诺分解：将物理量分解为时均值与脉动值，以速度矢量为例：<ul>
+<li>上划线表示时间平均</li>
+<li>$\Phi$：时均值；$\phi$：脉动值</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{\phi}(t) = \mathrm{\Phi}(t) + \mathrm{\phi'}(t)</script><script type="math/tex; mode=display">
+\overline {\mathrm{\phi'}}(t) = 0</script><ul>
+<li>时均化的结果<ul>
+<li><em>NS</em> 方程变为以时均量为变量的<em>RANS</em>方程</li>
+<li><em>RANS</em> 方程上附加了雷诺应力的相关项</li>
+<li>$\mathrm{U}=\mathrm{U}(U,V,W)$</li>
+<li>$\mathrm{u’}=\mathrm{u’}(u’,v’,w’)$</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{div} \mathrm{U} = 0</script><script type="math/tex; mode=display">
+\frac{\partial U }{\partial t} + \mathrm{div}(U \mathrm{U}) = -\frac{1}{\rho } \frac{\partial P}{\partial x} + \nu \mathrm{div}(\mathrm{grad}(U)) + \frac{1}{\rho} \left [ \frac{\partial (- \rho \overline{u'^{2}})}{\partial x} + \frac{\partial (- \rho \overline{u'v'})}{\partial y} + \frac{\partial (- \rho \overline{u'w'})}{\partial z} \right ]</script><script type="math/tex; mode=display">
+\frac{\partial V }{\partial t} + \mathrm{div}(V \mathrm{U}) = -\frac{1}{\rho } \frac{\partial P}{\partial y} + \nu \mathrm{div}(\mathrm{grad}(V)) + \frac{1}{\rho} \left [ \frac{\partial (- \rho \overline{u'v'})}{\partial x} + \frac{\partial (- \rho \overline{v'^{2}})}{\partial y} + \frac{\partial (- \rho \overline{v'w'})}{\partial z} \right ]</script><script type="math/tex; mode=display">
+\frac{\partial W }{\partial t} + \mathrm{div}(W \mathrm{U}) = -\frac{1}{\rho } \frac{\partial P}{\partial z} + \nu \mathrm{div}(\mathrm{grad}(W)) + \frac{1}{\rho} \left [ \frac{\partial (- \rho \overline{u'w'})}{\partial x} + \frac{\partial (- \rho \overline{v'w'})}{\partial y} + \frac{\partial (- \rho \overline{w'^{2}})}{\partial z} \right ]</script><ul>
+<li>雷诺应力</li>
+</ul>
+<script type="math/tex; mode=display">
+{\tau}_{ij}=-\rho \overline{ {u}_{i}' {u}_{j}' }</script><ul>
+<li>雷诺应力的处理<ul>
+<li>建立封闭模型直接求解，或转化为求解湍流粘度</li>
+<li>湍流粘度不是流体物性，而是由流动状态决定</li>
+<li><em>Boussinesq</em> 假设：雷诺应力与平均流动之间的关系（流体微团的剪切运动），该假设暗含着某些情况下雷诺正应力几乎各向相同</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+{\tau}_{ij}=-\rho \overline{ {u}_{i}' {u}_{j}' } = \mu_{t}\left ( \frac{\partial U_{i}}{\partial x_{j}} + \frac{\partial U_{j}}{\partial x_{i}} \right ) - \frac{2}{3} \rho k \delta_{ij}</script><script type="math/tex; mode=display">
+k = \frac{1}{2} (\overline {u'^{2}} + \overline {v'^{2}} + \overline {w'^{2}})</script><h3 id="LES（Large-Eddy-Simulation）：湍流的空间滤波"><a href="#LES（Large-Eddy-Simulation）：湍流的空间滤波" class="headerlink" title="- LES（Large Eddy Simulation）：湍流的空间滤波"></a>- <em>LES</em>（<em>Large Eddy Simulation</em>）：湍流的空间滤波</h3><ul>
+<li>滤波函数：对物理量的空间处理<ul>
+<li>上划线表示滤波后变量</li>
+<li>$ G(\mathrm{x},\mathrm{x’},\Delta) $：滤波函数；$ \Delta $：截止尺度（<em>cutoff width</em>）</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\overline{\phi}(\mathrm{x},t) = \mathop{\int}_{-\infty}^{\infty} \mathop{\int}_{-\infty}^{\infty} \mathop{\int}_{-\infty}^{\infty} G(\mathrm{x},\mathrm{x'},\Delta) \phi(\mathrm{x'},t) \mathrm{d}x'_{1} \mathrm{d}x'_{2} \mathrm{d}x'_{3}</script><ul>
+<li>空间滤波的结果<ul>
+<li><em>NS</em>方程变为以滤波后的物理量为变量的形式</li>
+<li>方程附加了亚格子应力（<em>Sub-Grid-Scale Stress，SGS Stress</em>）的相关项</li>
+<li>$\overline{\mathrm{u}}=\overline{\mathrm{u}}(\overline{u},\overline{v},\overline{w})$</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial \rho}{\partial t} + \mathrm{div}(\rho \overline{\mathrm{u}}) = 0</script><script type="math/tex; mode=display">
+\frac{\partial \rho \overline{u}}{\partial t} + \mathrm{div}(\rho \overline{u}\ \overline{\mathrm{u}}) = - \frac{\partial \overline{p}}{\partial x} + \mu \mathrm{div}(\mathrm{grad} (\overline{u})) - (\mathrm{div}(\rho \overline{u \mathrm{u}}) - \mathrm{div}(\rho \overline{u}\ \overline{\mathrm{u}}) )</script><script type="math/tex; mode=display">
+\frac{\partial \rho \overline{v}}{\partial t} + \mathrm{div}(\rho \overline{v}\ \overline{\mathrm{u}}) = - \frac{\partial \overline{p}}{\partial y} + \mu \mathrm{div}(\mathrm{grad} (\overline{v})) - (\mathrm{div}(\rho \overline{v \mathrm{u}}) - \mathrm{div}(\rho \overline{v}\ \overline{\mathrm{u}}) )</script><script type="math/tex; mode=display">
+\frac{\partial \rho \overline{w}}{\partial t} + \mathrm{div}(\rho \overline{w}\ \overline{\mathrm{u}}) = - \frac{\partial \overline{p}}{\partial z} + \mu \mathrm{div}(\mathrm{grad} (\overline{w})) - (\mathrm{div}(\rho \overline{w \mathrm{u}}) - \mathrm{div}(\rho \overline{w}\ \overline{\mathrm{u}}) )</script><ul>
+<li><em>SGS</em>（<em>Sub-Grid-Scale Stress</em>）应力</li>
+</ul>
+<script type="math/tex; mode=display">
+\tau_{ij} = \rho \overline{u_{i} u_{j}} - \rho \overline{u_{i}}\ \overline{u_{j}}</script><ul>
+<li><em>SGS</em> 应力的处理<ul>
+<li>建立与滤波后物理量的关系（局部变形率），转化为确定<em>SGS</em> 粘度的问题</li>
+<li>$ \mu_{SGS} $：<em>SGS</em> 粘度</li>
+<li>$ \Delta $：滤波截止尺度，一般取网格尺寸</li>
+<li><em>Smagorinksy-Lilly SGS Model</em>：基于滤波截止尺度以下的小涡各向同性的假设</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\tau_{ij} = -2 \mu_{SGS} \overline{S}_{ij} + \frac{1}{3} \tau_{ii} \delta_{ij} = - \mu_{SGS} \left ( \frac{\partial \overline{u}_{i}}{\partial x_{j}} + \frac{\partial \overline{u}_{j}}{\partial x_{i}} \right ) + \frac{1}{3} \tau_{ii} \delta_{ij}</script><script type="math/tex; mode=display">
+\mu_{SGS} = \rho (C_{SGS} \Delta)^{2} \sqrt{2 \overline{S}_{ij} \overline{S}_{ij}}</script><h3 id="DNS（Direct-Numerical-Simulation）：直接求解"><a href="#DNS（Direct-Numerical-Simulation）：直接求解" class="headerlink" title="- DNS（Direct Numerical Simulation）：直接求解"></a>- <em>DNS</em>（<em>Direct Numerical Simulation</em>）：直接求解</h3><ul>
+<li>求解的对象就是<em>NS</em>方程，对方程不进行其他处理</li>
+<li>需要在空间尺度和时间尺度上辨析出最小尺度的涡，所以计算量巨大</li>
+</ul>
+<h3 id="DES（Detached-Eddy-Simulation）：LES-与RANS-的组合"><a href="#DES（Detached-Eddy-Simulation）：LES-与RANS-的组合" class="headerlink" title="- DES（Detached Eddy Simulation）：LES 与RANS 的组合"></a>- <em>DES</em>（<em>Detached Eddy Simulation</em>）：<em>LES</em> 与<em>RANS</em> 的组合</h3><ul>
+<li>在近壁面使用<em>RANS</em>，其他区域使用<em>LES</em></li>
+<li>通过距壁面的距离进行判断</li>
+</ul>
+<h2 id="3-RANS-中的湍流模型"><a href="#3-RANS-中的湍流模型" class="headerlink" title="3 RANS 中的湍流模型"></a><em>3 RANS</em> 中的湍流模型</h2><ul>
+<li>为使 <em>RANS</em> 方程封闭，需要附加方程，根据附加的方程个数，湍流模型可分为<ul>
+<li>零方程模型：混合长度模型</li>
+<li>两方程模型：标准 $k-\varepsilon$ 模型，等</li>
+<li>七方程模型：雷诺应力模型</li>
+</ul>
+</li>
+</ul>
+<h3 id="混合长度模型"><a href="#混合长度模型" class="headerlink" title="- 混合长度模型"></a>- 混合长度模型</h3><ul>
+<li>量纲上，湍流粘度 = 密度 X 长度 X 速度 = 密度 X 长度平方 X 速度梯度</li>
+</ul>
+<script type="math/tex; mode=display">
+\mu_{t} = C \cdot \rho \cdot v \cdot l = C \cdot \rho \cdot l\left | \frac{\partial U}{\partial y} \right | \cdot l = \rho l_{m}^{2} \left | \frac{\partial U}{\partial y} \right |</script><ul>
+<li>长度平方中的长度称作混合长度，可通过实验建立混合长度与流动特征长度的代数关系</li>
+<li>适用情况<ul>
+<li>简单的二维流动，流动沿流向变化较慢</li>
+<li>混合长度可以与流动的特征长度建立某种关系</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>实现简单，计算代价小</li>
+</ul>
+</li>
+<li>问题<ul>
+<li>适用范围有限</li>
+<li>无法描述湍流相关变量的输运（<em>transport</em>）</li>
+</ul>
+</li>
+</ul>
+<h3 id="标准-k-varepsilon-模型"><a href="#标准-k-varepsilon-模型" class="headerlink" title="- 标准 $k-\varepsilon$ 模型"></a>- 标准 $k-\varepsilon$ 模型</h3><ul>
+<li>湍流粘度表达式：隐含湍流粘度在各个方向上相同</li>
+</ul>
+<script type="math/tex; mode=display">
+\mu_{t} = C \cdot \rho \cdot v \cdot l = C \cdot \rho \cdot k^{1/2} \cdot \frac{k^{3/2}}{\varepsilon} = \rho C_{\mu} \frac{k^{2}}{\varepsilon}</script><ul>
+<li>$k$ 方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial (\rho k)}{\partial t} + \mathrm{div} (\rho k \mathrm{U}) = \mathrm{div} \left [ \frac{\mu_{t}}{\sigma_{k}} \mathrm{grad} k \right ] + 2 \mu_{t} S_{ij} S_{ij} - \rho \varepsilon</script><ul>
+<li>$\varepsilon$ 方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial (\rho \varepsilon)}{\partial t} + \mathrm{div} (\rho \varepsilon \mathrm{U}) = \mathrm{div} \left [ \frac{\mu_{t}}{\sigma_{\varepsilon}} \mathrm{grad} \varepsilon \right ] + C_{1\varepsilon} \frac{\varepsilon}{k} 2 \mu_{t} S_{ij} S_{ij} - C_{2\varepsilon} \rho \frac{\varepsilon^{2}}{k}</script><ul>
+<li>系数</li>
+</ul>
+<script type="math/tex; mode=display">
+C_{\mu}=0.09 \ \ \sigma_{k}=1.00 \ \ \sigma_{\varepsilon}=1.30 \ \  C_{1\varepsilon}=1.44 \ \ C_{2\varepsilon}=1.92</script><ul>
+<li>适用情况<ul>
+<li>高<em>Re</em> 数流动</li>
+<li>湍动能的产生速率与耗散速率大致相当</li>
+<li>需要使用壁面函数</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>最简单的两方程模型</li>
+<li>工程中被广泛验证与使用，例如，管内流动</li>
+</ul>
+</li>
+<li>问题：主要来源于<em>Boussinesq</em> 假设与湍流粘度各向相同的假设<ul>
+<li>低 <em>Re</em> 数流动</li>
+<li>存在强逆压梯度的流动、出现边界层分离的流动</li>
+<li>受雷诺正应力各向异性影响较大的流动</li>
+<li>附加变形影响雷诺应力的流动，例如，旋转流动、弯曲边界</li>
+</ul>
+</li>
+</ul>
+<h3 id="对标准-k-varepsilon-模型的改进"><a href="#对标准-k-varepsilon-模型的改进" class="headerlink" title="- 对标准 $k-\varepsilon$ 模型的改进"></a>- 对标准 $k-\varepsilon$ 模型的改进</h3><ul>
+<li>双层 $k-\varepsilon$ 模型<ul>
+<li>低 <em>Re</em> 数情况下，使用对数律的壁面函数不再准确，需要将 $k$ 与 $\varepsilon$ 直接积分至壁面<ul>
+<li>此时，标准 $k-\varepsilon$ 模型中需要加入衰减函数（<em>damping function</em>）</li>
+<li>而且，直接积分需要大量网格</li>
+<li>这会造成计算对网格的依赖与数值不稳定</li>
+</ul>
+</li>
+<li>双层 $k-\varepsilon$ 模型将流场分为粘性区（靠近壁面）与完全湍流区<ul>
+<li>$ Re_{y} = y \sqrt{k} / \nu $</li>
+<li>粘性区（$Re_{y} &lt; Re_{c}$）：$k$ 正常计算，湍流粘度借用混合长度模型方法进行计算</li>
+<li>完全湍流区（$Re_{y} \geqslant Re_{c}$）：使用标准 $k-\varepsilon$ 模型</li>
+<li>使用混合函数（<em>blending function</em>）使湍流粘度连续</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>Spalart-Allmaras</em> 模型<ul>
+<li>来自于航空领域的应用，适用于空气动力学问题（外部流动），作为通用湍流模型并不合适</li>
+<li>针对存在强逆压梯度的流动而提出</li>
+<li>一方程模型：附加方程求解变量为湍流运动粘度（$\tilde{\nu}$）<ul>
+<li>$ \mu_{t} = \rho \tilde{\nu} f_{v1} $</li>
+<li>$f_{v1}$：<em>Wall-Damping Function</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$k-\omega$ 模型<ul>
+<li>来自于航空领域的应用，可作为通用湍流模型使用</li>
+<li>针对存在强逆压梯度的流动而提出</li>
+<li>可用于低 <em>Re</em> 数流动</li>
+<li>两方程模型，可视作 $k-\varepsilon$ 模型的变形，使用 $\omega$ 替换 $\varepsilon$<ul>
+<li>$ \mu_{t} = \rho k / \omega $</li>
+<li>$ \omega = \varepsilon k $</li>
+<li>$k-\omega$ 模型在壁面条件处理上优于 $k-\varepsilon$ 模型，但在自由来流条件处理上存在问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>SST</em> $k-\omega$ 模型<ul>
+<li>$k-\varepsilon$ 模型与 $k-\omega$ 模型的组合</li>
+<li>近壁面使用 $k-\omega$ 模型，其他区域使用 $k-\varepsilon$ 模型</li>
+</ul>
+</li>
+<li>非线性 $k-\varepsilon$ 模型<ul>
+<li>对 <em>Boussinesq</em> 假设的改进</li>
+<li>在湍流本构关系中加入变形率的非线性项，使其在数学上、物理上能够更完善地体现雷诺应力与主流动中剪切运动的关系</li>
+<li>非线性 $k-\varepsilon$ 模型在某些应用中的表现与 <em>RSM</em> 相当</li>
+</ul>
+</li>
+<li><em>Realisable</em> $k-\varepsilon$ 模型<ul>
+<li>可实现（<em>Realisable</em>）的含义：计算中保证雷诺正应力、湍动能 $k$、湍流耗散率 $\varepsilon$ 大于零</li>
+<li>基于 $k-\varepsilon$ 模型，湍流粘度表达式中的系数不为常数</li>
+<li>可用于旋转流动</li>
+</ul>
+</li>
+<li><em>RNG</em> $k-\varepsilon$ 模型<ul>
+<li>基于 $k-\varepsilon$ 模型，模型中的系数基于统计力学</li>
+<li>$\varepsilon$ 方程中， $\varepsilon$ 的产生项系数与时均变形率相关</li>
+<li>可用于存在大变形率的流动，但其表现并不总是优于标准 $k-\varepsilon$ 模型</li>
+</ul>
+</li>
+</ul>
+<h3 id="雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）"><a href="#雷诺应力模型（Reynolds-Stress-Equation-Model，-RSM）" class="headerlink" title="- 雷诺应力模型（Reynolds Stress Equation Model， RSM）"></a>- 雷诺应力模型（<em>Reynolds Stress Equation Model， RSM</em>）</h3><ul>
+<li>也称为二阶矩模型</li>
+<li>雷诺应力控制方程（详见 <em>Ref.</em> 1 <em>Page</em> 81-82）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} R_{ij}}{\mathrm{d} t} = \frac{\partial R_{ij}}{\partial t} + C_{ij} = P_{ij} + D_{ij} - \varepsilon_{ij} + \Pi_{ij} + \Omega_{ij}</script><script type="math/tex; mode=display">
+R_{ij} = - \tau_{ij} / \rho = \overline{u'_{i} u'_{j}}</script><ul>
+<li>$\varepsilon$ 方程（湍流耗散率）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \varepsilon }{\mathrm{d} t} =  \mathrm{div} \left [ \frac{\nu_{t}}{\sigma_{\varepsilon}} \mathrm{grad} \varepsilon \right ] + C_{1\varepsilon} \frac{\varepsilon}{k} 2 \nu_{t} S_{ij} S_{ij} - C_{2\varepsilon} \rho \frac{\varepsilon^{2}}{k}</script><ul>
+<li>适用情况<ul>
+<li>高 <em>Re</em> 数流动</li>
+<li>需要使用壁面函数</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>不使用 <em>Boussinesq</em> 假设的 <em>RANS</em> 的“最简单”形式</li>
+</ul>
+</li>
+<li>问题<ul>
+<li>计算量大</li>
+<li>数值求解存在困难</li>
+<li>标准 $k-\varepsilon$ 模型中 $\varepsilon$ 方程所导致的问题同样存在</li>
+</ul>
+</li>
+</ul>
+<h3 id="雷诺应力模型的简化"><a href="#雷诺应力模型的简化" class="headerlink" title="- 雷诺应力模型的简化"></a>- 雷诺应力模型的简化</h3><ul>
+<li>代数应力模型（<em>Algebraic Stress Equation Model，ASM</em>）<ul>
+<li>为克服 <em>RSM</em> 计算量大的问题所提出</li>
+<li>使用代数方程求解雷诺应力</li>
+<li>表现并不一定好于非线性 $k-\varepsilon$ 模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-湍流边界层"><a href="#4-湍流边界层" class="headerlink" title="4 湍流边界层"></a><em>4 湍流边界层</em></h2><ul>
+<li>几个定义：剪切速度，<em>u+</em> ， <em>y+</em></li>
+</ul>
+<script type="math/tex; mode=display">
+u_{\tau} = \sqrt{ \tau_{w} / \rho }\ \ \ u^{+} = \frac{U}{u_{\tau}}\ \ \ y^{+} = \frac{\rho u_{\tau} y }{\mu}</script><ul>
+<li>壁面律（<em>law of the wall</em>）</li>
+</ul>
+<script type="math/tex; mode=display">
+u^{+} = f(y^{+})</script><ul>
+<li><em>log law</em>：30 &lt; <em>y+</em> &lt; 500 （壁面律的一种）</li>
+</ul>
+<script type="math/tex; mode=display">
+u^{+} = \frac{1}{\kappa } \ln (E y^{+})</script><ul>
+<li>速度亏损律（<em>velocity-defect law</em>）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{U_{max}-U}{u_{\tau}} = g\left ( \frac{y}{\delta} \right )</script><ul>
+<li><em>law of the wake</em>： （速度亏损率的一种）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{U_{max}-U}{u_{\tau}} = - \frac{1}{\kappa } \ln \left ( \frac{y}{\delta} \right ) + A</script><ul>
+<li>湍流边界层结构<ul>
+<li>粘性子层（<em>viscous sub-layer</em>）：粘性力占主导（<em>y+</em> &lt; 5），$ u^{+} = y^{+} $，该层又称为线性子层</li>
+<li>缓冲层（<em>buffer layer</em>）：粘性力与雷诺应力相当（5 &lt; <em>y+</em> &lt; 30）</li>
+<li>对数层（<em>log-law layer</em>）：雷诺应力占主导，<em>log law</em> 成立</li>
+<li>外层（<em>outer layer</em>）：惯性力占主导，<em>law of the wake</em> 成立</li>
+</ul>
+</li>
+<li><em>log law</em> 与 <em>law of the wake</em> 成立的范围有重叠</li>
+<li>高 <em>Re</em> 数湍流模型，第一层网格节点 <em>y+</em> 应大于30，即，第一层网格节点放置在对数律成立的区域</li>
+</ul>
+<h2 id="5-湍流的边界条件"><a href="#5-湍流的边界条件" class="headerlink" title="5 湍流的边界条件"></a><em>5 湍流的边界条件</em></h2><ul>
+<li>$k-\varepsilon$ 模型<ul>
+<li>入口：$k$ 与 $\varepsilon$ 的值与分布</li>
+<li>出口：零梯度条件</li>
+<li>壁面：高 <em>Re</em> 数，壁面函数法；低 <em>Re</em> 数，采用其他低 <em>Re</em> 数模型</li>
+</ul>
+</li>
+<li>雷诺应力模型<ul>
+<li>入口：雷诺应力与 $\varepsilon$ 的值与分布</li>
+<li>出口：零梯度条件</li>
+<li>壁面：高 <em>Re</em> 数，壁面函数法；低 <em>Re</em> 数，需要对 <em>RSM</em> 模型进行调整</li>
+</ul>
+</li>
+<li>内部流动入口条件的估算<ul>
+<li>$U_{ref}$：参考速度，可取入口平均流速</li>
+<li>$T_{i}$：湍流强度，可取1%、5%、10%代表低、中、高湍流强度</li>
+<li>$L$：可取管道水力直径</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+k = \frac{3}{2}(U_{ref} T_{i})^{2}\ \ \ \varepsilon = C_{\mu}^{3/4} \frac{k^{2/3}}{l}\ \ \ l = 0.07L</script><ul>
+<li>其他估算方法<ul>
+<li>根据湍流强度和参考速度，估算湍流动能 $k$</li>
+<li>根据入口 <em>Re</em> 估算湍流粘度，即，首先需要确定一个合适的 <em>Re</em></li>
+<li>根据湍流模型的相关定义，确定其他参数，如，$\varepsilon$、$\omega$ 等</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>2017.08.02：ver.1</strong></p>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">An Introduction to Computational Fluid Dynamics: the Finite Volume Method (2nd Edition)</a></li>
+<li><a href="">数值传热学（第二版）</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_599d8faa0102wmjv.html" target="_blank" rel="external">常用的湍流模型</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_599d8faa0100wsli.html" target="_blank" rel="external">FLUENT中常用的湍流模型</a></li>
+</ul>
+<hr>
+</div><div class="tags"><a href="/tags/湍流/">湍流</a></div><div class="post-nav"><a href="/2017/07/18/湍流模型@ADINA/" class="pre">湍流模型 @ADINA</a><a href="/2017/07/01/参考书籍/" class="next">参考书们</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

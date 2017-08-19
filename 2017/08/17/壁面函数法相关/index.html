@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>壁面函数法相关 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">壁面函数法相关</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">壁面函数法相关</h1><div class="post-meta">Aug 17, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="1-壁面函数法及其目的"><a href="#1-壁面函数法及其目的" class="headerlink" title="1 壁面函数法及其目的"></a><em>1 壁面函数法及其目的</em></h2><ul>
+<li>将靠近壁面的第一层控制体积的计算节点布置在对数层</li>
+<li>使用该点的速度、距壁面的距离（该点记作<em>P</em>）</li>
+<li>根据基于若干假设的经验公式</li>
+<li>计算壁面切应力、湍流粘度</li>
+<li>设置附加方程的壁面边界条件，即， $ k_{P} $ 、$ \varepsilon_{P} $</li>
+<li>如果不使用壁面函数法，则需要<ul>
+<li>对高<em>Re</em> 湍流模型的修改，使其可以直接积分到壁面</li>
+<li>在边界层粘性子层与缓冲层内布置密集的网格</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-出发点、假设"><a href="#2-出发点、假设" class="headerlink" title="2 出发点、假设"></a><em>2 出发点、假设</em></h2><ul>
+<li>对于二维情况</li>
+<li>在对数层</li>
+</ul>
+<script type="math/tex; mode=display">
+\tau_{w} \approx  \mu_{t} \frac{\partial u}{\partial y} \approx \mu_{t} \frac{U_{P}}{y_{P}}</script><ul>
+<li>假设1：湍动能的产生与湍动能耗散基本平衡</li>
+</ul>
+<script type="math/tex; mode=display">
+\varepsilon = \frac{\mu_{t}}{\rho} \left ( \frac{\partial u}{\partial y} \right )^{2}</script><ul>
+<li>假设2：混合长度模型</li>
+</ul>
+<script type="math/tex; mode=display">
+\mu_{t} = \rho \cdot l_{m}^{2} \cdot \frac{\partial u}{\partial y}</script><script type="math/tex; mode=display">
+l_{m} = \kappa y</script><h2 id="3-定义、中间量"><a href="#3-定义、中间量" class="headerlink" title="3 定义、中间量"></a><em>3 定义、中间量</em></h2><ul>
+<li>对于 $k - \varepsilon$ 模型</li>
+</ul>
+<script type="math/tex; mode=display">
+\mu_{t} = \rho \cdot C_{\mu} \cdot \frac{k^{2}}{\varepsilon}</script><script type="math/tex; mode=display">
+\varepsilon = C_{D} \cdot \frac{k^{\frac{3}{2}}}{l_{m}}</script><ul>
+<li>剪切速度、<em>y+</em>、<em>u+</em></li>
+</ul>
+<script type="math/tex; mode=display">
+u_{\tau} = \sqrt{ \tau_{w} / \rho }</script><script type="math/tex; mode=display">
+u^{+} = \frac{U}{u_{\tau}}</script><script type="math/tex; mode=display">
+y^{+} = \frac{\rho u_{\tau} y }{\mu}</script><ul>
+<li>对数律</li>
+</ul>
+<script type="math/tex; mode=display">
+u^{+} = W(y^{+})</script><h2 id="4-Part1-tau-w"><a href="#4-Part1-tau-w" class="headerlink" title="4 Part1 $ \tau_{w} $"></a><em>4 Part1 $ \tau_{w} $</em></h2><p>壁面切应力可由 $U_{P}$、$y_{P}$及对数律得到，由 $u^{+}$ 定义</p>
+<script type="math/tex; mode=display">
+U_{P}^{+} = \frac{U_{P}}{u_{\tau}} = W(y_{P}^{+})</script><p>结合 $y^{+}$ 定义</p>
+<script type="math/tex; mode=display">
+U_{P} = u_{\tau} \cdot W(y_{P}^{+}) = \frac{\rho y_{P} u_{\tau}}{\mu} \cdot \frac{\mu}{\rho} \cdot \frac{1}{y_{P}} \cdot W(y_{P}^{+}) = y_{P}^{+} \cdot W(y_{P}^{+}) \cdot \frac{\mu}{\rho} \cdot \frac{1}{y_{P}}</script><p>变换一下，有</p>
+<script type="math/tex; mode=display">
+y_{P}^{+} \cdot W(y_{P}^{+}) = \frac{\mu}{\rho} \cdot U_{P} \cdot y_{P}</script><p>已知 $U_{P}$、$y_{P}$ 和对数律的情况下，可由上式迭代求得 $y_{P}^{+}$，结合定义，可求 $u_{\tau}$、$\tau_{w}$</p>
+<script type="math/tex; mode=display">
+u_{\tau} = \frac{\mu y_{P}^{+}}{\rho y_{P}}</script><script type="math/tex; mode=display">
+\tau_{w} = \rho u_{\tau}^{2}</script><h2 id="5-Part2-mu-t"><a href="#5-Part2-mu-t" class="headerlink" title="5 Part2 $ \mu_{t} $"></a><em>5 Part2 $ \mu_{t} $</em></h2><p>由 $u^{+}$ 定义</p>
+<script type="math/tex; mode=display">
+U_{P} = U_{P}^{+} \cdot u_{\tau}</script><p>则</p>
+<script type="math/tex; mode=display">
+\frac{U_{P}}{y_{P}} = \frac{U_{P}^{+} \cdot u_{\tau}}{y_{P}}
+= \frac{U_{P}^{+}}{y_{P} \cdot u_{\tau}} \cdot u_{\tau}^{2}
+= \frac{U_{P}^{+}}{\frac{\rho y_{P} \cdot u_{\tau}}{\mu} \cdot \frac{\mu}{\rho}} \cdot \frac{\tau_{w}}{\rho}
+= \frac{U_{P}^{+}}{y_{P}^{+}} \cdot \frac{\tau_{w}}{\rho}</script><p>变换一下</p>
+<script type="math/tex; mode=display">
+\tau_{w} = \mu \cdot \frac{y_{P}^{+}}{U_{P}^{+}} \cdot \frac{U_{P}}{y_{P}}</script><p>结合定义中的近似表达式</p>
+<script type="math/tex; mode=display">
+\mu_{t} = \mu \cdot \frac{y_{P}^{+}}{U_{P}^{+}}</script><h2 id="6-Part3-k-p"><a href="#6-Part3-k-p" class="headerlink" title="6 Part3 $ k_{p} $"></a><em>6 Part3 $ k_{p} $</em></h2><p>基于定义进行推导，可得（见“10 关系推导”）</p>
+<script type="math/tex; mode=display">
+k_{P} = \frac{u_{\tau}^2}{\sqrt{C_{\mu}}}</script><h2 id="7-Part4-varepsilon-p"><a href="#7-Part4-varepsilon-p" class="headerlink" title="7 Part4 $ \varepsilon_{p} $"></a><em>7 Part4 $ \varepsilon_{p} $</em></h2><ul>
+<li>基于定义和假设进行推导，可得（见“11 关系推导”）</li>
+</ul>
+<script type="math/tex; mode=display">
+\varepsilon_{p} = C_{\mu}^{\frac{3}{4}} \cdot \frac{k_{P}^{\frac{3}{2}}}{\kappa y_{P}}</script><ul>
+<li>另一种方式</li>
+</ul>
+<script type="math/tex; mode=display">
+\varepsilon = \frac{\mu_{t}}{\rho} \left ( \frac{\partial u}{\partial y} \right )^{2}</script><script type="math/tex; mode=display">
+u_{\tau}^2  = \frac{1}{\rho} \cdot \mu_{t} \frac{\partial u}{\partial y}</script><p>上面两式左右两边分别相除，整理可得</p>
+<script type="math/tex; mode=display">
+\varepsilon = u_{\tau}^2 \cdot \frac{\partial u}{\partial y}</script><p>在 <em>P</em> 点处</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\varepsilon_{p} &= u_{\tau}^2 \cdot \left ( \frac{\partial u}{\partial y} \right )_{P}
+= u_{\tau}^2 \cdot \left ( \frac{\partial u_{\tau} u^{+}}{\partial y} \right )_{P} \\
+&= u_{\tau}^3 \cdot \left ( \frac{\partial u^{+}}{\partial y^{+}} \frac{\partial y^{+}}{\partial y} \right )_{P} \\
+&= u_{\tau}^3 \cdot \left ( \frac{\partial u^{+}}{\partial y^{+}} \right )_{P} \cdot \frac{\rho u_{\tau}}{\mu} \\
+&= u_{\tau}^4 \cdot \frac{\rho}{\mu} \cdot \left ( \frac{\partial u^{+}}{\partial y^{+}} \right )_{P} \\
+&= u_{\tau}^4 \cdot \frac{\rho}{\mu} \cdot \left ( \frac{\partial W(y^{+})}{\partial y^{+}} \right )_{P}
+\end{align*}</script><h2 id="8-关于求解顺序"><a href="#8-关于求解顺序" class="headerlink" title="8 关于求解顺序"></a><em>8 关于求解顺序</em></h2><ul>
+<li>没有编过程序，但不妨碍简单谈谈我对求解顺序的理解</li>
+<li><em>Part1</em> 至 <em>Part4</em> 包含的逻辑顺序<ul>
+<li>壁面律反映了壁面处时均速度分布与壁面切应力之间的关系</li>
+<li>当已知近壁面某点的速度时，根据壁面律得到的最直接的结果就是壁面剪切应力</li>
+<li>湍流产生自流体的剪切运动，对数层内，湍流粘度联系着速度梯度与壁面剪切应力</li>
+<li>所以，湍流粘度事实上也蕴含在壁面律之中</li>
+<li><em>RANS</em> 湍流模型中，湍流粘度由湍动能、湍动能耗散等人为制造的概念表示</li>
+<li>当壁面剪切应力或湍流粘度已知的时候，根据湍流模型中的定义与假设，进而可以得到这些人造概念的取值</li>
+</ul>
+</li>
+<li>实际的 <em>CFD</em> 代码在求解时，几乎都需要迭代，如果问题本身收敛，则求解顺序其实并没那么重要<ul>
+<li>从湍流模型的 <em>k</em> 方程，求得 $ k_{p} $后，由 <em>Part3</em> 可以得到剪切速度，即，剪切应力</li>
+<li>再由<em>Part4</em> 可以得到 $ \varepsilon_{p} $</li>
+<li>湍流粘度、$U_{P}$ 可通过壁面律计算</li>
+<li>这个顺序可能更便于求解</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-小结"><a href="#9-小结" class="headerlink" title="9 小结"></a><em>9 小结</em></h2><ul>
+<li>壁面函数法包含了两部分：一是，壁面律；二是，湍流模型中的定义与假设</li>
+<li>壁面律直接表示了壁面附近某点的位置、速度与壁面剪切应力的关系（这是经验公式），间接体现了湍流粘度</li>
+<li>湍流模型中的定义，结合关键的假设，使湍流附加方程可以在壁面获得“合理”的取值，使方程得以求解</li>
+</ul>
+<h2 id="10-关系推导：-k-与-u-tau"><a href="#10-关系推导：-k-与-u-tau" class="headerlink" title="10 关系推导： $k$ 与 $u_{\tau}$"></a><em>10 关系推导： $k$ 与 $u_{\tau}$</em></h2><script type="math/tex; mode=display">
+\begin{align*}
+ u_{\tau}^2 &= \frac{\tau_{w}}{\rho} \\ 
+ &= \frac{1}{\rho} \cdot \mu_{t} \frac{\partial u}{\partial y} \\ 
+ &= \frac{1}{\rho} \cdot \rho C_{\mu} \frac{k^{2}}{\varepsilon} \cdot \frac{\partial u}{\partial y} \\
+ &= C_{\mu} \frac{k^{2}}{\varepsilon} \cdot \sqrt{\frac{\rho \varepsilon}{\mu_{t}}} \\
+ &= C_{\mu} \frac{k^{2}}{\varepsilon} \cdot \sqrt{\frac{\rho \varepsilon}{\rho C_{\mu} \frac{k^{2}}{\varepsilon}}} \\
+ &= \sqrt{C_{\mu}} k
+\end{align*}</script><ul>
+<li>上面倒数第三个等号右边使用了假设1</li>
+<li>综上</li>
+</ul>
+<script type="math/tex; mode=display">
+k = \frac{u_{\tau}^2}{\sqrt{C_{\mu}}}</script><h2 id="11-关系推导：-varepsilon-与-k-，-l-m"><a href="#11-关系推导：-varepsilon-与-k-，-l-m" class="headerlink" title="11 关系推导： $\varepsilon$ 与 $k$， $l_{m}$"></a><em>11 关系推导： $\varepsilon$ 与 $k$， $l_{m}$</em></h2><ul>
+<li><em>part1</em></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{align*}
+\tau_{w} &= \mu_{t} \frac{\partial u}{\partial y} \\
+&= \rho l_{m}^{2} \frac{\partial u}{\partial y} \cdot \frac{\partial u}{\partial y} \\
+&= \rho l_{m}^{2} \left ( \frac{\partial u}{\partial y} \right )^{2}
+\end{align*}</script><p>结合定义 $ u_{\tau} = \sqrt{ \tau_{w} / \rho } $，有</p>
+<script type="math/tex; mode=display">
+\frac{\partial u}{\partial y} = \frac{u\_{\tau}}{l_{m}}</script><p>将上式带入$\mu_{t}$表达式</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\mu_{t} &= \rho \cdot l_{m}^{2} \cdot \frac{\partial u}{\partial y} \\
+&= \rho \cdot l_{m} \cdot u_{\tau}
+\end{align*}</script><ul>
+<li><em>part2</em></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{align*}
+\mu_{t} &= \rho \cdot C_{\mu} \cdot \frac{k^{2}}{\varepsilon} \\
+&= \rho \cdot C_{\mu} \cdot \frac{k^{2}}{C_{D} \cdot \frac{k^{\frac{3}{2}}}{l_{m}}} \\
+&= \rho \cdot \frac{C_{\mu}}{C_{D}} \cdot k^{\frac{1}{2}} \cdot l_{m}
+\end{align*}</script><p>与 <em>part1</em> 最后一式联立，得</p>
+<script type="math/tex; mode=display">
+k = \left ( \frac{C_{D}}{C_{\mu}} u_{\tau} \right )^{2}</script><ul>
+<li><em>part3</em></li>
+</ul>
+<p>假设1</p>
+<script type="math/tex; mode=display">
+\varepsilon = \frac{\mu_{t}}{\rho} \left ( \frac{\partial u}{\partial y} \right )^{2}</script><p>将下面三式（前两个为定义，第三个见<em>part1</em>）带入上式，消去$ \varepsilon $</p>
+<script type="math/tex; mode=display">
+\varepsilon = C_{D} \cdot \frac{k^{\frac{3}{2}}}{l_{m}}</script><script type="math/tex; mode=display">
+\mu_{t} = \rho \cdot C_{\mu} \cdot \frac{k^{2}}{\varepsilon}</script><script type="math/tex; mode=display">
+\frac{\partial u}{\partial y} = \frac{u\_{\tau}}{l_{m}}</script><p>化简可得</p>
+<script type="math/tex; mode=display">
+k = \frac{C_{\mu}}{C_{D}^{2}} u_{\tau}^{2}</script><ul>
+<li><em>part4</em></li>
+</ul>
+<p>由 <em>part2</em> 与 <em>part3</em> 中的最后一式，可得</p>
+<script type="math/tex; mode=display">
+C_{D} = C_{\mu}^{\frac{3}{4}}</script><p>结合混合长度模型，有</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\varepsilon &= C_{D} \cdot \frac{k^{\frac{3}{2}}}{l_{m}} \\
+&= C_{\mu}^{\frac{3}{4}} \cdot \frac{k^{\frac{3}{2}}}{l_{m}} \\
+&= C_{\mu}^{\frac{3}{4}} \cdot \frac{k^{\frac{3}{2}}}{\kappa y}
+\end{align*}</script><hr>
+<p><strong>2017.08.16：ver.1</strong></p>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">数值传热学（第二版）</a></li>
+<li><a href="http://www.dyfluid.com/wallFunction.html" target="_blank" rel="external">CFD中的壁面函数</a></li>
+</ul>
+<hr>
+</div><div class="tags"><a href="/tags/湍流/">湍流</a></div><div class="post-nav"><a href="/2017/08/14/仿真分析怎么做/" class="next">仿真分析怎么做？</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
