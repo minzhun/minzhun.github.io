@@ -40,12 +40,13 @@
 <h2 id="2-ADINA中的壁面条件"><a href="#2-ADINA中的壁面条件" class="headerlink" title="2 ADINA中的壁面条件"></a><em>2 ADINA中的壁面条件</em></h2><ul>
 <li>主要有以下两种</li>
 <li>【<em>Usual Boundary Condition</em>】：<em>No-Slip</em> <ul>
-<li>壁面速度为零，不包含湍流相关参数得边界条件</li>
+<li>壁面速度为零，但不包含湍流相关参数的边界条件</li>
 </ul>
 </li>
 <li>【<em>Special Boundary Condition</em>】：<em>Wall</em> <ul>
 <li>最常使用的壁面条件</li>
-<li>自动使用壁面函数法处理湍流壁面条件</li>
+<li>对于<em>RANS</em> 湍流模型，自动使用壁面函数法处理湍流壁面条件</li>
+<li>由于 <em>Wall</em> 自动使用壁面函数法，所以对于低 <em>Re</em> 数模型，近壁面第一层网格 <em>y+</em> 仍要求取30至200</li>
 </ul>
 </li>
 <li>壁面函数（ 0 &lt; <em>y+</em> &lt; 200 范围内，该函数能够对壁面律能进行较好地拟合）</li>
@@ -86,7 +87,6 @@ v^{+} = \frac{1}{\kappa_{0}} \ln (1 + \kappa_{0} y^{+}) + 7.8 \left ( 1 - e^{\fr
 <li>近壁面网格<ul>
 <li>近壁面网格的大小与形状决定<em>Wall</em> 中是否使用壁面函数法</li>
 <li>若 $\Lambda_{s} = \kappa d$，即，$\kappa d &lt; k_{D} V^{1/3}$，壁面函数法起作用</li>
-<li>使用壁面函数法可减少近壁面网格</li>
 </ul>
 </li>
 </ul>
@@ -108,7 +108,7 @@ x = \mu_{s}^{2}/\mu_{0}^{2}-100</script><script type="math/tex; mode=display">
 <li><em>No-Slip</em> ：与 <em>LES-Standard</em> 要求类似</li>
 </ul>
 </li>
-<li>只用于<em>FCBI-C</em> 单元</li>
+<li>只适用于<em>FCBI-C</em> 单元</li>
 </ul>
 <h2 id="4-K-Epsilon-Model"><a href="#4-K-Epsilon-Model" class="headerlink" title="4 K-Epsilon Model"></a><em>4 K-Epsilon Model</em></h2><ul>
 <li>$ \mu_{t} $：湍流粘度</li>
@@ -130,7 +130,7 @@ K = 1.5(iv)^{2}</script><script type="math/tex; mode=display">
 </li>
 <li>近壁面第一层网格 <em>y+</em><ul>
 <li>未使用 <em>2-Layer Model</em>：30~200</li>
-<li>使用 <em>2-Layer Model</em>：&lt;1</li>
+<li>使用 <em>2-Layer Model</em>： &lt;1，同时，需要在流体粘性起主要作用的范围内布置10层以上的网格</li>
 </ul>
 </li>
 </ul>
@@ -177,7 +177,7 @@ K = 1.5(iv)^{2}</script><script type="math/tex; mode=display">
 </ul>
 </li>
 <li>近壁面第一层网格 <em>y+</em><ul>
-<li>30~200（？）</li>
+<li>30~200</li>
 </ul>
 </li>
 <li><em>DES</em>：主要为解决高<em>Re</em> 数出现较大区域分离的流动问题，在<em>ADINA</em> 中：<ul>
@@ -192,7 +192,12 @@ K = 1.5(iv)^{2}</script><script type="math/tex; mode=display">
 \tilde d = \mathrm{min} (d,C_{DES} \Delta)</script><h2 id="7-近壁面网格要求"><a href="#7-近壁面网格要求" class="headerlink" title="7 近壁面网格要求"></a><em>7 近壁面网格要求</em></h2><ul>
 <li>形状：三棱柱或四棱柱、较好的正交性</li>
 <li>厚度：满足湍流模型对近壁面第一层网格 <em>y+</em> 的要求</li>
-<li>层数：在边界层内布置10至20层左右（？）</li>
+<li>层数：满足厚度要求的前提下，在边界层内布置10至20层左右的网格</li>
+<li><em>y+</em> 计算位置<ul>
+<li><em>FCBI-C</em> 单元：近壁面第一层网格中心处，即，取第一层单元厚度值的一半进行计算</li>
+<li><em>FCBI</em> 单元：近壁面第一层网格上表面节点处，即，取第一层单元厚度值进行计算</li>
+</ul>
+</li>
 </ul>
 <h2 id="8-入口条件"><a href="#8-入口条件" class="headerlink" title="8 入口条件"></a><em>8 入口条件</em></h2><ul>
 <li>若有实验数据，应予以使用</li>
@@ -207,12 +212,6 @@ K = 1.5(iv)^{2}</script><script type="math/tex; mode=display">
 <h2 id="9-说明"><a href="#9-说明" class="headerlink" title="9 说明"></a><em>9 说明</em></h2><ul>
 <li>根据所分析的问题选择合适的湍流模型，因为目前还没有一个普遍适用的湍流模型</li>
 <li>除非有试验或其他手段校准，一般不修改湍流模型内部参数</li>
-<li><em>FCBI-C</em> 单元 <em>y+</em> 计算位置<ul>
-<li>近壁面第一层网格中心处，即，第一层网格厚度一半的地方（？）</li>
-<li>按上述位置计算得到的 <em>y+</em>，需满足上面提到的相应要求</li>
-<li>后处理显示的 <em>y+</em> 即是按上述位置计算得到的</li>
-</ul>
-</li>
 </ul>
 <hr>
 <p><strong>2017.07.28：ver.1</strong></p>
@@ -223,7 +222,7 @@ K = 1.5(iv)^{2}</script><script type="math/tex; mode=display">
 <li><a href="https://www.cfd-online.com/Wiki/Turbulence_length_scale" target="_blank" rel="external">Turbulence Length Scale</a></li>
 </ul>
 <hr>
-</div><div class="tags"><a href="/tags/湍流/">湍流</a><a href="/tags/ADINA/">ADINA</a></div><div class="post-nav"><a href="/2017/07/18/流固耦合分析方法/" class="pre">流固耦合分析方法</a><a href="/2017/07/17/湍流与湍流模型/" class="next">湍流与湍流模型</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"><a href="/tags/湍流/">湍流</a><a href="/tags/ADINA/">ADINA</a></div><div class="post-nav"><a href="/2017/07/24/流固耦合@ADINA/" class="pre">流固耦合 @ADINA</a><a href="/2017/07/18/流固耦合分析方法/" class="next">流固耦合分析方法</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
