@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.minzhun.tech/2017/06/25/Hexo%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2017-09-05T01:29:36.712Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客安装与使用</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.minzhun.tech/2017/09/03/%E7%A9%BA%E5%8C%96%E7%9B%B8%E5%85%B3/</loc>
     <lastmod>2017-09-05T01:23:07.417Z</lastmod>
     <data>
@@ -227,26 +247,6 @@
            
              
               <breadCrumb title="CAE之术：方法" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%9C%AF%EF%BC%9A%E6%96%B9%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.minzhun.tech/2017/06/25/Hexo%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2017-08-18T16:55:31.316Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo博客安装与使用</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
