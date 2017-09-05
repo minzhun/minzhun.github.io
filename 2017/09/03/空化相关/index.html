@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>空化相关 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">空化相关</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">空化相关</h1><div class="post-meta">Sep 3, 2017<span> | </span><span class="category"><a href="/categories/CAE之技：实现/">CAE之技：实现</a></span></div><div class="post-content"><h2 id="1-空化现象"><a href="#1-空化现象" class="headerlink" title="1 空化现象"></a><em>1 空化现象</em></h2><ul>
+<li>液体内部或液体-固体界面处，蒸气或气体空泡形成、发展、溃灭的过程<ul>
+<li>液体内部存在空化核</li>
+<li>局部压力低于液体饱和蒸气压力</li>
+</ul>
+</li>
+<li>空泡溃灭时产生的冲击力，可对物体造成损伤</li>
+</ul>
+<h2 id="2-空化模型"><a href="#2-空化模型" class="headerlink" title="2 空化模型"></a><em>2 空化模型</em></h2><ul>
+<li><em>CFD</em> 中，空化模型通常放置在多相流模型之下，并被视作相变问题之一</li>
+<li>空化模型，用于表示液体蒸发速率与凝结速率，即，气泡的产生和消失</li>
+<li>空化模型，作为源项，一般出现在液体体积分数输运方程的右端</li>
+</ul>
+<h3 id="Rayleigh-Plesset-Equation"><a href="#Rayleigh-Plesset-Equation" class="headerlink" title="- Rayleigh-Plesset Equation"></a>- <em>Rayleigh-Plesset Equation</em></h3><ul>
+<li>无限流体中的球状气泡控制方程<ul>
+<li>$R$：气泡半径</li>
+<li>$p_{B}$、$p_{\infty}$：气泡内部压力、无限远处压力</li>
+<li>$\rho_{l}$、$\nu_{l}$：液体密度、液体运动粘度</li>
+<li>$\sigma$：气泡表面张力</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{p_{B}(t)-p_{\infty}(t)}{\rho_{l}} = R \frac{\mathrm{d}^2 R}{\mathrm{d} t^2} + \frac{3}{2} \left( \frac{\mathrm{d} R}{\mathrm{d} t} \right)^2 + \frac{4\nu_{l}}{R} \frac{\mathrm{d} R}{\mathrm{d} t} + \frac{2\sigma}{\rho_{l}R}</script><h3 id="常出现的空化模型"><a href="#常出现的空化模型" class="headerlink" title="- 常出现的空化模型"></a>- 常出现的空化模型</h3><ul>
+<li>基于<em>Rayleigh-Plesset Equation</em> 的空化模型<ul>
+<li>下面三种模型，在不考虑 <em>Rayleigh-Plesset Equation</em> 中的二阶项与表面张力项的基础上得到，推导过程类似，在质量净产生速率的表达式上有所区别</li>
+<li><em>Singhal Model</em></li>
+<li><em>Zwart-Gerber-Belamri Model</em></li>
+<li><em>Schnerr-Sauer Model</em> </li>
+</ul>
+</li>
+<li>基于经验得出的比例化空化模型<ul>
+<li><em>Kunz Model</em>：气泡产生、消失速率的表达形式不同</li>
+<li>“比例化空化模型”的说法在若干文献中有出现，但确切定义未找到</li>
+</ul>
+</li>
+</ul>
+<h3 id="CFD-软件中的空化模型"><a href="#CFD-软件中的空化模型" class="headerlink" title="- CFD 软件中的空化模型"></a>- <em>CFD</em> 软件中的空化模型</h3><ul>
+<li><strong><em>Fluent</em></strong><ul>
+<li><em>Singhal Model</em></li>
+<li><em>Zwart-Gerber-Belamri Model</em></li>
+<li><em>Schnerr and Sauer Model</em></li>
+</ul>
+</li>
+<li><strong><em>CFX</em></strong><ul>
+<li><em>The Rayleigh Plesset Model</em></li>
+</ul>
+</li>
+<li><strong><em>Star-CCM+</em></strong><ul>
+<li><em>Full Rayleigh–Plesset Model</em></li>
+<li><em>Schnerr-Sauer Model</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-空化模型-ADINA-CFD"><a href="#3-空化模型-ADINA-CFD" class="headerlink" title="3 空化模型 @ADINA-CFD"></a><em>3 空化模型 @ADINA-CFD</em></h2><ul>
+<li>液体体积分数的输运方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial f_{l}}{\partial t} + \nabla \cdot \left( f_{l} \mathrm{v} \right) = - \frac{1}{\rho_{l}} \dot{m}</script><ul>
+<li><em>Kunz Model</em><ul>
+<li>$p_{v}$：液体饱和蒸气压力</li>
+<li>$t_{\infty}$、$v_{\infty}$：速度尺度、时间尺度</li>
+<li>$C_{prod}$、$C_{dest}$：液体蒸发系数、冷凝系数，需参考同类问题或通过试验校准</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{m} = \frac{C_{dest} \rho_{v} f_{l} \mathrm{max}(\ p_{v}-p\ ,0\ )}{\frac{1}{2} \rho_{l} v_{\infty}^{2} t_{\infty}} - \frac{C_{prod} \rho_{v} f_{l}^{2} f_{v}}{t_{\infty}}</script><ul>
+<li><em>Zwart-Gerber-Belamri Model（ZGB model）</em><ul>
+<li>$p_{v}$：液体饱和蒸气压力</li>
+<li>$f_{nuc}$：空化核体积分数，推荐取0.0005</li>
+<li>$R$：气泡半径，推荐取1e-6</li>
+<li>$C_{prod}$、$C_{dest}$：液体蒸发系数、冷凝系数，推荐取50、0.01</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{m} = \left\{\begin{matrix}
+ C_{dest} \rho_{v} \frac{3f_{nuc}f_{l}}{R} \sqrt{\frac{2}{3} \frac{p_{v}-p}{\rho_{l}}} & (p \leq p_{v}) \\ 
+ - C_{prod} \rho_{v} \frac{3f_{v}}{R} \sqrt{\frac{2}{3} \frac{p-p_{v}}{\rho_{l}}} & (p > p_{v})
+\end{matrix}\right.</script><ul>
+<li>对湍流计算的影响<ul>
+<li>通过对混合物密度进行修正，体现气体压缩性对湍流粘度计算的影响</li>
+<li>$n$：大于等于1；随空化数降低、雷诺数升高而升高</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\overline{\rho}_{m} = \rho_{v} - \left( \frac{\rho_{v}-\rho_{m}}{\rho_{v}-\rho_{l}} \right)^{n} (\rho_{v}-\rho_{l})</script><ul>
+<li>一些使用限制<ul>
+<li>与<em>VOF</em> 功能一起使用</li>
+<li>目前只能用于<em>FCBI-C</em> 单元</li>
+<li>不可用于可压缩流动与自由表面流动</li>
+<li>没有考虑非凝结气体的影响</li>
+<li>只能用于瞬态分析</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-Notes"><a href="#4-Notes" class="headerlink" title="4 Notes"></a><em>4 Notes</em></h2><ul>
+<li>空化现象仿真不只是选择空化模型，还需要考虑流动仿真的其他方面</li>
+<li>旋转机械相关<ul>
+<li>运动坐标系</li>
+<li>滑移网格</li>
+<li>周期性边界条件</li>
+</ul>
+</li>
+<li>湍流模型<ul>
+<li>选择合适的模型</li>
+<li>边界条件</li>
+<li>网格划分</li>
+</ul>
+</li>
+<li>多相流模型<ul>
+<li>选择合适的模型</li>
+<li>网格大小与时间步长</li>
+</ul>
+</li>
+<li>空化模型<ul>
+<li>选择合适的模型及其参数</li>
+</ul>
+</li>
+<li>数值计算相关<ul>
+<li>速度与压力：分离求解 or 耦合求解</li>
+<li>松弛系数</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>2017.09.03：ver.1</strong></p>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">ADINA Theory and Modeling Guide Volume III: CFD &amp; FSI</a></li>
+<li><a href="">ANSYS Fluent Theory Guide</a></li>
+<li><a href="">ANSYS CFX-Solver Theory Guide</a></li>
+<li><a href="">STAR-CCM+ User Guide</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Rayleigh%E2%80%93Plesset_equation" target="_blank" rel="external">Rayleigh–Plesset equation</a></li>
+</ul>
+<hr>
+</div><div class="tags"><a href="/tags/ADINA/">ADINA</a><a href="/tags/空化/">空化</a></div><div class="post-nav"><a href="/2017/08/25/用户开发@ADINA-CFD/" class="next">用户开发 @ADINA-CFD</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/开发/" style="font-size: 15px;">开发</a> <a href="/tags/空化/" style="font-size: 15px;">空化</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
