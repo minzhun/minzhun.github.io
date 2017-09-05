@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.minzhun.tech/2017/08/25/%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91@ADINA-CFD/</loc>
+    <lastmod>2017-09-05T09:09:47.973Z</lastmod>
+    <data>
+        <display>
+        <title>用户开发 @ADINA-CFD</title>
+        <pubTime>2017-08-24T16:00:00.000Z</pubTime>
+        
+        <tag>ADINA</tag>
+         
+        <tag>开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="CAE之技：实现" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%8A%80%EF%BC%9A%E5%AE%9E%E7%8E%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.minzhun.tech/2017/06/25/Hexo%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2017-09-05T01:29:36.712Z</lastmod>
     <data>
@@ -34,28 +56,6 @@
         <tag>ADINA</tag>
          
         <tag>空化</tag>
-         
-         
-           
-             
-              <breadCrumb title="CAE之技：实现" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%8A%80%EF%BC%9A%E5%AE%9E%E7%8E%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.minzhun.tech/2017/08/25/%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91@ADINA-CFD/</loc>
-    <lastmod>2017-08-25T15:15:53.544Z</lastmod>
-    <data>
-        <display>
-        <title>用户开发 @ADINA-CFD</title>
-        <pubTime>2017-08-24T16:00:00.000Z</pubTime>
-        
-        <tag>ADINA</tag>
-         
-        <tag>开发</tag>
          
          
            
