@@ -1,4 +1,39 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>张量基础 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">张量基础</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">张量基础</h1><div class="post-meta">Sep 7, 2017<span> | </span><span class="category"><a href="/categories/CAE之道：原理/">CAE之道：原理</a></span></div><div class="post-content"><h2 id="1-几个概念"><a href="#1-几个概念" class="headerlink" title="1 几个概念"></a><em>1 几个概念</em></h2><h2 id="2-几个关系式"><a href="#2-几个关系式" class="headerlink" title="2 几个关系式"></a><em>2 几个关系式</em></h2><h2 id="3-矢量运算"><a href="#3-矢量运算" class="headerlink" title="3 矢量运算"></a><em>3 矢量运算</em></h2><h2 id="4-张量运算"><a href="#4-张量运算" class="headerlink" title="4 张量运算"></a><em>4 张量运算</em></h2><hr>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>张量基础 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">张量基础</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/contents"><i class="fa fa-user"> 简介</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">张量基础</h1><div class="post-meta">Sep 7, 2017<span> | </span><span class="category"><a href="/categories/CAE之道：原理/">CAE之道：原理</a></span></div><div class="post-content"><h2 id="1-相关概念"><a href="#1-相关概念" class="headerlink" title="1 相关概念"></a><em>1 相关概念</em></h2><ul>
+<li>张量：表示实体（或物理量），一组有序数的集合，满足坐标转换关系<ul>
+<li>实体及表示这个实体的张量具有坐标不变性</li>
+<li>张量可以在不同的坐标系中表示，但说的都是同一个张量</li>
+<li>这些不同的表示，通过坐标转换关系相互联系</li>
+<li>$n$维空间中的$m$阶张量，是$n^m$个数的集合</li>
+</ul>
+</li>
+<li>张量的表示：同一坐标系下，可由协变基矢量或逆变基矢量表示<ul>
+<li>一阶张量（矢量）</li>
+<li>二阶张量</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-几个关系"><a href="#2-几个关系" class="headerlink" title="2 几个关系"></a><em>2 几个关系</em></h2><ul>
+<li>对偶条件</li>
+<li>度量张量</li>
+<li>指标升降</li>
+<li>基矢量的坐标转换</li>
+<li>分量的坐标转换</li>
+<li>置换符号与置换张量</li>
+</ul>
+<h2 id="3-矢量运算"><a href="#3-矢量运算" class="headerlink" title="3 矢量运算"></a><em>3 矢量运算</em></h2><ul>
+<li>点积</li>
+<li>矢积</li>
+<li>混合积</li>
+<li>并矢</li>
+</ul>
+<h2 id="4-张量运算"><a href="#4-张量运算" class="headerlink" title="4 张量运算"></a><em>4 张量运算</em></h2><ul>
+<li>缩并</li>
+<li>并乘</li>
+<li>点积</li>
+<li>双点积</li>
+<li>矢积</li>
+</ul>
+<h2 id="5-张量与矩阵"><a href="#5-张量与矩阵" class="headerlink" title="5 张量与矩阵"></a><em>5 张量与矩阵</em></h2><hr>
 <p><strong>2017.09.07：ver.1</strong></p>
 <p><strong><em>Ref.</em></strong></p>
 <ul>

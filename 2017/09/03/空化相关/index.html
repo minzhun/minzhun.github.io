@@ -7,9 +7,9 @@
 <li>空泡溃灭时产生的冲击力，可对物体造成损伤</li>
 </ul>
 <h2 id="2-空化模型"><a href="#2-空化模型" class="headerlink" title="2 空化模型"></a><em>2 空化模型</em></h2><ul>
-<li><em>CFD</em> 中，空化模型通常放置在多相流模型之下，并被视作相变问题之一</li>
-<li>空化模型，用于表示液体蒸发速率与凝结速率，即，气泡的产生和消失</li>
-<li>空化模型，作为源项，一般出现在液体体积分数输运方程的右端</li>
+<li><em>CFD</em> 中，通常放置在多相流模型之下，并被视作相变问题之一</li>
+<li>表示液体蒸发速率与凝结速率，即，气泡的产生和消失</li>
+<li>作为源项，出现在液体体积分数输运方程的右端</li>
 </ul>
 <h3 id="Rayleigh-Plesset-Equation"><a href="#Rayleigh-Plesset-Equation" class="headerlink" title="- Rayleigh-Plesset Equation"></a>- <em>Rayleigh-Plesset Equation</em></h3><ul>
 <li>无限流体中的球状气泡控制方程<ul>
@@ -88,39 +88,41 @@
 <script type="math/tex; mode=display">
 \overline{\rho}_{m} = \rho_{v} - \left( \frac{\rho_{v}-\rho_{m}}{\rho_{v}-\rho_{l}} \right)^{n} (\rho_{v}-\rho_{l})</script><ul>
 <li>一些使用限制<ul>
-<li>与<em>VOF</em> 功能一起使用</li>
-<li>目前只能用于<em>FCBI-C</em> 单元</li>
-<li>不可用于可压缩流动与自由表面流动</li>
-<li>没有考虑非凝结气体的影响</li>
-<li>只能用于瞬态分析</li>
+<li>与 <em>VOF</em> 功能一起使用</li>
+<li>只适用于<em>FCBI-C</em> 单元</li>
+<li>只适用于瞬态分析</li>
+<li>不适用于可压缩流动与自由表面流动</li>
 </ul>
 </li>
 </ul>
 <h2 id="4-Notes"><a href="#4-Notes" class="headerlink" title="4 Notes"></a><em>4 Notes</em></h2><ul>
-<li>空化现象仿真不只是选择空化模型，还需要考虑流动仿真的其他方面</li>
-<li>旋转机械相关<ul>
-<li>运动坐标系</li>
+<li>空化现象仿真，不只是选择空化模型，需要考虑的还包括：</li>
+<li><strong>湍流模型</strong><ul>
+<li>选择合适的模型</li>
+<li>边界条件与初始条件</li>
+<li>壁面网格</li>
+</ul>
+</li>
+<li><strong>多相流模型</strong><ul>
+<li>选择合适的模型</li>
+<li>满足模型要求的网格与时间步长</li>
+</ul>
+</li>
+<li><strong>空化模型</strong><ul>
+<li>选择合适的模型</li>
+<li>确定模型中必要的参数</li>
+</ul>
+</li>
+<li><strong>旋转机械</strong>（如果）<ul>
+<li>动参考系（<em>Moving Reference Frame</em>）</li>
+<li>多参考系（<em>Multiple Reference Frame</em>）</li>
 <li>滑移网格</li>
-<li>周期性边界条件</li>
+<li>周期边界</li>
 </ul>
 </li>
-<li>湍流模型<ul>
-<li>选择合适的模型</li>
-<li>边界条件</li>
-<li>网格划分</li>
-</ul>
-</li>
-<li>多相流模型<ul>
-<li>选择合适的模型</li>
-<li>网格大小与时间步长</li>
-</ul>
-</li>
-<li>空化模型<ul>
-<li>选择合适的模型及其参数</li>
-</ul>
-</li>
-<li>数值计算相关<ul>
+<li><strong>方程求解</strong><ul>
 <li>速度与压力：分离求解 or 耦合求解</li>
+<li>时间步长</li>
 <li>松弛系数</li>
 </ul>
 </li>
