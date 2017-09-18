@@ -53,6 +53,7 @@
 </li>
 </ul>
 <h2 id="3-空化模型-ADINA-CFD"><a href="#3-空化模型-ADINA-CFD" class="headerlink" title="3 空化模型 @ADINA-CFD"></a><em>3 空化模型 @ADINA-CFD</em></h2><ul>
+<li>主相（<em>Primary Species</em>）设置为气体，第一相（<em>First Species</em>）设置为液体</li>
 <li>液体体积分数的输运方程</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -87,15 +88,12 @@
 </ul>
 <script type="math/tex; mode=display">
 \overline{\rho}_{m} = \rho_{v} - \left( \frac{\rho_{v}-\rho_{m}}{\rho_{v}-\rho_{l}} \right)^{n} (\rho_{v}-\rho_{l})</script><ul>
-<li><p>一些使用限制</p>
-<ul>
+<li>一些使用限制<ul>
 <li>与 <em>VOF</em> 功能一起使用</li>
 <li>只适用于<em>FCBI-C</em> 单元</li>
 <li>只适用于瞬态分析</li>
 <li>不适用于可压缩流动与自由表面流动</li>
 </ul>
-</li>
-<li><p>主相（<em>Primary Species</em>）设置为气体，第一相（<em>First Species</em>）设置为液体</p>
 </li>
 </ul>
 <h2 id="4-Notes"><a href="#4-Notes" class="headerlink" title="4 Notes"></a><em>4 Notes</em></h2><ul>
