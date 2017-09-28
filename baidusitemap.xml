@@ -3,18 +3,98 @@
 
 
     
-    
+  <url>
+    <loc>https://www.minzhun.tech/2017/09/28/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B%EF%BC%9A%E5%BE%AE%E5%88%86%E5%BD%A2%E3%80%81%E5%BC%B1%E5%BD%A2%E5%BC%8F%E3%80%81%E5%8F%98%E5%88%86%E5%BD%A2%E5%BC%8F/</loc>
+    <lastmod>2017-09-28T14:58:00.166Z</lastmod>
+    <data>
+        <display>
+        <title>数学模型：微分形式、"弱"形式、变分形式</title>
+        <pubTime>2017-09-27T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="CAE之道：原理" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E9%81%93%EF%BC%9A%E5%8E%9F%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
     
   <url>
-    <loc>https://www.minzhun.tech/2017/09/07/%E5%BC%A0%E9%87%8F%E5%88%9D%E6%AD%A5/</loc>
-    <lastmod>2017-09-25T14:59:44.672Z</lastmod>
+    <loc>https://www.minzhun.tech/2017/09/25/%E8%AF%AF%E5%B7%AE/</loc>
+    <lastmod>2017-09-28T14:51:40.232Z</lastmod>
     <data>
         <display>
-        <title>张量初步</title>
-        <pubTime>2017-09-06T16:00:00.000Z</pubTime>
+        <title>误差</title>
+        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
         
-        <tag>张量</tag>
+        <tag>误差</tag>
+         
+         
+           
+             
+              <breadCrumb title="CAE之术：方法" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%9C%AF%EF%BC%9A%E6%96%B9%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.minzhun.tech/2017/07/01/CAE%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2017-09-28T14:38:44.176Z</lastmod>
+    <data>
+        <display>
+        <title>CAE软件</title>
+        <pubTime>2017-06-30T16:00:00.000Z</pubTime>
+        
+        <tag>软件</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.minzhun.tech/2017/07/01/%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D/</loc>
+    <lastmod>2017-09-28T14:38:18.174Z</lastmod>
+    <data>
+        <display>
+        <title>参考书籍</title>
+        <pubTime>2017-07-01T04:00:00.000Z</pubTime>
+        
+        <tag>参考</tag>
+         
+         
+           
+             
+              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.minzhun.tech/2017/09/25/%E8%BF%90%E5%8A%A8%E7%9A%84%E6%8F%8F%E8%BF%B0%E3%80%81%E5%BA%94%E5%8F%98%E4%B8%8E%E5%BA%94%E5%8A%9B/</loc>
+    <lastmod>2017-09-28T14:27:20.954Z</lastmod>
+    <data>
+        <display>
+        <title>运动的描述、应变与应力</title>
+        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
+        
+        <tag>运动</tag>
+         
+        <tag>应变</tag>
+         
+        <tag>应力</tag>
          
          
            
@@ -28,13 +108,33 @@
     
   <url>
     <loc>https://www.minzhun.tech/2017/09/25/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%88%86%E7%B1%BB/</loc>
-    <lastmod>2017-09-25T14:59:33.254Z</lastmod>
+    <lastmod>2017-09-28T14:26:57.265Z</lastmod>
     <data>
         <display>
         <title>偏微分方程分类</title>
         <pubTime>2017-09-24T16:00:00.000Z</pubTime>
         
-        <tag>方程</tag>
+         
+           
+             
+              <breadCrumb title="CAE之道：原理" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E9%81%93%EF%BC%9A%E5%8E%9F%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>https://www.minzhun.tech/2017/09/07/%E5%BC%A0%E9%87%8F%E5%88%9D%E6%AD%A5/</loc>
+    <lastmod>2017-09-25T14:59:44.672Z</lastmod>
+    <data>
+        <display>
+        <title>张量初步</title>
+        <pubTime>2017-09-06T16:00:00.000Z</pubTime>
+        
+        <tag>张量</tag>
          
          
            
@@ -67,50 +167,6 @@
 
     
   <url>
-    <loc>https://www.minzhun.tech/2017/09/25/%E8%AF%AF%E5%B7%AE%E7%AE%80%E8%BF%B0/</loc>
-    <lastmod>2017-09-25T14:59:08.229Z</lastmod>
-    <data>
-        <display>
-        <title>误差简述</title>
-        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
-        
-        <tag>误差</tag>
-         
-         
-           
-             
-              <breadCrumb title="CAE之术：方法" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%9C%AF%EF%BC%9A%E6%96%B9%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.minzhun.tech/2017/09/25/%E8%BF%90%E5%8A%A8%E3%80%81%E5%BA%94%E5%8F%98%E3%80%81%E5%BA%94%E5%8A%9B%E7%9A%84%E6%8F%8F%E8%BF%B0/</loc>
-    <lastmod>2017-09-25T14:57:13.131Z</lastmod>
-    <data>
-        <display>
-        <title>运动、应变、应力的描述</title>
-        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
-        
-        <tag>运动</tag>
-         
-        <tag>应变</tag>
-         
-        <tag>应力</tag>
-         
-         
-           
-             
-              <breadCrumb title="CAE之道：原理" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E9%81%93%EF%BC%9A%E5%8E%9F%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.minzhun.tech/2017/09/03/%E7%A9%BA%E5%8C%96%E7%9B%B8%E5%85%B3/</loc>
     <lastmod>2017-09-18T14:14:48.630Z</lastmod>
     <data>
@@ -126,26 +182,6 @@
            
              
               <breadCrumb title="CAE之技：实现" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%8A%80%EF%BC%9A%E5%AE%9E%E7%8E%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.minzhun.tech/2017/07/01/%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D/</loc>
-    <lastmod>2017-09-06T14:58:28.331Z</lastmod>
-    <data>
-        <display>
-        <title>参考书们</title>
-        <pubTime>2017-07-01T04:00:00.000Z</pubTime>
-        
-        <tag>参考</tag>
-         
-         
-           
-             
-              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
@@ -210,26 +246,6 @@
            
              
               <breadCrumb title="CAE之技：实现" url="https://www.minzhun.tech/categories/CAE%E4%B9%8B%E6%8A%80%EF%BC%9A%E5%AE%9E%E7%8E%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.minzhun.tech/2017/07/01/CAE%E8%BD%AF%E4%BB%B6%E4%BB%AC/</loc>
-    <lastmod>2017-08-20T05:54:52.776Z</lastmod>
-    <data>
-        <display>
-        <title>CAE软件们</title>
-        <pubTime>2017-06-30T16:00:00.000Z</pubTime>
-        
-        <tag>软件</tag>
-         
-         
-           
-             
-              <breadCrumb title="其它" url="https://www.minzhun.tech/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
