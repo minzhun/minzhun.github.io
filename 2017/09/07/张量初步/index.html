@@ -74,17 +74,11 @@ g_{ij} = \boldsymbol{g}_{i} \cdot \boldsymbol{g}_{j}</script><ul>
 u^{i'} = \beta_{j}^{i'} u^{j}</script><script type="math/tex; mode=display">
 u_{i'} = \beta_{i'}^{j} u_{j}</script><ul>
 <li>置换符号 $e_{ijk}$、$e^{ijk}$<ul>
-<li>依次为顺序排列、逆序排列、非序排列时的取值</li>
+<li>顺序排列：$e_{ijk} = e^{ijk} = 1$</li>
+<li>逆序排列：$e_{ijk} = e^{ijk} = -1$</li>
+<li>非序排列：$e_{ijk} = e^{ijk} = 0$</li>
 </ul>
 </li>
-</ul>
-<script type="math/tex; mode=display">
-e_{ijk} = e^{ijk} = 
-\left\{\begin{matrix}
-1 \\
--1 \\ 
-0
-\end{matrix}\right.</script><ul>
 <li>置换张量 $\boldsymbol{\epsilon}$</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -93,12 +87,15 @@ e_{ijk} = e^{ijk} =
 <li>置换符号 $e_{ijk}$、$e^{ijk}$ 与克罗内克符号 $\delta_{i}^{j}$ 的关系</li>
 </ul>
 <script type="math/tex; mode=display">
+e^{ijk} e_{rst} = \epsilon^{ijk} \epsilon_{rst} =
 \begin{vmatrix}
 \delta_{r}^{i} & \delta_{s}^{i} & \delta_{t}^{i} \\ 
 \delta_{r}^{j} & \delta_{s}^{j} & \delta_{t}^{j} \\ 
 \delta_{r}^{k} & \delta_{s}^{k} & \delta_{t}^{k}
-\end{vmatrix}
-= e^{ijk} e_{rst} = \epsilon^{ijk} \epsilon_{rst}</script><h2 id="3-矢量运算"><a href="#3-矢量运算" class="headerlink" title="3 矢量运算"></a><em>3 矢量运算</em></h2><ul>
+\end{vmatrix}</script><script type="math/tex; mode=display">
+e^{ijk} e_{ist} = \epsilon^{ijk} \epsilon_{ist} = \delta_{s}^{j} \delta_{t}^{k} - \delta_{t}^{j} \delta_{s}^{k}</script><script type="math/tex; mode=display">
+e^{ijk} e_{ijt} = \epsilon^{ijk} \epsilon_{ijt} = 2 \delta_{t}^{k}</script><script type="math/tex; mode=display">
+e^{ijk} e_{ijk} = \epsilon^{ijk} \epsilon_{ijk} = 6</script><h2 id="3-矢量运算"><a href="#3-矢量运算" class="headerlink" title="3 矢量运算"></a><em>3 矢量运算</em></h2><ul>
 <li>点积</li>
 </ul>
 <script type="math/tex; mode=display">
