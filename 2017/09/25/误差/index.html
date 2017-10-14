@@ -1,5 +1,98 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>误差 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">误差</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-user"> 简介</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">误差</h1><div class="post-meta">Sep 25, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="从物理问题到计算结果"><a href="#从物理问题到计算结果" class="headerlink" title="从物理问题到计算结果"></a><em>从物理问题到计算结果</em></h2><h2 id="误差来源一：知识、认识上的不足"><a href="#误差来源一：知识、认识上的不足" class="headerlink" title="误差来源一：知识、认识上的不足"></a><em>误差来源一：知识、认识上的不足</em></h2><h2 id="误差来源二：离散化"><a href="#误差来源二：离散化" class="headerlink" title="误差来源二：离散化"></a><em>误差来源二：离散化</em></h2><h3 id="数学上的一些提法"><a href="#数学上的一些提法" class="headerlink" title="- 数学上的一些提法"></a>- 数学上的一些提法</h3><h3 id="计算流体力学：对离散格式物理上的一些要求"><a href="#计算流体力学：对离散格式物理上的一些要求" class="headerlink" title="- 计算流体力学：对离散格式物理上的一些要求"></a>- 计算流体力学：对离散格式物理上的一些要求</h3><h3 id="有限元法与有限体积法的一些区别"><a href="#有限元法与有限体积法的一些区别" class="headerlink" title="- 有限元法与有限体积法的一些区别"></a>- 有限元法与有限体积法的一些区别</h3><h2 id="误差来源三：数值计算误差"><a href="#误差来源三：数值计算误差" class="headerlink" title="误差来源三：数值计算误差"></a><em>误差来源三：数值计算误差</em></h2><hr>
-<p><strong>2017.09.25：ver.1</strong></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>误差 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">误差</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-user"> 简介</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">误差</h1><div class="post-meta">Sep 25, 2017<span> | </span><span class="category"><a href="/categories/CAE之术：方法/">CAE之术：方法</a></span></div><div class="post-content"><h2 id="从物理问题到数值计算结果"><a href="#从物理问题到数值计算结果" class="headerlink" title="从物理问题到数值计算结果"></a><em>从物理问题到数值计算结果</em></h2><h3 id="Step-1-物理问题"><a href="#Step-1-物理问题" class="headerlink" title="- Step 1 物理问题"></a>- Step 1 物理问题</h3><ul>
+<li>描述现象</li>
+<li>明确已知</li>
+<li>提出需求</li>
+</ul>
+<h3 id="Step-2-数学模型"><a href="#Step-2-数学模型" class="headerlink" title="- Step 2 数学模型"></a>- Step 2 数学模型</h3><ul>
+<li>控制方程</li>
+<li>求解域</li>
+<li>边界条件</li>
+<li>初始条件</li>
+<li>物性参数</li>
+</ul>
+<h3 id="Step-3-离散方程"><a href="#Step-3-离散方程" class="headerlink" title="- Step 3 离散方程"></a>- Step 3 离散方程</h3><ul>
+<li>待求解的代数方程组</li>
+</ul>
+<h3 id="Step-4-数值计算结果"><a href="#Step-4-数值计算结果" class="headerlink" title="- Step 4 数值计算结果"></a>- Step 4 数值计算结果</h3><ul>
+<li>计算机求解代数方程组，得到数值解</li>
+</ul>
+<h2 id="误差来源一：知识、认识、手段上的不足"><a href="#误差来源一：知识、认识、手段上的不足" class="headerlink" title="误差来源一：知识、认识、手段上的不足"></a><em>误差来源一：知识、认识、手段上的不足</em></h2><ul>
+<li>From 物理问题 To 数学模型<ul>
+<li>控制方程的局限性，没有或不能考虑物理问题中的某些因素或现象</li>
+<li>经验参数的有效性、适用性不确定，例如，湍流模型中的参数并不具有普适性</li>
+<li>简化求解域，忽略了物理问题的某些几何特征</li>
+<li>测量的手段与精度有限，对边界条件与初始条件的简化、等效</li>
+<li>对材料或介质认识不足，采用某些假设，或物性参数不准确</li>
+</ul>
+</li>
+</ul>
+<h2 id="误差来源二：离散化"><a href="#误差来源二：离散化" class="headerlink" title="误差来源二：离散化"></a><em>误差来源二：离散化</em></h2><ul>
+<li>From 数学模型 To 离散方程<ul>
+<li>原来的目标：”求解变量”的连续函数（描述时空分布，间断点有限），也就是解析解，这十分困难</li>
+<li>退而求其次：”求解变量”在有限个时刻、有限个空间位置的数值</li>
+<li>离散方法包含很多内容，是<em>CAE</em> 的核心，例如<ul>
+<li>求解变量选择、插值函数、差分格式、数值积分、单元类型、网格划分，等等</li>
+</ul>
+</li>
+<li>对于离散方法，可以从数学和物理两方面进行讨论，属于不同角度看问题，并不矛盾</li>
+</ul>
+</li>
+</ul>
+<h3 id="离散方法：数学上的一些提法"><a href="#离散方法：数学上的一些提法" class="headerlink" title="- 离散方法：数学上的一些提法"></a>- 离散方法：数学上的一些提法</h3><ul>
+<li>精度<ul>
+<li>离散方程的精确解与数学模型的精确解的差异</li>
+<li>相同的网格数量，不同的离散方法，其精度不同</li>
+</ul>
+</li>
+<li>稳定性<ul>
+<li>不稳定：离散方程的精确解出现振荡，从而失去了其物理意义</li>
+<li>一些离散方法无条件稳定，另一些有条件稳定</li>
+</ul>
+</li>
+<li>收敛性<ul>
+<li>收敛：单元尺寸趋近于零时，离散方程的精确解无限趋近于数学模型的精确解</li>
+<li>如果能够从数学上严谨地证明离散方法的收敛性，将会极大地提振人们应用该方法的信心</li>
+</ul>
+</li>
+</ul>
+<h3 id="离散格式：物理上的一些要求"><a href="#离散格式：物理上的一些要求" class="headerlink" title="- 离散格式：物理上的一些要求"></a>- 离散格式：物理上的一些要求</h3><ul>
+<li>在流体分析中，会对离散格式提出物理上的要求；而固体/结构分析，通常并没有类似的说法</li>
+<li>守恒特性<ul>
+<li>对离散后任意选取的控制体积，都能够保证物理量（通量+源）的守恒</li>
+</ul>
+</li>
+<li>迁移特性<ul>
+<li>根据对流和扩散的相对强弱关系（<em>Peclet</em> 数）与流向，识别影响的方向</li>
+<li>例如，高<em>Pe</em> 数时，某点上游对该点的影响要远大于其下游</li>
+<li>某些离散格式不具备迁移特性，例如，中心差分</li>
+<li>某些具备迁移特性的离散格式，精度不足但绝对稳定，例如，一阶迎风</li>
+<li>某些具备迁移特性的离散格式，精度高但有条件稳定，例如，<em>QUICK</em> 格式</li>
+</ul>
+</li>
+<li>避免伪扩散<ul>
+<li>伪扩散：由离散格式精度不足造成的，导致了实际不存在的扩散现象</li>
+<li>例如，流向与网格斜交，采用一阶迎风的情况</li>
+</ul>
+</li>
+</ul>
+<h2 id="误差来源三：数值计算误差"><a href="#误差来源三：数值计算误差" class="headerlink" title="误差来源三：数值计算误差"></a><em>误差来源三：数值计算误差</em></h2><ul>
+<li>From 离散方程 To 数值计算结果<ul>
+<li>舍入误差：由计算机精度决定，数据受存储限制需要四舍五入</li>
+<li>迭代误差：方程组采用迭代法求解时，受迭代次数、容差的限制产生的误差</li>
+</ul>
+</li>
+</ul>
+<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a><em>Notes</em></h2><ul>
+<li>产生误差的地方，同样可以产生错误</li>
+<li>误差不可避免，但应当防止错误的发生</li>
+<li>需要衡量误差，这很重要</li>
+<li>需要平衡三者关系，也很重要，即<ul>
+<li>误差的大小、对误差的容忍程度、为减少误差付出的代价</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>2017.09.30：ver.1</strong></p>
 <p><strong><em>Ref.</em></strong></p>
 <ul>
 <li><a href="">数值传热学（第二版）</a></li>
@@ -7,7 +100,7 @@
 <li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
 </ul>
 <hr>
-</div><div class="tags"><a href="/tags/误差/">误差</a></div><div class="post-nav"><a href="/2017/09/28/数学模型：微分形、弱形式、变分形式/" class="pre">数学模型：微分形式、&quot;弱&quot;形式、变分形式</a><a href="/2017/09/25/运动的描述、应变与应力/" class="next">运动的描述、应变与应力</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/应力/" style="font-size: 15px;">应力</a> <a href="/tags/应变/" style="font-size: 15px;">应变</a> <a href="/tags/开发/" style="font-size: 15px;">开发</a> <a href="/tags/张量/" style="font-size: 15px;">张量</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/空化/" style="font-size: 15px;">空化</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/误差/" style="font-size: 15px;">误差</a> <a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/运动/" style="font-size: 15px;">运动</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"><a href="/tags/误差/">误差</a></div><div class="post-nav"><a href="/2017/09/25/运动的描述、应变与应力/" class="pre">运动的描述、应变与应力</a><a href="/2017/09/25/偏微分方程分类/" class="next">偏微分方程分类</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ADINA/" style="font-size: 15px;">ADINA</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/参考/" style="font-size: 15px;">参考</a> <a href="/tags/应力/" style="font-size: 15px;">应力</a> <a href="/tags/应变/" style="font-size: 15px;">应变</a> <a href="/tags/开发/" style="font-size: 15px;">开发</a> <a href="/tags/张量/" style="font-size: 15px;">张量</a> <a href="/tags/思路/" style="font-size: 15px;">思路</a> <a href="/tags/方程/" style="font-size: 15px;">方程</a> <a href="/tags/湍流/" style="font-size: 15px;">湍流</a> <a href="/tags/空化/" style="font-size: 15px;">空化</a> <a href="/tags/耦合/" style="font-size: 15px;">耦合</a> <a href="/tags/误差/" style="font-size: 15px;">误差</a> <a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/运动/" style="font-size: 15px;">运动</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
