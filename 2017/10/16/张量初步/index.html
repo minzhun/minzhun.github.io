@@ -6,6 +6,12 @@
 <li>$n$维空间中的$m$阶张量，是$n^m$个数的集合</li>
 </ul>
 </li>
+<li>张量与矩阵<ul>
+<li>不同的概念</li>
+<li>张量的分量可以用方阵的形式列出</li>
+<li>张量的某些代数运算可以与方阵的运算进行对应</li>
+</ul>
+</li>
 <li>矢径</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -26,15 +32,7 @@
 </li>
 </ul>
 <script type="math/tex; mode=display">
-\boldsymbol{T} = T^{ij} \boldsymbol{g}_{i} \boldsymbol{g}_{j} = T_{ij} \boldsymbol{g}^{i} \boldsymbol{g}^{j}</script><ul>
-<li>张量与矩阵<ul>
-<li>不同的概念</li>
-<li>张量的分量可以用方阵的形式列出</li>
-<li>张量的某些代数运算可以与方阵的运算进行对应</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-几个关系"><a href="#2-几个关系" class="headerlink" title="2 几个关系"></a><em>2 几个关系</em></h2><ul>
+\boldsymbol{T} = T^{ij} \boldsymbol{g}_{i} \boldsymbol{g}_{j} = T_{ij} \boldsymbol{g}^{i} \boldsymbol{g}^{j}</script><h2 id="2-几个关系"><a href="#2-几个关系" class="headerlink" title="2 几个关系"></a><em>2 几个关系</em></h2><ul>
 <li>对偶条件：协变基矢量与逆变基矢量<ul>
 <li>$\boldsymbol{g}^{j}$：逆变基矢量</li>
 <li>$\delta_{i}^{j}$：克罗内克符号</li>
@@ -71,12 +69,15 @@ g_{ij} = \boldsymbol{g}_{i} \cdot \boldsymbol{g}_{j}</script><ul>
 <script type="math/tex; mode=display">
 u^{i'} = \beta_{j}^{i'} u^{j}</script><script type="math/tex; mode=display">
 u_{i'} = \beta_{i'}^{j} u_{j}</script><ul>
-<li>置换符号 $e_{ijk}$、$e^{ijk}$<ul>
-<li>顺序排列：$e_{ijk} = e^{ijk} = 1$</li>
-<li>逆序排列：$e_{ijk} = e^{ijk} = -1$</li>
-<li>非序排列：$e_{ijk} = e^{ijk} = 0$</li>
+<li>置换符号 $e_{ijk}$、$e^{ijk}$</li>
 </ul>
-</li>
+<script type="math/tex; mode=display">
+e_{ijk} = e^{ijk} = 
+\left\{\begin{matrix}
+1\ \ \ \mathrm{even\ permutation} \\ 
+-1\ \ \ \mathrm{odd\ permutation} \\ 
+0\ \ \ \mathrm{otherwise}
+\end{matrix}\right.</script><ul>
 <li>置换张量 $\boldsymbol{\epsilon}$</li>
 </ul>
 <script type="math/tex; mode=display">
