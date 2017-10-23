@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>偏微分方程分类 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">偏微分方程分类</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-user"> 简介</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">偏微分方程分类</h1><div class="post-meta">Oct 19, 2017<span> | </span><span class="category"><a href="/categories/CAE之道：原理/">CAE之道：原理</a></span></div><div class="post-content"><h2 id="两个独立变量的二阶偏微分方程"><a href="#两个独立变量的二阶偏微分方程" class="headerlink" title="两个独立变量的二阶偏微分方程"></a><em>两个独立变量的二阶偏微分方程</em></h2><script type="math/tex; mode=display">
-a(x,y) \frac{\partial^2 u}{\partial x^2} + 2b(x,y) \frac{\partial^2 u}{\partial x \partial y} + c(x,y) \frac{\partial^2 u}{\partial y^2} = \varphi(x,y,\frac{\partial u}{\partial x},\frac{\partial u}{\partial y})</script><ul>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>偏微分方程分类 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">偏微分方程分类</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-user"> 简介</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">偏微分方程分类</h1><div class="post-meta">Oct 23, 2017<span> | </span><span class="category"><a href="/categories/CAE之道：原理/">CAE之道：原理</a></span></div><div class="post-content"><h2 id="两个独立变量的二阶偏微分方程"><a href="#两个独立变量的二阶偏微分方程" class="headerlink" title="两个独立变量的二阶偏微分方程"></a><em>两个独立变量的二阶偏微分方程</em></h2><script type="math/tex; mode=display">
+a(x,y) \frac{\partial^2 \phi}{\partial x^2} + 2b(x,y) \frac{\partial^2 \phi}{\partial x \partial y} + c(x,y) \frac{\partial^2 \phi}{\partial y^2} = \varphi(x,y,\frac{\partial \phi}{\partial x},\frac{\partial \phi}{\partial y})</script><ul>
 <li>椭圆型</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -17,6 +17,8 @@ b^2 - a c > 0</script><h2 id="依赖与影响"><a href="#依赖与影响" class=
 <li>影响：整个域</li>
 <li>问题类型：边值问题</li>
 <li>对应：稳态响应</li>
+<li>代数方程：联立求解</li>
+<li>解的性质：光滑</li>
 </ul>
 </li>
 <li>抛物型<ul>
@@ -24,6 +26,8 @@ b^2 - a c > 0</script><h2 id="依赖与影响"><a href="#依赖与影响" class=
 <li>影响：时间轴下游的所有区域，或，推进方向下游的所有区域</li>
 <li>问题类型：初值问题、传播问题（信息传播速度无限大）</li>
 <li>对应：瞬态响应、边界层流动</li>
+<li>代数方程：推进求解</li>
+<li>解的性质：光滑</li>
 </ul>
 </li>
 <li>双曲型<ul>
@@ -31,25 +35,37 @@ b^2 - a c > 0</script><h2 id="依赖与影响"><a href="#依赖与影响" class=
 <li>影响：时间轴下游的部分区域，或，推进方向下游的部分区域</li>
 <li>问题类型：初值问题、传播问题（信息传播速度为有限值）</li>
 <li>对应：瞬态响应</li>
+<li>代数方程：推进求解</li>
+<li>解的性质：可能出现不连续</li>
 </ul>
 </li>
 </ul>
 <h2 id="典型代表"><a href="#典型代表" class="headerlink" title="典型代表"></a><em>典型代表</em></h2><ul>
-<li>椭圆型<ul>
+<li>椭圆型：不可压缩无粘流动<ul>
 <li>拉普拉斯方程</li>
 </ul>
 </li>
-<li>抛物型<ul>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} = 0</script><ul>
+<li>抛物型：瞬态热传导<ul>
 <li>热传导方程</li>
 </ul>
 </li>
-<li>双曲型<ul>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial \phi }{\partial t} = \alpha \frac{\partial^2 \phi}{\partial x^2}</script><ul>
+<li>双曲型：弦的振动、稳态无粘超音速流动<ul>
 <li>波动方程</li>
 </ul>
 </li>
 </ul>
-<hr>
-<p><strong>2017.10.19：ver.1</strong></p>
+<script type="math/tex; mode=display">
+\frac{\partial \phi }{\partial t^2} = c^2 \frac{\partial^2 \phi}{\partial x^2}</script><hr>
+<ul>
+<li><strong>2017.10.19</strong></li>
+<li><strong>2017.10.23</strong></li>
+</ul>
 <p><strong><em>Ref.</em></strong></p>
 <ul>
 <li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
