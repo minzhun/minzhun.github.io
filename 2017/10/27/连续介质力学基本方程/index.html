@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>连续介质力学基本方程 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">连续介质力学基本方程</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-user"> 简介</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">连续介质力学基本方程</h1><div class="post-meta">Oct 27, 2017<span> | </span><span class="category"><a href="/categories/CAE之道：原理/">CAE之道：原理</a></span></div><div class="post-content"><h2 id="物质导数"><a href="#物质导数" class="headerlink" title="物质导数"></a><em>物质导数</em></h2><ul>
+<li>定义在质点上、跟随质点运动的物理量，对时间的导数</li>
+<li>欧拉坐标系中的物质导数<ul>
+<li>$ u $：欧拉坐标系中，标量或张量的分量</li>
+<li>$ \boldsymbol{v} $：速度矢量</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} u}{\mathrm{d} t} = \frac{\partial u}{\partial t} + \boldsymbol{v} \cdot \nabla u</script><h2 id="输运定理"><a href="#输运定理" class="headerlink" title="输运定理"></a><em>输运定理</em></h2><ul>
+<li>在物质质量域上积分的导数 </li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{I}_{\rho}(t) = \int_{V} \boldsymbol{T} \rho \mathrm{d}v</script><script type="math/tex; mode=display">
+\frac{\mathrm{d} \boldsymbol{I}_{\rho}(t)}{\mathrm{d} t} = \int_{V} \dot{\boldsymbol{T}} \rho \mathrm{d}v</script><ul>
+<li>在物质体积域上积分的导数</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{I} = \int_{V} \boldsymbol{T} \mathrm{d}v</script><script type="math/tex; mode=display">
+\frac{\mathrm{d} \boldsymbol{I}(t)}{\mathrm{d} t} = \int_{V} [ \dot{\boldsymbol{T}} + (\mathrm{div} \boldsymbol{v}) \boldsymbol{T} ] \mathrm{d}v</script><ul>
+<li>雷诺输运定理一般形式</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \boldsymbol{I}(t)}{\mathrm{d} t} = \int_{V} \left ( \frac{\partial \boldsymbol{T}}{\partial t} \right ) \mathrm{d}v + \int_{\Gamma} (\boldsymbol{v} \cdot \boldsymbol{n}) \boldsymbol{T} \mathrm{d} \Gamma</script><h2 id="质量守恒"><a href="#质量守恒" class="headerlink" title="质量守恒"></a><em>质量守恒</em></h2><ul>
+<li>从初始构型到当前构型：固体力学中常用</li>
+</ul>
+<script type="math/tex; mode=display">
+\rho_0 = J \rho</script><ul>
+<li>当前构型：流体力学中常用</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} }{\mathrm{d} t} \int_{V} \rho \mathrm{d}v 
+= \int_{V} \left [ \frac{\partial \rho}{\partial t} + \mathrm{div}(\rho \boldsymbol{v}) \right ]  = 0</script><script type="math/tex; mode=display">
+\frac{\partial \rho}{\partial t} + \mathrm{div}(\rho \boldsymbol{v}) = 0</script><h2 id="动量守恒"><a href="#动量守恒" class="headerlink" title="动量守恒"></a><em>动量守恒</em></h2><ul>
+<li>当前构型</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} }{\mathrm{d} t} \int_{V} \rho \boldsymbol{v} \mathrm{d}v 
+= \int_{\Gamma} \boldsymbol{\sigma} \boldsymbol{n} \mathrm{d} \Gamma
++ \int_{V} \rho \boldsymbol{f} \mathrm{d}v</script><script type="math/tex; mode=display">
+\int_{V} \rho \frac{\mathrm{d} \boldsymbol{v}}{\mathrm{d} t} \mathrm{d}v 
+= \int_{V} \mathrm{div} \boldsymbol{\sigma} \mathrm{d}v
++ \int_{V} \rho \boldsymbol{f} \mathrm{d}v</script><script type="math/tex; mode=display">
+\rho \boldsymbol{a} = \mathrm{div} \boldsymbol{\sigma} + \rho \boldsymbol{f}</script><h2 id="动量矩守恒"><a href="#动量矩守恒" class="headerlink" title="动量矩守恒"></a><em>动量矩守恒</em></h2><ul>
+<li>当前构型</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\sigma} = \boldsymbol{\sigma}^{\mathrm{T}}</script><h2 id="能量守恒"><a href="#能量守恒" class="headerlink" title="能量守恒"></a><em>能量守恒</em></h2><ul>
+<li>当前构型</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{P} = \dot{K} + \dot{U} = \frac{1}{2} \int_{V} \frac{\mathrm{d} }{\mathrm{d} t} (\boldsymbol{v}^2) \rho \mathrm{d}v + \int_{V} \dot{u} \rho \mathrm{d}v \\
+= \int_{\Gamma} \boldsymbol{v} \cdot \boldsymbol{t}_n \mathrm{d} \Gamma + \int_{V} \rho \boldsymbol{v} \cdot \boldsymbol{f} \mathrm{d}v  - \int_{\Gamma} \boldsymbol{q} \cdot \boldsymbol{n} \mathrm{d} \Gamma + \int_{V} \lambda \rho \mathrm{d}v</script><ul>
+<li>动能定理（当前构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{K} = \int_{\Gamma} \boldsymbol{v} \cdot \boldsymbol{t}_n \mathrm{d} \Gamma + \int_{V} \rho \boldsymbol{v} \cdot \boldsymbol{f} \mathrm{d}v - \int_{V} \boldsymbol{\sigma} : \boldsymbol{D} \mathrm{d}v</script><ul>
+<li>热力学第一定律（当前构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{U} = \int_{V} \dot{u} \rho \mathrm{d}v = - \int_{\Gamma} \boldsymbol{q} \cdot \boldsymbol{n} \mathrm{d} \Gamma + \int_{V} \lambda \rho \mathrm{d}v + \int_{V} \boldsymbol{\sigma} : \boldsymbol{D} \mathrm{d}v</script><script type="math/tex; mode=display">
+\rho \dot{u} = - \mathrm{div} \boldsymbol{q} + \rho \lambda + \boldsymbol{\sigma} : \boldsymbol{D}</script><h2 id="Clausius-Duhem-不等式"><a href="#Clausius-Duhem-不等式" class="headerlink" title="Clausius-Duhem 不等式"></a><em>Clausius-Duhem 不等式</em></h2><ul>
+<li><em>Clausius-Duhem</em> 不等式是热力学第二定律的一种表述形式<ul>
+<li>当前构型</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_{V} \dot{s} \rho \mathrm{d}v \geqslant \int_{V} \frac{\lambda}{\theta} \rho \mathrm{d}v - \int_{\Gamma} \frac{\boldsymbol{q}}{\theta} \cdot \boldsymbol{n} \mathrm{d} \Gamma</script><script type="math/tex; mode=display">
+\rho \dot{s} \geqslant \rho \frac{\lambda}{\theta} - \frac{1}{\rho} \mathrm{div} \boldsymbol{q} + \frac{1}{\theta^2} \mathrm{grad} \theta \cdot \boldsymbol{q}</script><ul>
+<li>定义单位质量熵生成率 $\gamma$ ，将其分为两部分<ul>
+<li>热传导熵生成率 $\gamma_{\mathrm{th}}$</li>
+<li>内禀熵生成率 $\gamma_{\mathrm{int}}$</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\theta \gamma_{\mathrm{th}} = - \frac{1}{\rho \theta} \mathrm{grad} \theta \cdot \boldsymbol{q}</script><script type="math/tex; mode=display">
+\theta \gamma_{\mathrm{int}} = \theta \dot{s} - \left [ - \frac{1}{\rho} \mathrm{div} \boldsymbol{q} + \lambda \right ]</script><ul>
+<li><em>Clausius-Duhem</em> 不等式等价于</li>
+</ul>
+<script type="math/tex; mode=display">
+\gamma = \gamma_{\mathrm{th}} + \gamma_{\mathrm{int}} \geqslant 0</script><ul>
+<li><em>Clausius-Planck</em> 不等式<ul>
+<li>下式中应用了微分形式的热力学第一定律</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\gamma_{\mathrm{int}} \geqslant 0</script><script type="math/tex; mode=display">
+\theta \dot{s} + \frac{1}{\theta} \boldsymbol{\sigma} : \boldsymbol{D} - \frac{1}{\theta} \rho \dot{u} \geqslant 0</script><ul>
+<li><em>Helmholtz</em> 自由能<ul>
+<li>当前构型</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+f = u - \theta s</script><script type="math/tex; mode=display">
+\theta \gamma_{\mathrm{int}} = - s \dot{\theta} - \left [ \dot{f} - \frac{1}{\rho} \boldsymbol{\sigma} : \boldsymbol{D} \right ]</script><ul>
+<li>使用 <em>Helmholtz</em> 自由能表示的 <em>Clausius-Duhem</em> 不等式<ul>
+<li>当前构型</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\sigma} : \boldsymbol{D} - \rho \left ( \dot{f} + s \dot{\theta}  \right ) - \frac{1}{\theta} \mathrm{grad} \theta \cdot \boldsymbol{q} \geqslant 0</script><ul>
+<li>使用 <em>Helmholtz</em> 自由能表示的 <em>Clausius-Planck</em> 不等式<ul>
+<li>当前构型</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\sigma} : \boldsymbol{D} - \rho \left ( \dot{f} + s \dot{\theta}  \right ) \geqslant 0</script><h2 id="连续介质力学方程的数量与未知数的数量"><a href="#连续介质力学方程的数量与未知数的数量" class="headerlink" title="连续介质力学方程的数量与未知数的数量"></a><em>连续介质力学方程的数量与未知数的数量</em></h2><ul>
+<li>未知数，共16个<ul>
+<li>速度矢量：3个分量</li>
+<li>应力张量：6个独立分量</li>
+<li>密度：1个分量</li>
+<li>温度：1个分量</li>
+<li>单位质量内能：1个分量</li>
+<li>热流通量矢量：3个分量</li>
+<li>单位质量的熵：1个分量</li>
+</ul>
+</li>
+<li>基本方程，共5个<ul>
+<li>质量守恒方程：1个</li>
+<li>动量守恒方程：3个</li>
+<li>热力学第一定律：1个</li>
+</ul>
+</li>
+<li>附加方程，共11个<ul>
+<li>本构方程：6个</li>
+<li>热传导方程（傅里叶定律）：3个</li>
+<li>热力学状态方程：2个</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>2017.09.25</strong></li>
+<li><strong>2017.10.27</strong></li>
+</ul>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">近代连续介质力学</a></li>
+<li><a href="">张量分析（第二版）</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Continuum_mechanics" target="_blank" rel="external">Continuum mechanics</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2017/10/26/运动的描述、应变与应力/" class="next">运动的描述、应变与应力</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

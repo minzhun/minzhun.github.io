@@ -119,7 +119,17 @@
 <li><em>Cauchy</em> 应变</li>
 </ul>
 <script type="math/tex; mode=display">
-\varepsilon = \frac{1}{2} (\nabla \boldsymbol{u} + \boldsymbol{u}\nabla)</script><h2 id="应变张量的率"><a href="#应变张量的率" class="headerlink" title="应变张量的率"></a><em>应变张量的率</em></h2><ul>
+\varepsilon = \frac{1}{2} (\nabla \boldsymbol{u} + \boldsymbol{u}\nabla)</script><ul>
+<li>右 <em>Hencky</em> 应变（初始构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{E}^{(0)} = \ln \boldsymbol{U} = \frac{1}{2} \ln \boldsymbol{C}
+= \frac{1}{2} \ln \boldsymbol{\boldsymbol{F}^{\mathrm{T}} \boldsymbol{F}}</script><ul>
+<li>左 <em>Hencky</em> 应变（当前构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{e}^{(0)} = \ln \boldsymbol{V} = \frac{1}{2} \ln \boldsymbol{B}
+= \frac{1}{2} \ln \boldsymbol{\boldsymbol{F} \boldsymbol{F}^{\mathrm{T}}}</script><h2 id="应变张量的率"><a href="#应变张量的率" class="headerlink" title="应变张量的率"></a><em>应变张量的率</em></h2><ul>
 <li><em>Green</em> 应变张量的率（初始构型）</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -147,10 +157,31 @@
 </ul>
 <script type="math/tex; mode=display">
 \boldsymbol{\tau} = J \boldsymbol{\sigma}</script><script type="math/tex; mode=display">
-\boldsymbol{\tau} = \boldsymbol{F} \boldsymbol{T} \boldsymbol{F}^{\mathrm{T}}</script><h2 id="应力张量的率"><a href="#应力张量的率" class="headerlink" title="应力张量的率"></a><em>应力张量的率</em></h2><hr>
+\boldsymbol{\tau} = \boldsymbol{F} \boldsymbol{T} \boldsymbol{F}^{\mathrm{T}}</script><h2 id="应力张量的率"><a href="#应力张量的率" class="headerlink" title="应力张量的率"></a><em>应力张量的率</em></h2><ul>
+<li>客观性<ul>
+<li>物质的力学性质与观察者无关</li>
+<li>满足一定的时空转换律的物理量称为客观量</li>
+<li>材料的本构关系应满足客观性的要求</li>
+<li>材料本构关系中出现的应力率应当是客观率</li>
+</ul>
+</li>
+<li><em>Cauchy</em> 应力的 <em>Truesdell</em> 客观率</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathring{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} - \boldsymbol{L} \boldsymbol{\sigma}
+- \boldsymbol{\sigma} \boldsymbol{L}^{\mathrm{T}} + \mathrm{tr}(\boldsymbol{L}) \boldsymbol{\sigma}</script><ul>
+<li><em>Cauchy</em> 应力的 <em>Jaumann</em> 客观率</li>
+</ul>
+<script type="math/tex; mode=display">
+\overset{\triangle}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} + \boldsymbol{\sigma} \boldsymbol{W} - \boldsymbol{W} \boldsymbol{\sigma}</script><ul>
+<li><em>Cauchy</em> 应力的 <em>Oldroyd</em> 客观率</li>
+</ul>
+<script type="math/tex; mode=display">
+\overset{\triangledown}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} - \boldsymbol{L} \boldsymbol{\sigma} - \boldsymbol{\sigma} \boldsymbol{L}^{\mathrm{T}}</script><hr>
 <ul>
 <li><strong>2017.07.27</strong></li>
 <li><strong>2017.10.26</strong></li>
+<li><strong>2017.10.27</strong></li>
 </ul>
 <p><strong><em>Ref.</em></strong></p>
 <ul>
@@ -158,7 +189,7 @@
 <li><a href="">近代连续介质力学</a></li>
 </ul>
 <hr>
-</div><div class="tags"></div><div class="post-nav"><a href="/2017/10/23/偏微分方程分类/" class="next">偏微分方程分类</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"></div><div class="post-nav"><a href="/2017/10/27/连续介质力学基本方程/" class="pre">连续介质力学基本方程</a><a href="/2017/10/23/偏微分方程分类/" class="next">偏微分方程分类</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
