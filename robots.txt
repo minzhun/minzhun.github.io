@@ -1,0 +1,12 @@
+# hexo robots.txt
+User-agent: * Allow: /
+Allow: /archives/
+Allow: /about
+Allow: /categories
+Allow: /contents
+Allow: /list
+Allow: /project
+Allow: /tags
+Disallow: /js/
+Disallow: /css/
+Sitemap: www.minzhun.tech/baidusitemap.xml
