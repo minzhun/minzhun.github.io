@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>网格划分 @ADINA | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">网格划分 @ADINA</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // Also about ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">网格划分 @ADINA</h1><div class="post-meta">Nov 23, 2017<span> | </span><span class="category"><a href="/categories/CAE之技：实现/">CAE之技：实现</a></span></div><div class="post-content"><h2 id="1-网格划分的一些准备"><a href="#1-网格划分的一些准备" class="headerlink" title="1 网格划分的一些准备"></a><em>1 网格划分的一些准备</em></h2><ul>
+<li>几何处理<ul>
+<li>去除某些特征、抽中面等</li>
+</ul>
+</li>
+<li>确定单元<ul>
+<li>单元类型、单元形状、单元大小</li>
+</ul>
+</li>
+<li>几何分块<ul>
+<li>将几何切分成拓扑结构简单的若干部分</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-几何类型-ADINA"><a href="#2-几何类型-ADINA" class="headerlink" title="2 几何类型 @ADINA"></a><em>2 几何类型 @ADINA</em></h2><ul>
+<li><em>AUI Native Geometry</em><ul>
+<li><em>Point</em>、<em>Line</em>、<em>Surface</em>、<em>Volume</em></li>
+</ul>
+</li>
+<li><em>ADINA-M</em><ul>
+<li>几何引擎（可选）：<em>Parasolid</em> 或 <em>OpenCASCADE</em></li>
+<li><em>Point</em>、<em>Edge</em>、<em>Face</em>、<em>Body</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-网格尺寸控制"><a href="#3-网格尺寸控制" class="headerlink" title="3 网格尺寸控制"></a><em>3 网格尺寸控制</em></h2><h3 id="方式-1：Subdivision"><a href="#方式-1：Subdivision" class="headerlink" title="方式 1：Subdivision"></a>方式 1：<em>Subdivision</em></h3><ul>
+<li>设置长度<ul>
+<li>均分</li>
+</ul>
+</li>
+<li>设置份数<ul>
+<li>均分、非均分</li>
+</ul>
+</li>
+</ul>
+<h3 id="方式-2：Point-Size"><a href="#方式-2：Point-Size" class="headerlink" title="方式 2：Point-Size"></a>方式 2：<em>Point-Size</em></h3><ul>
+<li>网格尺寸根据<em>Point-Size</em>，在各个点之间逐渐变化<ul>
+<li>首先，设置尺寸控制方式为 <em>Use End-Point Sizes</em></li>
+<li>之后，根据需要，按，体、面、线、点的顺序设置 <em>Point-Size</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="Other"><a href="#Other" class="headerlink" title="Other"></a><em>Other</em></h3><ul>
+<li><em>Automatic Grading</em><ul>
+<li>设置部分区域的网格尺寸，自动向外设置其他区域的网格尺寸</li>
+<li>适用：<em>Body / Face</em>、<em>Free-Form</em>、<em>Tetra / Tri</em></li>
+</ul>
+</li>
+<li><em>Curvature-based Sizing</em><ul>
+<li>根据曲率设置网格尺寸</li>
+<li>适用：<em>Body / Face</em>、<em>Free-Form</em>、<em>Tetra / Tri</em>、<em>Delaunay</em></li>
+<li>参数：<em>GEO-ERROR</em>（越小越密）、<em>SAMPLING</em>（越大越密）</li>
+</ul>
+</li>
+<li><em>Size Function</em><ul>
+<li>可以在设置<em>Point-Size</em> 时使用</li>
+<li>可以在 <em>Body / Face</em> 的 <em>Tetra / Tri</em> 的自由网格划分时使用</li>
+</ul>
+</li>
+<li><em>Max-Size</em><ul>
+<li>可使内部网格尺寸大于边界网格尺寸</li>
+<li>适用：<em>Body / Face</em>、<em>Free-Form</em>、<em>Tetra / Tri</em>、<em>Delaunay</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="4-映射网格划分（Mapped-Meshing）"><a href="#4-映射网格划分（Mapped-Meshing）" class="headerlink" title="4 映射网格划分（Mapped Meshing）"></a><em>4 映射网格划分（Mapped Meshing）</em></h2><ul>
+<li>适用<ul>
+<li>二维：拓扑为四边形、三角形</li>
+<li>三维：拓扑为六面体、三棱柱</li>
+</ul>
+</li>
+<li>规则网格<ul>
+<li>对边网格划分份数相等</li>
+</ul>
+</li>
+<li>不规则网格<ul>
+<li>对边网格划分份数不相等</li>
+<li>会存在一些三角形过渡</li>
+</ul>
+</li>
+<li><em>Pattern</em><ul>
+<li>网格划分的形式，例如，三角形网格斜边的方向</li>
+<li><em>Tri</em>：Pattern 1 - Pattern 9</li>
+<li><em>Quad</em>：Pattern 10 - Pattern 11</li>
+</ul>
+</li>
+<li><em>Degenerate</em><ul>
+<li>三角形区域、三棱柱形区域</li>
+<li>四边形、六面体是否退化为三角形、棱柱体</li>
+</ul>
+</li>
+<li><em>Mid-Node</em><ul>
+<li>高阶单元，边，中节点布置</li>
+<li><em>Straight</em>、<em>Project</em>、<em>Curved</em></li>
+</ul>
+</li>
+<li><em>Body Sweep / Body Revolve</em><ul>
+<li>将 <em>Face</em> 上的二维网格，拉伸/旋转为三维网格（六面体、棱柱体）</li>
+<li><em>Face</em> 上的网格，可以为映射网格划分，也可以为自由网格划分</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-自由网格划分（Free-Form-Meshing）"><a href="#5-自由网格划分（Free-Form-Meshing）" class="headerlink" title="5 自由网格划分（Free-Form Meshing）"></a><em>5 自由网格划分（Free-Form Meshing）</em></h2><h3 id="三角形-四面体"><a href="#三角形-四面体" class="headerlink" title="三角形/四面体"></a>三角形/四面体</h3><ul>
+<li>方法<ul>
+<li><em>Advancing Front</em></li>
+<li><em>Delaunay</em></li>
+</ul>
+</li>
+<li><em>Advancing Front</em><ul>
+<li><em>Growth Rate</em> 不起作用</li>
+</ul>
+</li>
+<li><em>Delaunay</em><ul>
+<li><em>Growth Rate</em>：控制网格的过渡，1.0（慢） - 3.0（快）</li>
+<li><em>Optimize for</em>：<em>Meshing Speed</em>（划分更快速）、<em>Subdivision Accuracy</em>（过渡更平缓）</li>
+<li><em>Curvature-based Sizing</em>：按曲率控制大小时，<em>Optimize for</em> 不起作用</li>
+</ul>
+</li>
+</ul>
+<h3 id="四边形-六面体"><a href="#四边形-六面体" class="headerlink" title="四边形/六面体"></a>四边形/六面体</h3><ul>
+<li>要求全四边形网格时<ul>
+<li>所有边界网格划分份数之和为偶数</li>
+</ul>
+</li>
+<li><em>Pyramid</em><ul>
+<li>对于三维自由网格划分，一般都会存在过渡形状，例如，四面体、金字塔</li>
+<li><em>No</em>（全部使用四面体过渡）</li>
+<li><em>Yes</em>（六面体和四面体之间，使用金字塔过渡）</li>
+<li><em>Boundary Only</em>（边界上使用金字塔，其他使用四面体，不使用六面体）</li>
+</ul>
+</li>
+</ul>
+<h3 id="Other-1"><a href="#Other-1" class="headerlink" title="Other"></a><em>Other</em></h3><ul>
+<li><em>Mid-Node</em><ul>
+<li>高阶单元，边，中节点布置</li>
+<li><em>Straight</em>、<em>Project</em>（推荐）、<em>Curved</em></li>
+</ul>
+</li>
+<li><em>Mid-Face-Node</em><ul>
+<li>高阶单元，面，中节点布置</li>
+<li><em>Tri</em>（对角线中点位置）、<em>Quad</em>（面形心位置）</li>
+</ul>
+</li>
+<li><em>Nlayer</em><ul>
+<li>设置较窄区域网格层数</li>
+<li>适用：<em>Body</em>、<em>Free-Form</em>、<em>Tetra</em></li>
+<li>较窄区域网格划分</li>
+</ul>
+</li>
+<li><em>Boundary Layer</em><ul>
+<li>边界层网格，三维时形状可选六面体或棱柱体</li>
+<li>适用：<em>Body / Face</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="6-节点重合及其控制"><a href="#6-节点重合及其控制" class="headerlink" title="6 节点重合及其控制"></a><em>6 节点重合及其控制</em></h2><ul>
+<li><em>Face-Link</em><ul>
+<li>使网格在相邻的几何之间连续</li>
+</ul>
+</li>
+<li><em>Nodal Coincidence</em><ul>
+<li>网格划分时，检查并控制节点是否重合</li>
+</ul>
+</li>
+<li>节点的合并/分离操作<ul>
+<li><em>Join</em>、<em>Detach</em>、<em>Split</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="7-其他"><a href="#7-其他" class="headerlink" title="7 其他"></a><em>7 其他</em></h2><ul>
+<li>单元形状与节点数<ul>
+<li>三角形：3节点、6节点、7节点</li>
+<li>四边形：4节点、8节点、9节点</li>
+<li>四面体：4节点、10节点、11节点</li>
+<li>六面体：8节点、20节点、27节点</li>
+<li>四边形（壳单元）：4节点、8节点、9节点、16节点</li>
+<li>棱柱体、金字塔：六面体的退化形状</li>
+<li>三角形（壳单元）：四边形（壳单元）的退化</li>
+</ul>
+</li>
+<li>待补充<ul>
+<li><em>STL Body</em> 的网格划分</li>
+<li><em>Lofted Meshing</em></li>
+<li><em>Brick Dominant Meshing</em></li>
+<li><em>Element Spider</em></li>
+<li><em>Shell Transition</em></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>2017.11.23</strong></li>
+</ul>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">The ADINA Handbook</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2017/11/21/本构关系/" class="next">本构关系</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://www.minzhun.tech"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之技：实现/">CAE之技：实现</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之术：方法/">CAE之术：方法</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CAE之道：原理/">CAE之道：原理</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
