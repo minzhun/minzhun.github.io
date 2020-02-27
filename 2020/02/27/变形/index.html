@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>变形 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">变形</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">变形</h1><div class="post-meta">Feb 27, 2020<span> | </span><span class="category"><a href="/categories/连续介质力学/">连续介质力学</a></span></div><div class="post-content"><h2 id="变形梯度张量"><a href="#变形梯度张量" class="headerlink" title="变形梯度张量"></a><em>变形梯度张量</em></h2><ul>
+<li>当前构型两个临近点之间的距离，在参考构型位置做泰勒级数展开</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{x} = \boldsymbol{\varphi}(\boldsymbol{X}+\mathrm{d}\boldsymbol{X}) - \boldsymbol{\varphi}(\boldsymbol{X}) = \boldsymbol{F}\mathrm{d}\boldsymbol{X} + O(\mathrm{d}\boldsymbol{X}^{2})</script><ul>
+<li>保留级数第一项，$\boldsymbol{F}$ 为变形梯度张量，变形函数的梯度</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = \frac{\mathrm{d}\boldsymbol{\varphi}}{\mathrm{d}\boldsymbol{X}} = \frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}\boldsymbol{X}}</script><ul>
+<li>变形梯度张量为两点张量：两个基矢量中，前基矢量在当前构型，后基矢量在参考构型</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = \frac{\partial x_{i}}{\partial X_{I}} \boldsymbol{e}_{i} \boldsymbol{e}_{I}</script><h2 id="参考构型与当前构型之间的变换"><a href="#参考构型与当前构型之间的变换" class="headerlink" title="参考构型与当前构型之间的变换"></a><em>参考构型与当前构型之间的变换</em></h2><ul>
+<li>线元的变换</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{x} = \boldsymbol{F} \mathrm{d} \boldsymbol{X}</script><ul>
+<li>面元的变换</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{a} = J \boldsymbol{F}^{-\mathrm{T}} \mathrm{d} \boldsymbol{A}</script><ul>
+<li>体元的变换</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{d} v = \mathrm{det} \boldsymbol{F} \mathrm{d} V = J \mathrm{d} V</script><h2 id="变形梯度的极分解"><a href="#变形梯度的极分解" class="headerlink" title="变形梯度的极分解"></a><em>变形梯度的极分解</em></h2><ul>
+<li>右极分解<ul>
+<li>先在初始构型中伸长、后旋转至当前构型位置</li>
+<li>$\boldsymbol{U}$：右伸长张量（初始构型）</li>
+<li>$\boldsymbol{R}$：旋转操作</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = \boldsymbol{R} \boldsymbol{U}</script><ul>
+<li>左极分解<ul>
+<li>先旋转至当前构型位置、后在当前构型中伸长</li>
+<li>$\boldsymbol{V}$：左伸长张量（当前构型）</li>
+<li>$\boldsymbol{R}$：旋转操作</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = \boldsymbol{V} \boldsymbol{R}</script><ul>
+<li>右 <em>Cauchy-Green</em> 变形张量（初始构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{C} = \boldsymbol{F}^{\mathrm{T}} \boldsymbol{F} = \boldsymbol{U}^2</script><ul>
+<li>左 <em>Cauchy-Green</em> 变形张量（当前构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{B} = \boldsymbol{F} \boldsymbol{F}^{\mathrm{T}}  = \boldsymbol{V}^2</script><ul>
+<li><em>Cauchy</em> 变形张量（当前构型）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{c} = \boldsymbol{F}^{-\mathrm{T}} \boldsymbol{F}^{-1}</script><h2 id="速度梯度"><a href="#速度梯度" class="headerlink" title="速度梯度"></a><em>速度梯度</em></h2><ul>
+<li>定义速度矢量在当前构型中的右梯度为速度梯度张量</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{L} = \boldsymbol{v} \nabla = \frac{\partial v_{i}}{\partial x_{j}} \boldsymbol{e}_{i} \boldsymbol{e}_{j}</script><ul>
+<li>速度对参考构型的梯度，即为变形梯度的率（材料时间导数）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial\boldsymbol{v}}{\partial\boldsymbol{X}} = \frac{\partial}{\partial\boldsymbol{X}}(\frac{\partial\boldsymbol{\boldsymbol{\varphi}}}{\partial\boldsymbol{t}}) = \frac{\partial}{\partial\boldsymbol{t}}(\frac{\partial\boldsymbol{\boldsymbol{\varphi}}}{\partial\boldsymbol{X}}) = \boldsymbol{\dot{F}}</script><ul>
+<li>那么，速度梯度可写为</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{L} = \frac{\partial\boldsymbol{v}}{\partial\boldsymbol{x}} = \frac{\partial\boldsymbol{v}}{\partial\boldsymbol{X}}\frac{\partial\boldsymbol{\boldsymbol{X}}}{\partial\boldsymbol{x}} = \boldsymbol{\dot{F}} \boldsymbol{F^{-1}}</script><ul>
+<li>故，变形梯度的材料时间导数可表示为</li>
+</ul>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{F}} = \boldsymbol{L} \boldsymbol{F}</script><ul>
+<li>速度梯度的加法分解<ul>
+<li>$\boldsymbol{D}$：变形率张量，对称张量</li>
+<li>$\boldsymbol{W}$：旋率张量，反对称张量</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{L} = \boldsymbol{D} + \boldsymbol{W}</script><script type="math/tex; mode=display">
+\boldsymbol{D} = \frac{1}{2} (\boldsymbol{L} + \boldsymbol{L}^{\mathrm{T}})</script><script type="math/tex; mode=display">
+\boldsymbol{W} = \frac{1}{2} (\boldsymbol{L} - \boldsymbol{L}^{\mathrm{T}})</script><hr>
+<ul>
+<li><strong>2020.02.27</strong></li>
+</ul>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Continuum_mechanics" target="_blank" rel="external">Continuum mechanics</a></li>
+<li><a href="">近代连续介质力学</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/02/25/运动/" class="next">运动</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">6</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
