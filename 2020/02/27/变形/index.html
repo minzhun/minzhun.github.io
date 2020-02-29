@@ -22,11 +22,11 @@
 <li>体元的变换</li>
 </ul>
 <script type="math/tex; mode=display">
-\mathrm{d} v = \mathrm{det} \boldsymbol{F} \mathrm{d} V = J \mathrm{d} V</script><h2 id="变形梯度的极分解"><a href="#变形梯度的极分解" class="headerlink" title="变形梯度的极分解"></a><em>变形梯度的极分解</em></h2><ul>
+\mathrm{d} v = \mathrm{det} \boldsymbol{F} \mathrm{d} V = J \mathrm{d} V</script><h2 id="变形梯度张量的极分解"><a href="#变形梯度张量的极分解" class="headerlink" title="变形梯度张量的极分解"></a><em>变形梯度张量的极分解</em></h2><ul>
 <li>右极分解<ul>
 <li>先在初始构型中伸长、后旋转至当前构型位置</li>
-<li>$\boldsymbol{U}$：右伸长张量（初始构型）</li>
-<li>$\boldsymbol{R}$：旋转操作</li>
+<li>$\boldsymbol{U}$：右伸长张量（初始构型），正定对称张量</li>
+<li>$\boldsymbol{R}$：旋转操作，正交张量</li>
 </ul>
 </li>
 </ul>
@@ -34,14 +34,14 @@
 \boldsymbol{F} = \boldsymbol{R} \boldsymbol{U}</script><ul>
 <li>左极分解<ul>
 <li>先旋转至当前构型位置、后在当前构型中伸长</li>
-<li>$\boldsymbol{V}$：左伸长张量（当前构型）</li>
-<li>$\boldsymbol{R}$：旋转操作</li>
+<li>$\boldsymbol{V}$：左伸长张量（当前构型），正定对称张量</li>
+<li>$\boldsymbol{R}$：旋转操作，正交张量</li>
 </ul>
 </li>
 </ul>
 <script type="math/tex; mode=display">
 \boldsymbol{F} = \boldsymbol{V} \boldsymbol{R}</script><ul>
-<li>右 <em>Cauchy-Green</em> 变形张量（初始构型）</li>
+<li>右 <em>Cauchy-Green</em> 变形张量（初始构型），正定对称张量</li>
 </ul>
 <script type="math/tex; mode=display">
 \boldsymbol{C} = \boldsymbol{F}^{\mathrm{T}} \boldsymbol{F} = \boldsymbol{U}^2</script><ul>
@@ -52,7 +52,8 @@
 <li><em>Cauchy</em> 变形张量（当前构型）</li>
 </ul>
 <script type="math/tex; mode=display">
-\boldsymbol{c} = \boldsymbol{F}^{-\mathrm{T}} \boldsymbol{F}^{-1}</script><h2 id="速度梯度"><a href="#速度梯度" class="headerlink" title="速度梯度"></a><em>速度梯度</em></h2><ul>
+\boldsymbol{c} = \boldsymbol{F}^{-\mathrm{T}} \boldsymbol{F}^{-1}</script><h2 id="位移梯度张量"><a href="#位移梯度张量" class="headerlink" title="位移梯度张量"></a><em>位移梯度张量</em></h2><script type="math/tex; mode=display">
+\boldsymbol{H} = \frac{\mathrm{d}\boldsymbol{u}}{\mathrm{d}\boldsymbol{X}} = \frac{\mathrm{d}(\boldsymbol{x}-\boldsymbol{X})}{\mathrm{d}\boldsymbol{X}} = \boldsymbol{F - \boldsymbol{I}} = \boldsymbol{u}\nabla_{\boldsymbol{X}}</script><h2 id="速度梯度张量"><a href="#速度梯度张量" class="headerlink" title="速度梯度张量"></a><em>速度梯度张量</em></h2><ul>
 <li>定义速度矢量在当前构型中的右梯度为速度梯度张量</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -71,7 +72,7 @@
 \dot{\boldsymbol{F}} = \boldsymbol{L} \boldsymbol{F}</script><ul>
 <li>速度梯度的加法分解<ul>
 <li>$\boldsymbol{D}$：变形率张量，对称张量</li>
-<li>$\boldsymbol{W}$：旋率张量，反对称张量</li>
+<li>$\boldsymbol{W}$：旋率张量，反对称张量，无变形（刚体运动）情况下等于角速度张量 $\boldsymbol{\varOmega}$</li>
 </ul>
 </li>
 </ul>
@@ -88,7 +89,7 @@
 <li><a href="">近代连续介质力学</a></li>
 </ul>
 <hr>
-</div><div class="tags"></div><div class="post-nav"><a href="/2020/02/25/运动/" class="next">运动</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">6</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/02/29/应力/" class="pre">应力</a><a href="/2020/02/25/运动/" class="next">运动</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
