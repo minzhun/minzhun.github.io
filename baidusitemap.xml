@@ -3,14 +3,32 @@
 
 
     
-    
   <url>
-    <loc>https://minzhun.github.io/2020/03/01/%E5%AE%A2%E8%A7%82%E6%80%A7/</loc>
-    <lastmod>2020-03-01T09:20:39.564Z</lastmod>
+    <loc>https://minzhun.github.io/2020/03/03/%E6%9C%AC%E6%9E%84%E5%85%B3%E7%B3%BB/</loc>
+    <lastmod>2020-03-03T06:10:37.467Z</lastmod>
     <data>
         <display>
-        <title>客观性</title>
-        <pubTime>2020-02-29T16:00:00.000Z</pubTime>
+        <title>本构关系</title>
+        <pubTime>2020-03-02T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://minzhun.github.io/2020/02/29/%E5%BA%94%E5%8A%9B/</loc>
+    <lastmod>2020-03-02T02:02:56.638Z</lastmod>
+    <data>
+        <display>
+        <title>应力</title>
+        <pubTime>2020-02-28T16:00:00.000Z</pubTime>
         
          
            
@@ -23,12 +41,12 @@
 
     
   <url>
-    <loc>https://minzhun.github.io/2020/02/29/%E5%BA%94%E5%8A%9B/</loc>
-    <lastmod>2020-03-01T07:57:58.244Z</lastmod>
+    <loc>https://minzhun.github.io/2020/03/01/%E5%AE%A2%E8%A7%82%E6%80%A7/</loc>
+    <lastmod>2020-03-01T09:20:39.564Z</lastmod>
     <data>
         <display>
-        <title>应力</title>
-        <pubTime>2020-02-28T16:00:00.000Z</pubTime>
+        <title>客观性</title>
+        <pubTime>2020-02-29T16:00:00.000Z</pubTime>
         
          
            
@@ -286,24 +304,6 @@
            
              
               <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://minzhun.github.io/2017/11/21/%E6%9C%AC%E6%9E%84%E5%85%B3%E7%B3%BB/</loc>
-    <lastmod>2020-02-21T13:19:50.181Z</lastmod>
-    <data>
-        <display>
-        <title>本构关系</title>
-        <pubTime>2017-11-20T16:00:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>

@@ -54,7 +54,14 @@
 <li><em>Cauchy</em> 应力的 <em>Oldroyd</em> 客观率</li>
 </ul>
 <script type="math/tex; mode=display">
-\overset{\triangledown}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} - \boldsymbol{L} \boldsymbol{\sigma} - \boldsymbol{\sigma} \boldsymbol{L}^{\mathrm{T}}</script><h2 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a><em>应力状态</em></h2><ul>
+\overset{\triangledown}{\boldsymbol{\sigma}} = \dot{\boldsymbol{\sigma}} - \boldsymbol{L} \boldsymbol{\sigma} - \boldsymbol{\sigma} \boldsymbol{L}^{\mathrm{T}}</script><h2 id="应力的-Lie-导数"><a href="#应力的-Lie-导数" class="headerlink" title="应力的 Lie 导数"></a><em>应力的 Lie 导数</em></h2><ul>
+<li>将 Kirchhoff 应力张量从当前构型“回拉”至“参考构型”并求导，再“前推”至当前构型</li>
+<li>Kirchoff 应力的 Lie 导数又被称作其对流率</li>
+<li>Kirchoff 应力的 Lie 导数为客观张量</li>
+</ul>
+<script type="math/tex; mode=display">
+L_{\nu}\boldsymbol{\tau} = \boldsymbol{F} (\frac{\mathrm{D}}{\mathrm{D}t}(\boldsymbol{F^{-1}} \boldsymbol{\tau} \boldsymbol{F^{-T}})) \boldsymbol{F^T} = \boldsymbol{F} (\frac{\mathrm{D}\boldsymbol{S}}{\mathrm{D}t}) \boldsymbol{F^T}</script><script type="math/tex; mode=display">
+L_{\nu}\boldsymbol{\tau} = \boldsymbol{\tau}^{\nabla c} = \boldsymbol{\dot{\tau}} - \boldsymbol{L} \boldsymbol{\tau} - \boldsymbol{\tau} \boldsymbol{L^{T}}</script><h2 id="应力状态"><a href="#应力状态" class="headerlink" title="应力状态"></a><em>应力状态</em></h2><ul>
 <li>单轴应力状态：一个主应力不为零</li>
 </ul>
 <script type="math/tex; mode=display">
