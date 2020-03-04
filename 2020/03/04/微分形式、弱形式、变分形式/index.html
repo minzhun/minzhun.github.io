@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>微分形式、&quot;弱&quot;形式、变分形式 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">微分形式、&quot;弱&quot;形式、变分形式</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">微分形式、&quot;弱&quot;形式、变分形式</h1><div class="post-meta">Mar 4, 2020<span> | </span><span class="category"><a href="/categories/有限元法与数值分析/">有限元法与数值分析</a></span></div><div class="post-content"><h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a><em>一些概念</em></h2><ul>
+<li>$C^{m-1}$ 变分问题<ul>
+<li>泛函变量的最高阶导数为 <em>m</em> 阶</li>
+<li>本质边界条件：导数阶数最高为 <em>m-1</em> 阶，结构力学中指边界上的位移与转角</li>
+<li>自然边界条件：导数阶数从 <em>m</em> 阶至 <em>2m-1</em> 阶，结构力学中指边界上的力与力矩</li>
+</ul>
+</li>
+<li>$C^{m-1}$ 连续性<ul>
+<li>函数的 <em>0</em> 阶至 <em>m-1</em> 阶导数在域内连续</li>
+<li>函数的 <em>m</em> 阶导数有有限个不连续点，但在域内可积</li>
+</ul>
+</li>
+</ul>
+<h2 id="微分形式、”弱”形式、变分形式"><a href="#微分形式、”弱”形式、变分形式" class="headerlink" title="微分形式、”弱”形式、变分形式"></a><em>微分形式、”弱”形式、变分形式</em></h2><ul>
+<li>目标：建立物理问题的数学模型，求解未知场函数 $\boldsymbol{u}$<ul>
+<li>微分形式、”弱”形式、变分形式，三者等价</li>
+</ul>
+</li>
+</ul>
+<h3 id="微分形式"><a href="#微分形式" class="headerlink" title="- 微分形式"></a>- <em>微分形式</em></h3><ul>
+<li>微分形式：一般包括微分方程（即，控制方程）及其边界条件<ul>
+<li>$\boldsymbol{A}$、$\boldsymbol{B}$：微分算子</li>
+<li>$\boldsymbol{A}$ 中的最高阶导数阶次为 <em>2m</em></li>
+<li>$\boldsymbol{B}$ 中的最高阶导数阶次小于 $\boldsymbol{A}$</li>
+<li>边界条件包括本质边界条件与自然边界条件</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A}(\boldsymbol{u}) = 0\ \ \ \ \mathrm{in}\ \ V</script><script type="math/tex; mode=display">
+\boldsymbol{B}(\boldsymbol{u}) = 0\ \ \ \ \mathrm{on}\ \ \Gamma</script><ul>
+<li>微分形式的等效积分形式<ul>
+<li>隐含积分可以进行，即</li>
+<li>$\boldsymbol{v}$、$\bar{\boldsymbol{v}}$ 单值，且在 $V$ 与 $\Gamma$ 上可积</li>
+<li>$\boldsymbol{u}$ 需具有 $C^{2m-1}$ 连续性</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_V \boldsymbol{v}^{\mathrm{T}} \boldsymbol{A}(\boldsymbol{u}) \mathrm{d}V 
++ \int_\Gamma \bar{\boldsymbol{v}}^{\mathrm{T}} \boldsymbol{B}(\boldsymbol{u}) \mathrm{d} \Gamma = 0
+\ \ \ \ \mathrm{for\ all}\ \boldsymbol{v}\ \mathrm{and}\ \bar{\boldsymbol{v}}</script><h3 id="“弱”形式"><a href="#“弱”形式" class="headerlink" title="- “弱”形式"></a>- <em>“弱”形式</em></h3><ul>
+<li>等效积分形式的”弱”形式<ul>
+<li>对等效积分形式进行分部积分，得到等效积分形式的”弱”形式</li>
+<li>$\boldsymbol{u}$ 具有 $C^{m-1}$ 连续性即可</li>
+<li>以提高 $\boldsymbol{v}$ 连续性为代价，降低了对 $\boldsymbol{u}$ 的连续性要求</li>
+<li>$\boldsymbol{C}$、$\boldsymbol{D}$、$\boldsymbol{E}$、$\boldsymbol{F}$：微分算子</li>
+<li>“弱”形式中，自然边界条件自动满足，但 $\boldsymbol{v}$、$\bar{\boldsymbol{v}}$ 需满足本质边界条件</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_V \boldsymbol{C}^{\mathrm{T}}(\boldsymbol{v}) \boldsymbol{D}(\boldsymbol{u}) \mathrm{d}V 
++ \int_\Gamma \boldsymbol{E}^{\mathrm{T}} (\bar{\boldsymbol{v}}) \boldsymbol{F}(\boldsymbol{u}) \mathrm{d} \Gamma = 0</script><ul>
+<li>“弱”形式的伽辽金提法<ul>
+<li>上式中，$\boldsymbol{v}$、$\bar{\boldsymbol{v}}$ 分别取 $\delta \boldsymbol{u}$、$- \delta \boldsymbol{u}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="变分形式"><a href="#变分形式" class="headerlink" title="- 变分形式"></a>- <em>变分形式</em></h3><ul>
+<li>变分形式<ul>
+<li>构造泛函，将”弱”形式变为泛函求极值问题（ $C^{m-1}$ 变分问题）</li>
+<li>微分算子 $\boldsymbol{L}$ 需满足线性、自伴随的要求（$\boldsymbol{A}(\boldsymbol{u}) \equiv \boldsymbol{L}(\boldsymbol{u}) + \boldsymbol{f} = 0$）</li>
+<li>$\mathrm{b.t.}(\boldsymbol{u})$：与边界积分有关的项，$\boldsymbol{u}$、$\delta \boldsymbol{u}$ 满足一定条件时，变分符号可提到积分符号之外，得到全变分的形式</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\delta \Pi(\boldsymbol{u}) = 0</script><script type="math/tex; mode=display">
+\Pi(\boldsymbol{u}) = \int_V \left [ \frac{1}{2} \boldsymbol{u}^{\mathrm{T}} \boldsymbol{L}(\boldsymbol{u}) + \boldsymbol{u}^{\mathrm{T}} \boldsymbol{f} \right ] \mathrm{d}V + \mathrm{b.t.}(\boldsymbol{u})</script><ul>
+<li>自然变分原理：泛函 $\Pi$ 通过”弱”形式的伽辽金提法得到</li>
+</ul>
+<h2 id="“弱”形式与变分形式的近似解法"><a href="#“弱”形式与变分形式的近似解法" class="headerlink" title="“弱”形式与变分形式的近似解法"></a><em>“弱”形式与变分形式的近似解法</em></h2><ul>
+<li>对于大多数实际问题，得到 $\boldsymbol{u}$ 的解析解基本不可能，实际的做法是使用各种近似解法<ul>
+<li>“弱”形式与变分形式之所以重要，是因为二者降低了对试函数的连续性要求</li>
+<li>近似函数： $\boldsymbol{u} \approx \tilde{\boldsymbol{u}} = \boldsymbol{Na}$</li>
+<li>试函数（基函数、形函数）：$\boldsymbol{N}$，线性独立的函数序列</li>
+<li>待定参数：$\boldsymbol{a}$</li>
+</ul>
+</li>
+<li>加权余量法：基于等效积分形式及其”弱”形式的近似解法<ul>
+<li>权函数：$\boldsymbol{W}_i$、$\bar{\boldsymbol{W}}_i$</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_V \boldsymbol{C}^{\mathrm{T}}(\boldsymbol{W}_i) \boldsymbol{D}(\boldsymbol{\boldsymbol{Na}}) \mathrm{d}V 
++ \int_\Gamma \boldsymbol{E}^{\mathrm{T}} (\bar{\boldsymbol{W}}_i) \boldsymbol{F}(\boldsymbol{\boldsymbol{Na}}) \mathrm{d} \Gamma = 0
+\ \ \ \ (i = 1, \cdots ,n)</script><ul>
+<li>几种加权余量法：根据权函数的不同<ul>
+<li>配点法</li>
+<li>子域法</li>
+<li>最小二乘法</li>
+<li>伽辽金法</li>
+</ul>
+</li>
+<li>伽辽金（<em>Galerkin</em>）法：使用最广的”弱”形式的近似解法<ul>
+<li>取试函数作为权函数：$\boldsymbol{W}_i = - \bar{\boldsymbol{W}}_i = \boldsymbol{N}_i$</li>
+<li>优点：得到的最终求解的方程组的系数矩阵为对称矩阵</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_V \boldsymbol{C}^{\mathrm{T}}(\delta \tilde{\boldsymbol{u}}) \boldsymbol{D}(\tilde{\boldsymbol{u}}) \mathrm{d}V 
+- \int_\Gamma \boldsymbol{E}^{\mathrm{T}} (\delta \tilde{\boldsymbol{u}}) \boldsymbol{F}(\tilde{\boldsymbol{u}}) \mathrm{d} \Gamma = 0</script><ul>
+<li>里兹（<em>Ritz</em>）法：变分原理的近似解法<ul>
+<li>自然变分原理的里兹（<em>Ritz</em>）法与”弱”形式的伽辽金（<em>Galerkin</em>）法，得到的结果相同</li>
+<li>$\boldsymbol{K}$ 为对称矩阵</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial \Pi(\tilde{\boldsymbol{u}})}{\partial \boldsymbol{a}} \equiv \boldsymbol{K} \boldsymbol{a} - \boldsymbol{P} = 0</script><hr>
+<ul>
+<li><strong>2017.09.28</strong></li>
+<li><strong>2017.10.28</strong></li>
+<li><strong>2017.10.29</strong></li>
+</ul>
+<hr>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">有限单元法</a></li>
+<li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
+<li><a href="">连续体和结构的非线性有限元（第二版）</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/03/04/弹性力学中的变分原理/" class="next">弹性力学中的变分原理</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">9</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
