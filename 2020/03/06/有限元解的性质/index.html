@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>有限元解的性质与误差估计 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">有限元解的性质与误差估计</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">有限元解的性质与误差估计</h1><div class="post-meta">Mar 6, 2020<span> | </span><span class="category"><a href="/categories/有限元法与数值分析/">有限元法与数值分析</a></span></div><div class="post-content"><h2 id="一些定义"><a href="#一些定义" class="headerlink" title="一些定义"></a><em>一些定义</em></h2><ul>
+<li><em>H0 Norm</em>、<em>L2 Norm</em></li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{0} = \lVert \boldsymbol{u} \rVert_{L2}</script><script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{L2} = \left [ \int_{\varOmega} \boldsymbol{u}^2 \mathrm{d} \varOmega \right ]^{\frac{1}{2}}</script><ul>
+<li><em>H1 Norm</em></li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{1}^2 = \lVert \boldsymbol{u} \rVert_{0}^2 + \lVert \nabla \boldsymbol{u} \rVert_{0}^2</script><script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{1} = \left [ \int_{\varOmega} [\boldsymbol{u}^2 + (\nabla \boldsymbol{u})^2] \mathrm{d} \varOmega  \right ]^{\frac{1}{2}}</script><ul>
+<li><em>H-n Norm</em> ：求和至 n 阶导数</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{n}^2 = \lVert \boldsymbol{u} \rVert_{0}^2 + \lVert \nabla \boldsymbol{u} \rVert_{0}^2 + \lVert \nabla^2 \boldsymbol{u} \rVert_{0}^2 + \cdots</script><ul>
+<li><em>Energy Norm</em> ：$a(\cdot)$ 为双线性形式</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{E}^2 = a(\boldsymbol{u},\boldsymbol{u})</script><ul>
+<li>$H^1$ 空间：函数及函数的一阶导数在域内平方可积</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u} \rVert_{1} < \infty</script><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><em>问题描述</em></h2><ul>
+<li>弹性问题的“弱”形式，可描述为</li>
+</ul>
+<script type="math/tex; mode=display">
+Find \ \  \boldsymbol{u} \in V = \{ \boldsymbol{v} | \boldsymbol{v} \in H_1(\varOmega),\boldsymbol{v}_{\partial \varOmega u} = 0 \}\ \  so \ \  that</script><script type="math/tex; mode=display">
+a(\boldsymbol{u},\boldsymbol{v}) = (\boldsymbol{f},\boldsymbol{v}) \ \  \forall \ \  \boldsymbol{v} \in V</script><ul>
+<li>求解弹性问题的有限元解，可描述为</li>
+</ul>
+<script type="math/tex; mode=display">
+Find \ \  \boldsymbol{u}_h \in V_h \subset V = \{ \boldsymbol{v} | \boldsymbol{v} \in H_1(\varOmega),\boldsymbol{v}_{h\_\partial \varOmega u} = 0 \}\ \  so \ \  that</script><script type="math/tex; mode=display">
+a(\boldsymbol{u}_h,\boldsymbol{v}_h) = (\boldsymbol{f},\boldsymbol{v}_h) \ \  \forall \ \  \boldsymbol{v}_h \in V_h</script><h2 id="有限元解的性质"><a href="#有限元解的性质" class="headerlink" title="有限元解的性质"></a><em>有限元解的性质</em></h2><ul>
+<li>定义有限元解的误差</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{e} = \boldsymbol{u} - \boldsymbol{u}_h</script><h3 id="Galerkin-正交性"><a href="#Galerkin-正交性" class="headerlink" title="- Galerkin 正交性"></a>- Galerkin 正交性</h3><ul>
+<li>由于 $\boldsymbol{v}_h \in V_h \subset V$</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{u},\boldsymbol{v}_h) = (\boldsymbol{f},\boldsymbol{v}_h)</script><ul>
+<li>减去有限元解的“弱”形式</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{e},\boldsymbol{v}_h) = \boldsymbol{0}</script><ul>
+<li>上式说明，有限元解的误差与空间 $V_h$ 正交</li>
+<li>随网格细化，空间 $V_h$ 也在增加，有限元解的精度也在增加（$V_h$ 向 $V$ 扩展）</li>
+</ul>
+<h3 id="毕达哥拉斯定理"><a href="#毕达哥拉斯定理" class="headerlink" title="- 毕达哥拉斯定理"></a>- 毕达哥拉斯定理</h3><ul>
+<li>根据线性关系及上面提到的正交性质</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{u},\boldsymbol{u}) = a(\boldsymbol{u}_h+\boldsymbol{e},\boldsymbol{u}_h+\boldsymbol{e}) \\
+= a(\boldsymbol{u}_h,\boldsymbol{u}_h) + 2a(\boldsymbol{u}_h,\boldsymbol{e}) + a(\boldsymbol{e},\boldsymbol{e}) \\
+= a(\boldsymbol{u}_h,\boldsymbol{u}_h) + a(\boldsymbol{e},\boldsymbol{e})</script><ul>
+<li>由于双线性形式为 Energy Norm 的平方，均大于等于零，则有</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{u}_h,\boldsymbol{u}_h) \leqslant a(\boldsymbol{u},\boldsymbol{u})</script><ul>
+<li>上式说明，有限元解低估了精确解的应变能</li>
+<li>对于弹性问题，可以认为求解得到的位移偏小</li>
+</ul>
+<h3 id="“最佳近似”"><a href="#“最佳近似”" class="headerlink" title="- “最佳近似”"></a>- “最佳近似”</h3><ul>
+<li>对于任意的 $\boldsymbol{w}_h \in V_h$ ，根据上面的性质</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{e}+\boldsymbol{w}_h,\boldsymbol{e}+\boldsymbol{w}_h) =  a(\boldsymbol{e},\boldsymbol{e}) + a(\boldsymbol{w}_h,\boldsymbol{w}_h)</script><ul>
+<li>所以有</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{e},\boldsymbol{e}) \leqslant a(\boldsymbol{e}+\boldsymbol{w}_h,\boldsymbol{e}+\boldsymbol{w}_h)</script><ul>
+<li>选择 $\boldsymbol{w}_h = \boldsymbol{u}_h - \boldsymbol{v}_h$ 代入上式</li>
+</ul>
+<script type="math/tex; mode=display">
+a(\boldsymbol{e},\boldsymbol{e}) \leqslant a(\boldsymbol{u}-\boldsymbol{v}_h,\boldsymbol{u}+\boldsymbol{v}_h)</script><ul>
+<li>上式说明，有限元解是 $V_h$ 中与精确解“能量距离”最短的那个，即，$V_h$ 中的“最佳近似”</li>
+<li>之所以称“能量距离”，是因为双线性形式是 Energy Norm 的平方，在弹性问题中表示应变能</li>
+</ul>
+<h2 id="有限元解的收敛性"><a href="#有限元解的收敛性" class="headerlink" title="有限元解的收敛性"></a><em>有限元解的收敛性</em></h2><ul>
+<li>H1 Norm 与 Energy Norm 的等价性</li>
+</ul>
+<script type="math/tex; mode=display">
+c_1 \lVert \boldsymbol{u} \rVert_{n} \leqslant a(\boldsymbol{u},\boldsymbol{u})^{\frac{1}{2}} \leqslant c_1 \lVert \boldsymbol{u} \rVert_{n}</script><ul>
+<li>Soblev Interpolation Error Estimation</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{u}-I_h\boldsymbol{u} \rVert_{n} \leqslant c h^{\alpha} \lVert \boldsymbol{u} \rVert_{r}</script><ul>
+<li>根据上面两式及“最佳近似”性质，可推导出</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{e} \rVert_{n} \leqslant c h^{\alpha} \lVert \boldsymbol{u} \rVert_{r}</script><script type="math/tex; mode=display">
+\alpha = \mathrm{min}(k+1-n,r-n)</script><ul>
+<li>$c$ ：与单元大小无关的常数，与材料等有关</li>
+<li>$k$ ：有限元解能够再造的多项式阶数，或可认为是多项式插值形函数的阶数</li>
+<li>$h$ ：单元大小</li>
+<li>$r$ ：若精确解存在 H-r Norm，$r$ 反映解光滑的程度</li>
+<li>对于关心的 H-n Norm，上面的式子可以给出有限元解误差的上限</li>
+</ul>
+<h3 id="一些说明"><a href="#一些说明" class="headerlink" title="- 一些说明"></a>- 一些说明</h3><ul>
+<li>如果常数 $c$ 本身很大，则单元大小再小，也可能无法得到有意义的误差上限</li>
+<li>精确解的光滑程度影响收敛阶，如果精确解如果不够“光滑”，则 $\alpha$ 受限于 $r$ ， 提高单元多项式阶数起不能加快收敛</li>
+<li>精确解足够光滑时，位移收敛快于应变（分别对应 $n$ 取 0 和取 1）</li>
+<li>如果单元扭曲严重，会影响收敛速度</li>
+</ul>
+<h2 id="误差估计指标"><a href="#误差估计指标" class="headerlink" title="误差估计指标"></a><em>误差估计指标</em></h2><ul>
+<li>现实中几乎不可能“先验”地知道精确解，所以需要“后验”的方法来确定误差估计不等式的右端</li>
+<li>拉普拉斯问题，使用线性单元求解，有</li>
+</ul>
+<script type="math/tex; mode=display">
+\lVert \boldsymbol{e} \rVert_{E}^2 \leqslant c h^{2} \lVert \nabla^2 \boldsymbol{u} \rVert_{E}^2 = c \Sigma h_k^{2} \lVert \nabla^2 \boldsymbol{u} \rVert_{E,k}^2 = c \Sigma \boldsymbol{e}_{E,k}^2</script><ul>
+<li>使用 Kelly Error Estimator $\boldsymbol{\eta}_{E,k}$ 代替 $\boldsymbol{e}_{E,k}$</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\eta}_{E,k} = h_k^{\frac{1}{2}}(\int_{\partial k} |[\nabla \boldsymbol{u}_h]|^2)^{\frac{1}{2}}</script><ul>
+<li>这里面借用了有限差分的想法，使用一阶导数的 jump 代替二阶导数</li>
+</ul>
+<script type="math/tex; mode=display">
+\nabla^2\boldsymbol{u} \approx \frac{\nabla \boldsymbol{u}_h^{+} - \nabla \boldsymbol{u}_h^{-}}{h} = \frac{[\nabla \boldsymbol{u}_h]}{h}</script><ul>
+<li>即使对于其他问题（非拉普拉斯）和高阶单元，也可以尝试使用 Kelly Error Estimator</li>
+</ul>
+<h2 id="网格细化策略"><a href="#网格细化策略" class="headerlink" title="网格细化策略"></a><em>网格细化策略</em></h2><ul>
+<li>希望误差在域内均匀的分布</li>
+<li>对于拉普拉斯问题，使用线性单元求解时</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{e}_k = const. \ \  h_k \propto \frac{1}{\lVert \nabla^2 \boldsymbol{u} \rVert_{E,k}}</script><ul>
+<li>简而言之，在精确解变化距离的地方采用较小的单元</li>
+</ul>
+<h3 id="一些策略"><a href="#一些策略" class="headerlink" title="- 一些策略"></a>- 一些策略</h3><ul>
+<li>Global Refinement：整体细化；不需要计算误差估计指标；但有些细化是不必要的</li>
+<li>Bulk Refinement：对占整体误差一定比例（例如90%）的单元进行细化，同时粗化某些单元</li>
+<li>Fixed Number Refinement ：每次细化固定的数量，使每次单元数量增量接近</li>
+</ul>
+<hr>
+<ul>
+<li><strong>2020.03.06</strong></li>
+</ul>
+<hr>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="https://open.umich.edu/find/open-educational-resources/engineering/introduction-finite-element-methods" target="_blank" rel="external">Introduction to Finite Element Methods - Unit 05</a></li>
+<li><a href="https://www.math.colostate.edu/~bangerth/videos.html" target="_blank" rel="external">Wolfgang Bangerth’s Video Lecture - Lecture 17</a></li>
+<li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
+<li><a href="">连续体和结构的非线性有限元（第二版）</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/03/04/微分形式、弱形式、变分形式/" class="next">微分形式、&quot;弱&quot;形式、变分形式</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
