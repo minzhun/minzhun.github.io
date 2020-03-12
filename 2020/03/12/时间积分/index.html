@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>时间积分 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">时间积分</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">时间积分</h1><div class="post-meta">Mar 12, 2020<span> | </span><span class="category"><a href="/categories/有限元法与数值分析/">有限元法与数值分析</a></span></div><div class="post-content"><h2 id="时间离散与空间离散"><a href="#时间离散与空间离散" class="headerlink" title="时间离散与空间离散"></a><em>时间离散与空间离散</em></h2><ul>
+<li>根据离散的先后顺序，可分为两种方法</li>
+</ul>
+<h3 id="Method-of-Lines"><a href="#Method-of-Lines" class="headerlink" title="- Method of Lines"></a>- Method of Lines</h3><ul>
+<li>先进行空间离散，获得较大的 ODEs</li>
+<li>再根据 ODE 求解方法，进行时间离散</li>
+</ul>
+<h3 id="Rothe-Method"><a href="#Rothe-Method" class="headerlink" title="- Rothe Method"></a>- Rothe Method</h3><ul>
+<li>先进行时间离散，获得每个时刻的 PDE</li>
+<li>再进行空间离散，求解每个时刻的 PDE</li>
+<li>每个时刻可采用不同的空间离散</li>
+</ul>
+<h2 id="时间离散需要考虑的问题"><a href="#时间离散需要考虑的问题" class="headerlink" title="时间离散需要考虑的问题"></a><em>时间离散需要考虑的问题</em></h2><ul>
+<li>有限元法进行时间离散时，一般仍采用差分方法</li>
+</ul>
+<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="- 稳定性"></a>- 稳定性</h3><ul>
+<li>某一时刻的误差，不随时间的增加被放大</li>
+</ul>
+<h3 id="精度"><a href="#精度" class="headerlink" title="- 精度"></a>- 精度</h3><ul>
+<li>描述精确解与数值解之间截断误差的大小</li>
+<li>也可通过数值解的周期增大与振幅减小体现</li>
+</ul>
+<h2 id="显式方法与隐式方法"><a href="#显式方法与隐式方法" class="headerlink" title="显式方法与隐式方法"></a><em>显式方法与隐式方法</em></h2><ul>
+<li>已知 $t_{n-1}$时刻结果，求 $t_{n}$时刻结果，以求解下面的方程为例</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{M} \frac{\partial \boldsymbol{U}(t)}{\partial t} + \boldsymbol{A} \boldsymbol{U}(t) = \boldsymbol{F}(t)</script><h3 id="显式方法"><a href="#显式方法" class="headerlink" title="- 显式方法"></a>- 显式方法</h3><ul>
+<li>求解 $t_{n-1}$时刻的平衡方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{M} \frac{\boldsymbol{U}_{n}-\boldsymbol{U}_{n-1}}{\varDelta t} + \boldsymbol{A} \boldsymbol{U}_{n-1} = \boldsymbol{F}(t_{n-1})</script><h3 id="隐式方法"><a href="#隐式方法" class="headerlink" title="- 隐式方法"></a>- 隐式方法</h3><ul>
+<li>求解 $t_{n}$时刻的平衡方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{M} \frac{\boldsymbol{U}_{n}-\boldsymbol{U}_{n-1}}{\varDelta t} + \boldsymbol{A} \boldsymbol{U}_{n} = \boldsymbol{F}(t_{n})</script><h2 id="一阶-ODE：时间积分的-alpha-方法"><a href="#一阶-ODE：时间积分的-alpha-方法" class="headerlink" title="一阶 ODE：时间积分的 $\alpha$方法"></a><em>一阶 ODE：时间积分的 $\alpha$方法</em></h2><ul>
+<li>格式</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{y_{n}-y_{n-1}}{\varDelta t} = f(y_{n-1+\alpha})</script><script type="math/tex; mode=display">
+y_{n-1+\alpha} = \alpha y_{n} + (1-\alpha)y_{n-1}</script><ul>
+<li>$\alpha = 0$ ：Forward Eular Method，一阶精度</li>
+<li>$\alpha = 1$ ：Backward Eular Method，一阶精度</li>
+<li>$\alpha = 1/2$ ：Crank-Nicolson Method，二阶精度</li>
+</ul>
+<h2 id="二阶-ODE：中心差分法"><a href="#二阶-ODE：中心差分法" class="headerlink" title="二阶 ODE：中心差分法"></a><em>二阶 ODE：中心差分法</em></h2><ul>
+<li>格式</li>
+</ul>
+<script type="math/tex; mode=display">
+\ddot{y}_{n-1} = \frac{1}{\varDelta t^2} (y_{n}-y_{n-1}+y_{n-2})</script><script type="math/tex; mode=display">
+\dot{y}_{n-1} = \frac{1}{2 \varDelta t} (y_{n}-y_{n-2})</script><h2 id="稳定性的分析方法"><a href="#稳定性的分析方法" class="headerlink" title="稳定性的分析方法"></a><em>稳定性的分析方法</em></h2><ul>
+<li>建立时间积分的递归形式</li>
+<li>$\boldsymbol{A}$：Approximation Operator；$L$：Load Operator</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{U}_{n} = \boldsymbol{A} \boldsymbol{U}_{n-1} + \boldsymbol{L}_{n}</script><ul>
+<li>计算 $\boldsymbol{A}$ 的谱半径：在复平面上计算特征值的绝对值（特征值为复数），其中最大的那个</li>
+</ul>
+<script type="math/tex; mode=display">
+\rho(\boldsymbol{A}) = \mathrm{max}|\lambda_{i}|</script><ul>
+<li>则，积分方法的稳定性判断标准是：</li>
+<li>当 $\boldsymbol{A}$ 的特征值各不相同时</li>
+</ul>
+<script type="math/tex; mode=display">
+\rho(\boldsymbol{A}) \leqslant 1</script><ul>
+<li>当 $\boldsymbol{A}$ 包含相同特征值时</li>
+</ul>
+<script type="math/tex; mode=display">
+\rho(\boldsymbol{A}) < 1</script><h2 id="Lax-定理"><a href="#Lax-定理" class="headerlink" title="Lax 定理"></a><em>Lax 定理</em></h2><ul>
+<li>收敛性（Convergence） = 相容性（Consistency） + 稳定性（Stability）</li>
+<li>收敛性：差分方程（即，时间离散后的方程）的解逼近微分方程的精确解的程度</li>
+<li>相容性：差分方程逼近微分方程的程度</li>
+<li>稳定性：误差能否被抑制</li>
+</ul>
+<h2 id="抛物型问题"><a href="#抛物型问题" class="headerlink" title="抛物型问题"></a><em>抛物型问题</em></h2><ul>
+<li>典型为热传导方程（初始条件、边界条件未列出）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial u(x,t)}{\partial t} - \varDelta u(x,t) = f(x,t)</script><ul>
+<li>使用 Method of Lines，获得以下形式的 ODEs</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{M} \frac{\partial \boldsymbol{U}(t)}{\partial t} + \boldsymbol{A} \boldsymbol{U}(t) = \boldsymbol{F}(t)</script><ul>
+<li>使用特征值与特征向量，对解的空间进行转换，则问题可转化为解耦了的各广义坐标的单自由度问题</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} \boldsymbol{\varphi}_k = \lambda_k \boldsymbol{M} \boldsymbol{\varphi}_k</script><script type="math/tex; mode=display">
+\boldsymbol{U}_n = \sum_k {(\hat{u}_k)_n \varphi_k}</script><h3 id="显式方法：Forward-Eular-Mehtod"><a href="#显式方法：Forward-Eular-Mehtod" class="headerlink" title="- 显式方法：Forward Eular Mehtod"></a>- 显式方法：Forward Eular Mehtod</h3><ul>
+<li>研究齐次方程，对于第 k 个广义坐标</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{(\hat{u}_k)_{n}-(\hat{u}_k)_{n-1}}{\varDelta t} + \lambda_k (\hat{u}_k)_{n-1} = 0</script><ul>
+<li>稳定性要求为</li>
+</ul>
+<script type="math/tex; mode=display">
+|1 - \lambda_k \varDelta t| \leqslant 1 \ \ \ \  \forall k</script><ul>
+<li>即，</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta t \leqslant \frac{2}{\lambda_k} \ \ \ \  \forall k</script><ul>
+<li>对于上面的热传导方程</li>
+</ul>
+<script type="math/tex; mode=display">
+(\lambda_k)_{max} \approx \frac{\pi^2}{h^2}</script><ul>
+<li>则，稳定性要求变为下式，其中， $h$ 为均匀网格下的单元大小</li>
+<li>$\varDelta t$ 需要满足一定条件，才能保证积分方法的稳定性，是为有条件稳定</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta t \leqslant \frac{2 h^2}{\pi^2}</script><h3 id="隐式方法：Backward-Eular-Mehtod"><a href="#隐式方法：Backward-Eular-Mehtod" class="headerlink" title="- 隐式方法：Backward Eular Mehtod"></a>- 隐式方法：Backward Eular Mehtod</h3><ul>
+<li>同样，研究齐次方程，对于第 k 个广义坐标</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{(\hat{u}_k)_{n}-(\hat{u}_k)_{n-1}}{\varDelta t} + \lambda_k (\hat{u}_k)_{n} = 0</script><ul>
+<li>稳定性要求为</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{1}{|1 + \lambda_k \varDelta t|} \leqslant 1 \ \ \ \  \forall k</script><ul>
+<li>对于任意大小的 $\varDelta t$，上式均能得到满足，故，是为无条件稳定</li>
+</ul>
+<h3 id="alpha-方法的一般情况"><a href="#alpha-方法的一般情况" class="headerlink" title="- $\alpha$ 方法的一般情况"></a>- $\alpha$ 方法的一般情况</h3><ul>
+<li>$1/2 \leqslant \alpha \leqslant 1$ ：无条件稳定；$0 \leqslant \alpha &lt; 1/2$ ：有条件稳定，此时</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta t \leqslant \frac{2}{(1-2\alpha) \lambda_k} \ \ \ \  \forall k</script><ul>
+<li>对于单自由度问题，Approximation Factor，上标 h 表示由单元大小决定</li>
+</ul>
+<script type="math/tex; mode=display">
+A = \frac{1-(1-\alpha) \lambda^h \varDelta t}{1+\alpha \lambda^h \varDelta t}</script><ul>
+<li>对于响应的高频成分，随时间增加：$\alpha=0$，趋向无穷大；$\alpha=1/2$，振荡；$\alpha=1$，趋向于零</li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="- Notes"></a>- Notes</h3><ul>
+<li>抛物型问题的解，本身具有随时间不断趋于光滑的特点</li>
+<li>由于隐式方法无条件稳定，故可以采用较大的时间步长，也可以获得不错的结果</li>
+<li>另外，隐式方法本身也具有使高频响应衰减的特点，与解的特点相适应</li>
+<li>反之，如果采用显式方法，需要较小的时间步长，求解代价比较高</li>
+<li>由于显式方法的时间步长与单元大小的平方相关，网格加密一倍，时间步长需要缩小为四分之一</li>
+</ul>
+<h2 id="双曲型问题"><a href="#双曲型问题" class="headerlink" title="双曲型问题"></a><em>双曲型问题</em></h2><ul>
+<li>典型的二阶双曲型问题为波动方程（初始条件、边界条件未列出）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial^2 u(x,t)}{\partial t^2} - \varDelta u(x,t) = f(x,t)</script><ul>
+<li>使用 Method of Lines，获得以下形式的 ODEs</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{M} \frac{\partial^2 \boldsymbol{U}(t)}{\partial t^2} + \boldsymbol{A} \boldsymbol{U}(t) = \boldsymbol{F}(t)</script><ul>
+<li>与上一部分类似，使用特征值与特征向量，对解的空间进行转换，将问题转化为解耦了的各广义坐标的单自由度问题</li>
+</ul>
+<h3 id="显式方法-1"><a href="#显式方法-1" class="headerlink" title="- 显式方法"></a>- 显式方法</h3><ul>
+<li>以中心差分为例，研究齐次方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{(\hat{u}_k)_{n}-2(\hat{u}_k)_{n-1}+(\hat{u}_k)_{n-2}}{\varDelta t^2} + \lambda_k (\hat{u}_k)_{n-1} = 0</script><ul>
+<li>稳定性要求 Approximation Factor 不大于1，那么一个不太严格的稳定性要求可写作</li>
+</ul>
+<script type="math/tex; mode=display">
+|2 - \lambda_k \varDelta t^2 -1| \leqslant 1 \ \ \ \  \forall k</script><ul>
+<li>考虑上面提到过的单元大小与 $\lambda_k$ 的关系</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta t \leqslant \sqrt{2} \frac{h}{\pi}</script><ul>
+<li>时间步长需要满足一定条件，故，这一部分列出的显式方法为有条件稳定</li>
+<li>对于其他显式方法，对时间步长的限制条件与之类似，不等式右边系数会有不同</li>
+</ul>
+<h3 id="隐式方法-1"><a href="#隐式方法-1" class="headerlink" title="- 隐式方法"></a>- 隐式方法</h3><ul>
+<li>同样，以中心差分为例，研究齐次方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{(\hat{u}_k)_{n}-2(\hat{u}_k)_{n-1}+(\hat{u}_k)_{n-2}}{\varDelta t^2} + \lambda_k (\hat{u}_k)_{n} = 0</script><ul>
+<li>整理后可得</li>
+</ul>
+<script type="math/tex; mode=display">
+(\hat{u}_k)_{n} = \frac{1}{1+ \lambda_k \varDelta t^2} [2(\hat{u}_k)_{n-1}-(\hat{u}_k)_{n-2}]</script><ul>
+<li>对于任意大小的 $\varDelta t$，上式均能得到满足，故，这里提到的隐式方法为无条件稳定</li>
+</ul>
+<h3 id="CFL-Number"><a href="#CFL-Number" class="headerlink" title="- CFL Number"></a>- CFL Number</h3><ul>
+<li>对于更具物理意义的波动方程形式</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial^2 u(x,t)}{\partial t^2} - c^2 \varDelta u(x,t) = f(x,t)</script><ul>
+<li>其中 $c$ 为波速，可认为是信息传播的速度</li>
+<li>定义 CFL Nuber（Courant-Friedrichs-Lewy）为单个时间步内信息传播距离与单元大小的比值</li>
+</ul>
+<script type="math/tex; mode=display">
+CFL = \frac{c \varDelta t}{h}</script><ul>
+<li>则，稳定性要求可写作</li>
+</ul>
+<script type="math/tex; mode=display">
+CFL \leqslant \frac{\sqrt{2}}{\pi}</script><ul>
+<li>对于不同的显式方法，不等式右边会不同</li>
+</ul>
+<h3 id="Notes-1"><a href="#Notes-1" class="headerlink" title="- Notes"></a>- Notes</h3><ul>
+<li>这里提到的波动方程，描述的是某种信息的传播，且不随时间衰减</li>
+<li>信息应当在网格中依次传播，所以从结果的精度考虑，时间步长不应超过信息“穿过”一个单元的时间，即</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta t \leqslant \frac{h}{c}</script><ul>
+<li>这种形式与上面提到的稳定性要求一致</li>
+<li>虽然隐式方法无条件稳定，但从计算精度考虑，时间步长也不宜超过上述值</li>
+<li>此时，显式方法是相对更有效率的方法，它不需要求解线性方程组</li>
+<li>并且，时间步长与单元大小的一次方相关，加密网格的代价并不是很高</li>
+</ul>
+<h2 id="显式方法与隐式方法的组合"><a href="#显式方法与隐式方法的组合" class="headerlink" title="显式方法与隐式方法的组合"></a><em>显式方法与隐式方法的组合</em></h2><ul>
+<li>比较典型的时间相关问题包括：抛物型（热传导方程）、一阶双曲型（输运方程）、二阶双曲型（波动方程）</li>
+<li>根据上面的讨论，抛物型适合采用隐式方法，双曲型适合采用显式方法</li>
+<li>但现实中的问题，并不能够严格地分类到上述类别之中，例如，对流-扩散问题</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial u}{\partial t} + \boldsymbol{\beta} \cdot \nabla u - \varDelta u = f</script><ul>
+<li>对流项提示显式方法更合适，但扩散项提示隐式方法更合适</li>
+</ul>
+<h3 id="IMEX（Implicit-Explicit）Schemes"><a href="#IMEX（Implicit-Explicit）Schemes" class="headerlink" title="- IMEX（Implicit/Explicit）Schemes"></a>- IMEX（Implicit/Explicit）Schemes</h3><ul>
+<li>显式处理对流项、隐式处理扩散项</li>
+<li>按物理现象做区分</li>
+<li>同时求解对流项、扩散项、源项引起的增量</li>
+<li>三部分可分别求解后相加</li>
+</ul>
+<h3 id="Operator-Spliting-Schemes"><a href="#Operator-Spliting-Schemes" class="headerlink" title="- Operator Spliting Schemes"></a>- Operator Spliting Schemes</h3><ul>
+<li>显式处理对流项、隐式处理扩散项</li>
+<li>按物理现象做区分</li>
+<li>依次求解对流项、扩散项、源项引起的增量，而不是同时</li>
+<li>Lie Splitting：一阶精度</li>
+<li>Strang Splitting：增加子步，获得二阶精度</li>
+</ul>
+<h2 id="更高的精度"><a href="#更高的精度" class="headerlink" title="更高的精度"></a><em>更高的精度</em></h2><ul>
+<li>BDF-2（Backward Differenciation Formula）</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\partial u}{\partial t} \approx \frac{\frac{3}{2}u_{n}-2u_{n-1}+\frac{1}{2}u_{n-2}}{\varDelta t}</script><hr>
+<ul>
+<li><strong>2020.03.12</strong></li>
+</ul>
+<hr>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="https://open.umich.edu/find/open-educational-resources/engineering/introduction-finite-element-methods" target="_blank" rel="external">Introduction to Finite Element Methods - Unit 11、12</a></li>
+<li><a href="https://www.math.colostate.edu/~bangerth/videos.html" target="_blank" rel="external">Wolfgang Bangerth’s Video Lecture - Lecture 26、27、28、30.25</a></li>
+<li><a href="https://wenku.baidu.com/view/0e8634d5cf84b9d529ea7a38.html" target="_blank" rel="external">差分方程的相容性、收敛性和稳定性</a></li>
+<li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/03/06/有限元解的性质/" class="next">有限元解的性质与误差估计</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
