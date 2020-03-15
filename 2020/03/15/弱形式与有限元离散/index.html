@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>“弱”形式与有限元离散 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">“弱”形式与有限元离散</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">“弱”形式与有限元离散</h1><div class="post-meta">Mar 15, 2020<span> | </span><span class="category"><a href="/categories/有限元法与数值分析/">有限元法与数值分析</a></span></div><div class="post-content"><ul>
+<li>有限元法的出发点为“弱”形式的控制方程</li>
+</ul>
+<h2 id="线弹性问题的静力平衡方程"><a href="#线弹性问题的静力平衡方程" class="headerlink" title="线弹性问题的静力平衡方程"></a><em>线弹性问题的静力平衡方程</em></h2><h3 id="微分形式的控制方程"><a href="#微分形式的控制方程" class="headerlink" title="- 微分形式的控制方程"></a>- 微分形式的控制方程</h3><ul>
+<li>求解位移 $\boldsymbol{u}$ </li>
+<li>在域内</li>
+</ul>
+<script type="math/tex; mode=display">
+\nabla \cdot \boldsymbol{\sigma} + \boldsymbol{f}_B = \boldsymbol{0}</script><ul>
+<li>位移边界条件</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{On} \ \  \partial \varOmega_u \ \ , \ \  \boldsymbol{u} = \bar{\boldsymbol{u}}</script><ul>
+<li>力边界条件</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{On} \ \ \partial \varOmega_f \ \ , \ \  \boldsymbol{\sigma} \boldsymbol{n} = \boldsymbol{f}_S</script><ul>
+<li>本构关系</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\sigma} = \mathbb{C} : \boldsymbol{\varepsilon}</script><ul>
+<li>变形关系</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\varepsilon} = \frac{1}{2} (\nabla \boldsymbol{u} + \boldsymbol{u} \nabla)</script><h3 id="“弱”形式的控制方程"><a href="#“弱”形式的控制方程" class="headerlink" title="- “弱”形式的控制方程"></a>- “弱”形式的控制方程</h3><ul>
+<li>与上述微分形式对应的“弱”形式控制方程，实际为虚位移原理</li>
+<li>“弱”形式的控制方程，既可以从上述微分方程导出，也可以从位能驻值原理导出</li>
+<li>虚位移原理，即，内部虚应变能等于外虚功</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_{\varOmega} \tilde{\boldsymbol{\varepsilon}}^T \boldsymbol{\sigma} \mathrm{d}V = \int_{\varOmega} \tilde{\boldsymbol{u}}^T \boldsymbol{f}_B \mathrm{d}V + \int_{\partial \varOmega_f} \tilde{\boldsymbol{u}}_S^T \boldsymbol{f}_S \mathrm{d}S</script><ul>
+<li>上式中，虚位移、虚应变、应力、体积力、面力均为矢量形式</li>
+<li>产生虚应变的虚位移，需满足 $On \ \ \partial \varOmega_u \ \  \tilde{\boldsymbol{u}}=\boldsymbol{0}$</li>
+</ul>
+<h3 id="有限元离散"><a href="#有限元离散" class="headerlink" title="- 有限元离散"></a>- 有限元离散</h3><ul>
+<li>将整个域划分为若干单元，单元通过节点连接</li>
+<li>使用节点位移与插值函数，表示域内待求解的位移函数</li>
+<li>单元内部位移</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{u}^{(m)}(x,y,z) = \boldsymbol{H}^{(m)}(x,y,z) \ \boldsymbol{U}</script><script type="math/tex; mode=display">
+\tilde{\boldsymbol{u}}^{(m)}(x,y,z) = \boldsymbol{H}^{(m)}(x,y,z) \ \tilde{\boldsymbol{U}}</script><ul>
+<li>单元边界位移，$\boldsymbol{H}_S^{(m)}$ 可由 $\boldsymbol{H}^{(m)}$ 导出</li>
+</ul>
+<script type="math/tex; mode=display">
+\tilde{\boldsymbol{u}}_S^{(m)}(x,y,z) = \boldsymbol{H}_S^{(m)}(x,y,z) \ \tilde{\boldsymbol{U}}</script><ul>
+<li>应变</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\varepsilon}^{(m)}(x,y,z) = \boldsymbol{B}^{(m)}(x,y,z) \ \boldsymbol{U}</script><script type="math/tex; mode=display">
+\tilde{\boldsymbol{\varepsilon}}^{(m)}(x,y,z) = \boldsymbol{B}^{(m)}(x,y,z) \ \tilde{\boldsymbol{U}}</script><ul>
+<li>本构关系</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{\sigma}^{(m)} = \boldsymbol{C} \boldsymbol{\varepsilon}^{(m)}</script><ul>
+<li>上标 $m$ 表示某个单元</li>
+<li>$\boldsymbol{U}$、$\tilde{\boldsymbol{U}}$ 为矢量形式的节点位移，包含的分量个数为离散后系统的自由度数目</li>
+</ul>
+<h3 id="离散后的平衡方程"><a href="#离散后的平衡方程" class="headerlink" title="- 离散后的平衡方程"></a>- 离散后的平衡方程</h3><ul>
+<li>将有限元离散代入“弱”形式的控制方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_m \int_{\varOmega^{(m)}} \tilde{\boldsymbol{U}}^T \boldsymbol{B}^{(m)T} \boldsymbol{C} \boldsymbol{B}^{(m)} \boldsymbol{U} \mathrm{d}V^{(m)} \\
+= \sum_m \int_{\varOmega^{(m)}} \tilde{\boldsymbol{U}}^T \boldsymbol{H}^{(m)T} \boldsymbol{f}^{(m)}_B \mathrm{d}V^{(m)} + \sum_{m_S} \int_{\partial \varOmega^{(m_S)}} \tilde{\boldsymbol{U}}^T \boldsymbol{H}_S^{(m)T} \boldsymbol{f}^{(m)}_S \mathrm{d}S^{(m)}</script><ul>
+<li>$\boldsymbol{U}$、$\tilde{\boldsymbol{U}}$ 表示所有节点上的位移与虚位移，与单元无关，可从求和中提出</li>
+</ul>
+<script type="math/tex; mode=display">
+\tilde{\boldsymbol{U}}^T \left (\sum_m \int_{\varOmega^{(m)}} \boldsymbol{B}^{(m)T} \boldsymbol{C} \boldsymbol{B}^{(m)} \mathrm{d}V^{(m)} \right ) \boldsymbol{U} \\
+= \tilde{\boldsymbol{U}}^T \left ( \sum_m \int_{\varOmega^{(m)}} \boldsymbol{H}^{(m)T} \boldsymbol{f}^{(m)}_B \mathrm{d}V^{(m)} \right ) + \tilde{\boldsymbol{U}}^T \left ( \sum_{m_S} \int_{\partial \varOmega^{(m_S)}} \boldsymbol{H}_S^{(m)T} \boldsymbol{f}^{(m)}_S \mathrm{d}S^{(m)} \right )</script><ul>
+<li>依次取各个自由度上的单位虚位移，可得离散后的平衡方程</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{K} \boldsymbol{U} = \boldsymbol{F}_B + \boldsymbol{F}_S</script><ul>
+<li>刚度矩阵</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{K} = \sum_m \int_{\varOmega^{(m)}} \boldsymbol{B}^{(m)T} \boldsymbol{C} \boldsymbol{B}^{(m)} \mathrm{d}V^{(m)}</script><ul>
+<li>体积力矢量</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F}_B = \sum_m \int_{\varOmega^{(m)}} \boldsymbol{H}^{(m)T} \boldsymbol{f}^{(m)}_B \mathrm{d}V^{(m)}</script><ul>
+<li>面力矢量</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{F}_S = \sum_{m_S} \int_{\partial \varOmega^{(m_S)}} \boldsymbol{H}_S^{(m)T} \boldsymbol{f}^{(m)}_S \mathrm{d}S^{(m)}</script><ul>
+<li>通过单元积分与求和，获得刚度矩阵、体积力矢量、面力矢量</li>
+</ul>
+<h2 id="泊松方程"><a href="#泊松方程" class="headerlink" title="泊松方程"></a><em>泊松方程</em></h2><h3 id="微分形式的控制方程-1"><a href="#微分形式的控制方程-1" class="headerlink" title="- 微分形式的控制方程"></a>- 微分形式的控制方程</h3><ul>
+<li>在求解域内</li>
+</ul>
+<script type="math/tex; mode=display">
+- \nabla^2 u = f</script><ul>
+<li>边界条件（这里只考虑 Dirichlet 边界条件）</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{On} \ \  \partial \varOmega \ \ , \ \  u = 0</script><h3 id="从微分形式到“弱”形式"><a href="#从微分形式到“弱”形式" class="headerlink" title="- 从微分形式到“弱”形式"></a>- 从微分形式到“弱”形式</h3><ul>
+<li>等式两边同乘试函数，并在域内积分；试函数需满足边界条件</li>
+</ul>
+<script type="math/tex; mode=display">
+- \int_{\varOmega} \varphi \ \nabla^2 u \ \mathrm{d}V = \int_{\varOmega} \varphi f \ \mathrm{d}V</script><ul>
+<li>等式左边利用分部积分法，重写为</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_{\varOmega} \nabla \varphi \cdot \nabla u \ \mathrm{d}V - \int_{\partial \varOmega} \varphi \nabla u \cdot \mathrm{d}A = \int_{\varOmega} \varphi f \ \mathrm{d}V</script><ul>
+<li>由于试函数同样满足边界条件，上式左端第二项为零</li>
+</ul>
+<script type="math/tex; mode=display">
+\int_{\varOmega} \nabla \varphi \cdot \nabla u \ \mathrm{d}V  = \int_{\varOmega} \varphi f \ \mathrm{d}V</script><ul>
+<li>上式即为“弱”形式的控制方程，对于满足边界条件的所有试函数均成立</li>
+<li>写成 Bi-Linear Form</li>
+</ul>
+<script type="math/tex; mode=display">
+(\nabla \varphi,\nabla u) = (\varphi, f)</script><h3 id="有限元离散-1"><a href="#有限元离散-1" class="headerlink" title="- 有限元离散"></a>- 有限元离散</h3><ul>
+<li>设有限元解为</li>
+</ul>
+<script type="math/tex; mode=display">
+u_h = \sum_{j=1}^N U_j \varphi_j(\boldsymbol{x})</script><ul>
+<li>其中 $\varphi_j$ 为一组试函数（满足边界条件）且线性无关</li>
+<li>可将“弱”形式扩展为</li>
+</ul>
+<script type="math/tex; mode=display">
+(\nabla \varphi_i,\nabla u_h) = (\varphi_i, f) \ \ \forall \ \ i=1,N</script><ul>
+<li>将有限元解的表达式带入上式，可得</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_{j=1}^N (\nabla \varphi_i,\nabla \varphi_j) U_j = (\varphi_i, f) \ \ \forall \ \ i=1,N</script><ul>
+<li>将其表示为一线性系统，即为有限元离散后得控制方程</li>
+</ul>
+<script type="math/tex; mode=display">
+A U = F</script><ul>
+<li>其中</li>
+</ul>
+<script type="math/tex; mode=display">
+A_{ij} = (\nabla \varphi_i,\nabla \varphi_j)</script><script type="math/tex; mode=display">
+F_i = (\varphi_i, f)</script><ul>
+<li>将求解域划分为若干单元</li>
+</ul>
+<script type="math/tex; mode=display">
+A_{ij} = (\nabla \varphi_i,\nabla \varphi_j) = \sum_k \int_k \nabla \varphi_i \cdot \nabla \varphi_j \  \mathrm{d}V_k</script><script type="math/tex; mode=display">
+F_i = (\nabla \varphi_i, f) = \sum_k \int_k \varphi_i f \ \mathrm{d}V_k</script><ul>
+<li>建立实际单元与参考单元的映射，实际积分在参考单元进行</li>
+</ul>
+<script type="math/tex; mode=display">
+A_{ij} = \sum_k \int_k J_k^{-1}(\hat{\boldsymbol{x}}) \nabla \hat{\varphi_i}(\hat{\boldsymbol{x}}) \cdot J_k^{-1}(\hat{\boldsymbol{x}}) \nabla \hat{\varphi_j}(\hat{\boldsymbol{x}}) \ \mathrm{det}J_k(\hat{\boldsymbol{x}}) \ \mathrm{d}\hat{V}_k</script><script type="math/tex; mode=display">
+F_i = \sum_k \int_k J_k^{-1}(\hat{\boldsymbol{x}}) \hat{\varphi_i}(\hat{\boldsymbol{x}}) f(\hat{\boldsymbol{x}}) \ \mathrm{det}J_k(\hat{\boldsymbol{x}}) \ \mathrm{d}\hat{V}_k</script><ul>
+<li>采用数值积分，可得</li>
+</ul>
+<script type="math/tex; mode=display">
+A_{ij} = \sum_k \sum_{q=1}^Q J_k^{-1}(\hat{\boldsymbol{x}}_q) \nabla \hat{\varphi_i}(\hat{\boldsymbol{x}}_q) \cdot J_k^{-1}(\hat{\boldsymbol{x}}_q) \nabla \hat{\varphi_j}(\hat{\boldsymbol{x}}_q) \ \mathrm{det}J_k(\hat{\boldsymbol{x}}_q) \ w_q</script><script type="math/tex; mode=display">
+F_i = \sum_k \sum_{q=1}^Q J_k^{-1}(\hat{\boldsymbol{x}}_q) \hat{\varphi_i}(\hat{\boldsymbol{x}}_q) f(\hat{\boldsymbol{x}}_q) \ \mathrm{det}J_k(\hat{\boldsymbol{x}}_q) \ w_q</script><hr>
+<ul>
+<li><strong>2020.03.15</strong></li>
+</ul>
+<hr>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
+<li><a href="https://www.math.colostate.edu/~bangerth/videos.html" target="_blank" rel="external">Wolfgang Bangerth’s Video Lecture - Lecture 4</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/03/13/结构动力学问题/" class="next">结构动力学问题</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
