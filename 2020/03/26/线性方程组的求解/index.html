@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="CAE &amp; ADINA"><title>线性方程组的求解 | 工程仿真学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">线性方程组的求解</h1><a id="logo" href="/.">工程仿真学习笔记</a><p class="description">by Minzhun // About CAE // ADINA</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/list/"><i class="fa fa-archive"> 目录</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/contents/"><i class="fa fa-archive"> 简介</i></a><a href="/project/"><i class="fa fa-archive"> 设想</i></a><a href="/about/"><i class="fa fa-archive"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">线性方程组的求解</h1><div class="post-meta">Mar 26, 2020<span> | </span><span class="category"><a href="/categories/有限元法与数值分析/">有限元法与数值分析</a></span></div><div class="post-content"><h2 id="待求解的线性方程组"><a href="#待求解的线性方程组" class="headerlink" title="待求解的线性方程组"></a><em>待求解的线性方程组</em></h2><ul>
+<li>使用有限元法，将得到待求解的线性方程组</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} \boldsymbol{x} = \boldsymbol{b}</script><ul>
+<li>矩阵$\boldsymbol{A}$的条件数：矩阵最大特征值与最小特征值的比值</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathrm{cond}(\boldsymbol{A}) = \frac{\lambda_n}{\lambda_1}</script><ul>
+<li>实际问题的系数矩阵$\boldsymbol{A}$ 一般很大，但为稀疏矩阵（每行的非零元素少），且条件数较高</li>
+</ul>
+<h2 id="直接法求解（Direct-Method）"><a href="#直接法求解（Direct-Method）" class="headerlink" title="直接法求解（Direct Method）"></a><em>直接法求解（Direct Method）</em></h2><h3 id="Gauss-消元法"><a href="#Gauss-消元法" class="headerlink" title="- Gauss 消元法"></a>- Gauss 消元法</h3><ul>
+<li>直接法求解一般基于 Gauss 消元法，即，将系数矩阵化为上三角矩阵，之后进行回代求解</li>
+<li>一般而言，Gauss 消元法要求其分解后的上三角矩阵的对角线元素不为零，否则除数为零求解将终止</li>
+</ul>
+<h3 id="一些分解方法"><a href="#一些分解方法" class="headerlink" title="- 一些分解方法"></a>- 一些分解方法</h3><ul>
+<li>Doolittle 分解：$\boldsymbol{L}$ 为单位下三角矩阵，$\boldsymbol{U}$ 为上三角矩阵</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{U}</script><ul>
+<li>$\boldsymbol{L} \boldsymbol{D} \boldsymbol{L}^T$ 分解：$\boldsymbol{D}$ 为对角矩阵，存放$\boldsymbol{U}$ 的对角线元素</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{D} \boldsymbol{L}^T</script><ul>
+<li>Cholesky 分解</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} = \tilde{\boldsymbol{L}} \tilde{\boldsymbol{L}}^T</script><ul>
+<li>$\boldsymbol{L} \boldsymbol{D} \boldsymbol{L}^T$ 分解，可通过活动列求解法实现，$m_k$ 为系数矩阵半带宽，所需的计算次数可由下式估计</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{1}{2} n m_k^2 + 2 n m_k</script><h3 id="求解误差"><a href="#求解误差" class="headerlink" title="- 求解误差"></a>- 求解误差</h3><ul>
+<li>截断误差：由于计算机精度原因，计算伊始就不能精确表示 $\boldsymbol{A}$ 与 $\boldsymbol{b}$</li>
+<li>舍入误差：由计算机精度导致的，计算过程中产生的误差</li>
+<li>一般来说，求解结束后，方程右端的误差，比解的误差小得多</li>
+</ul>
+<script type="math/tex; mode=display">
+\varDelta \boldsymbol{b} \ll \varDelta \boldsymbol{x}</script><ul>
+<li>求解误差与系数矩阵条件数的关系</li>
+</ul>
+<script type="math/tex; mode=display">
+\frac{\lVert \varDelta \boldsymbol{x} \rVert}{\lVert \boldsymbol{x} \rVert} \leqslant \mathrm{cond}(\boldsymbol{A}) \frac{\lVert \varDelta \boldsymbol{A} \rVert}{\lVert \boldsymbol{A} \rVert}</script><ul>
+<li>系数矩阵条件数很大时，有必要提高计算机精度，若不能提高，则需要使用约束方程、相对自由度等方法控制误差</li>
+</ul>
+<h3 id="稀疏矩阵求解器"><a href="#稀疏矩阵求解器" class="headerlink" title="- 稀疏矩阵求解器"></a>- 稀疏矩阵求解器</h3><ul>
+<li>稀疏矩阵求解器的本质仍是 LU 分解，但它会利用系数矩阵“稀疏”的特点，提高计算效率</li>
+<li>所需计算次数：二维 - $O(N^2)$ ，三维 - $O(N^{7/3})$</li>
+<li>所需内存：二维 - $O(N^{3/2})$ ，三维 - $O(N^{5/3})$</li>
+<li>一些稀疏矩阵求解器：<a href="http://faculty.cs.tamu.edu/davis/suitesparse.html" target="_blank" rel="external">UMFPACK</a>、<a href="https://portal.nersc.gov/project/sparse/superlu/" target="_blank" rel="external">SuperLU</a>、<a href="http://mumps.enseeiht.fr/" target="_blank" rel="external">MUMPS</a></li>
+</ul>
+<h2 id="迭代法求解（Iterative-Method）"><a href="#迭代法求解（Iterative-Method）" class="headerlink" title="迭代法求解（Iterative Method）"></a><em>迭代法求解（Iterative Method）</em></h2><h3 id="Jacobi、Gauss-Seidel、SOR、SSOR"><a href="#Jacobi、Gauss-Seidel、SOR、SSOR" class="headerlink" title="- Jacobi、Gauss-Seidel、SOR、SSOR"></a>- Jacobi、Gauss-Seidel、SOR、SSOR</h3><ul>
+<li>将系数矩阵分解为下三角矩阵、对角矩阵、上三角矩阵</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{A} = \boldsymbol{L} + \boldsymbol{D} + \boldsymbol{U}</script><ul>
+<li>Jacobi 迭代法</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \omega \boldsymbol{D}^{-1} (\boldsymbol{A} \boldsymbol{x}^{(k)} - \boldsymbol{b})</script><ul>
+<li>Gauss-Seidel 迭代法</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \omega (\boldsymbol{L}+\boldsymbol{D})^{-1} (\boldsymbol{A} \boldsymbol{x}^{(k)} - \boldsymbol{b})</script><ul>
+<li>SOR 迭代法（Successive Over-Relaxation）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \omega (\omega \boldsymbol{L}+\boldsymbol{D})^{-1} (\boldsymbol{A} \boldsymbol{x}^{(k)} - \boldsymbol{b})</script><ul>
+<li>SSOR 迭代法（Symmetric Successive Over-Relaxation）</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \frac{1}{\omega(2-\omega)}( \boldsymbol{D}+\omega \boldsymbol{U})^{-1} \boldsymbol{D} (\omega \boldsymbol{L}+\boldsymbol{D})^{-1} (\boldsymbol{A} \boldsymbol{x}^{(k)} - \boldsymbol{b})</script><h3 id="Conjugate-Gradient-Method-with-Pre-Conditioner"><a href="#Conjugate-Gradient-Method-with-Pre-Conditioner" class="headerlink" title="- Conjugate Gradient Method with Pre-Conditioner"></a>- Conjugate Gradient Method with Pre-Conditioner</h3><ul>
+<li>Step-1：根据残差计算方向向量 $\boldsymbol{p}$</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{p}_{i} = \boldsymbol{z}_{i} + \beta_{i-1} \boldsymbol{p}_{i-1}</script><script type="math/tex; mode=display">
+\beta_{i-1} = \frac{\boldsymbol{z}_{i}^T \boldsymbol{r}_{i}}{\boldsymbol{z}_{i-1}^T \boldsymbol{r}_{i-1}}</script><ul>
+<li>Step-2：更新解向量</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{i+1} = \boldsymbol{x}_{i} + \alpha_i \boldsymbol{p}_{i}</script><script type="math/tex; mode=display">
+\alpha_{i} = \frac{\boldsymbol{z}_{i}^T \boldsymbol{r}_{i}}{\boldsymbol{p}_{i}^T \boldsymbol{A}  \boldsymbol{p}_{i}}</script><ul>
+<li>Step-3：更新残差</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{i+1} = \boldsymbol{r}_{i} - \alpha_i \boldsymbol{A} \boldsymbol{p}_i</script><script type="math/tex; mode=display">
+\boldsymbol{z}_{i+1} = \boldsymbol{K}_p^{-1} \boldsymbol{r}_{i+1}</script><ul>
+<li>Step-4：判断是否收敛，若不收敛，继续执行 Step-1</li>
+<li>===</li>
+<li>CG（Conjugate Gradient）方法的方向向量与解向量具备以下正交性：</li>
+</ul>
+<script type="math/tex; mode=display">
+\boldsymbol{p}_{i}^T \boldsymbol{A} \boldsymbol{p}_{j} = 0 \ \ \ \ i \neq j</script><script type="math/tex; mode=display">
+\boldsymbol{P}_{i}^T \boldsymbol{r}_{i+1} = \boldsymbol{0} \ \ \ \ \boldsymbol{P}_{i} = [\boldsymbol{p}_{1},\boldsymbol{p}_{2}...,\boldsymbol{p}_{j}]</script><ul>
+<li>由于以上正交性，理论上，CG 方法至多迭代 N 次就会收敛</li>
+<li>但实际上，一方面，人们期望达到的收敛次数远小于自由度数量 N，另一方面，计算机为有限精度，以上正交性很难保证</li>
+<li>所以，才在求解过程中引入了预处理矩阵 $\boldsymbol{K}_p$</li>
+<li>===</li>
+<li>如何获得预处理矩阵？</li>
+<li>对于 Jacobi、Gauss-Seidel、SOR、SSOR，残差项之前的系数矩阵实际上就是一种 $\boldsymbol{K}_p^{-1}$</li>
+<li>系数矩阵的不完全分解：Incomplete LU、Incomplete Cholesky</li>
+<li>Physics-Based Preconditioner and Schur Complement</li>
+</ul>
+<h3 id="Multi-Grid-Method"><a href="#Multi-Grid-Method" class="headerlink" title="- Multi-Grid Method"></a>- Multi-Grid Method</h3><ul>
+<li>待完成</li>
+</ul>
+<h3 id="迭代法求解稀疏矩阵"><a href="#迭代法求解稀疏矩阵" class="headerlink" title="- 迭代法求解稀疏矩阵"></a>- 迭代法求解稀疏矩阵</h3><ul>
+<li>并不真正求解，而是反复“猜”结果，直到满足终止条件</li>
+<li>由于系数矩阵“稀疏”，所需计算次数与内存小于“密集”矩阵</li>
+<li>所需计算次数：取决于迭代方法与预处理矩阵，最好的情况为 $O(N)$，一般会多得多</li>
+<li>所需内存：$O(N)$</li>
+<li>迭代法求解所需迭代次数与系数矩阵的条件数有关，条件数越大，收敛越慢</li>
+<li>加快收敛速度的关键是选择合适的预处理矩阵（Pre-Conditioner）</li>
+</ul>
+<h3 id="迭代求解器的选择"><a href="#迭代求解器的选择" class="headerlink" title="-迭代求解器的选择"></a>-迭代求解器的选择</h3><ul>
+<li>CG（Conjugate Gradients）：对称、正定矩阵，优先选择</li>
+<li>BiCGStab（Bi-Conjugate Gradients Stablized）：不对称、但是正定矩阵</li>
+<li>GMRES（Generalized Minimal Residuals）：适用于所有</li>
+<li>F-GMRES（Flexible Generalized Minimal Residuals）：适用于所有，预处理矩阵可变</li>
+</ul>
+<h2 id="求解方法的选择"><a href="#求解方法的选择" class="headerlink" title="求解方法的选择"></a><em>求解方法的选择</em></h2><ul>
+<li>直接法求解<ul>
+<li>对于可逆系数矩阵，一定能够得到正确的结果（计算机精度满足要求）</li>
+<li>所需计算次数与内存较多</li>
+</ul>
+</li>
+<li>迭代法求解<ul>
+<li>计算效率与结果取决于是否选择了合适的预处理器</li>
+<li>所需内存少</li>
+</ul>
+</li>
+<li>何时选择直接法<ul>
+<li>问题规模较小，例如，自由度数小于100k</li>
+<li>问题能够“放入”内存</li>
+<li>排除求解之前的错误，保证“求解正确的问题”</li>
+</ul>
+</li>
+<li>何时选择迭代法<ul>
+<li>已经确认是在“求解正确的问题”</li>
+<li>问题规模很大，甚至需要并行</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>2020.03.26</strong></li>
+</ul>
+<hr>
+<p><strong><em>Ref.</em></strong></p>
+<ul>
+<li><a href="">有限元法：理论、格式与求解方法（第二版）</a></li>
+<li><a href="https://www.math.colostate.edu/~bangerth/videos.html" target="_blank" rel="external">Wolfgang Bangerth’s Video Lecture - Lecture 34 35 37 38</a></li>
+</ul>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a href="/2020/03/25/求解器@ADINA/" class="next">求解器 @ADINA</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://minzhun.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/专题/">专题</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其它/">其它</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/有限元法与数值分析/">有限元法与数值分析</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件与实践/">软件与实践</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/连续介质力学/">连续介质力学</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">工程仿真学习笔记.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

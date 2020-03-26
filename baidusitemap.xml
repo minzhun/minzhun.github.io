@@ -3,8 +3,45 @@
 
 
     
+    
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/15/%E5%BC%B1%E5%BD%A2%E5%BC%8F%E4%B8%8E%E6%9C%89%E9%99%90%E5%85%83%E7%A6%BB%E6%95%A3/</loc>
+    <loc>https://minzhun.github.io/2020/03/25/%E6%B1%82%E8%A7%A3%E5%99%A8@ADINA/</loc>
+    <lastmod>2020-03-26T15:03:59.405Z</lastmod>
+    <data>
+        <display>
+        <title>求解器 @ADINA</title>
+        <pubTime>2020-03-24T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://minzhun.github.io/2020/03/26/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E6%B1%82%E8%A7%A3/</loc>
+    <lastmod>2020-03-26T15:00:14.637Z</lastmod>
+    <data>
+        <display>
+        <title>线性方程组的求解</title>
+        <pubTime>2020-03-25T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://minzhun.github.io/2020/03/15/%E5%BC%B1%E5%BD%A2%E5%BC%8F%E4%B8%8E%E6%9C%89%E9%99%90%E5%85%83%E7%A6%BB%E6%95%A3/</loc>
     <lastmod>2020-03-15T14:08:18.244Z</lastmod>
     <data>
         <display>
@@ -14,16 +51,15 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
     </url>
 
     
-    
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/13/%E7%BB%93%E6%9E%84%E5%8A%A8%E5%8A%9B%E5%AD%A6%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://minzhun.github.io/2020/03/13/%E7%BB%93%E6%9E%84%E5%8A%A8%E5%8A%9B%E5%AD%A6%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-03-13T14:16:48.455Z</lastmod>
     <data>
         <display>
@@ -33,7 +69,7 @@
          
            
              
-              <breadCrumb title="专题" url="http://minzhun.gitee.io/blog/categories/%E4%B8%93%E9%A2%98/"/>
+              <breadCrumb title="专题" url="https://minzhun.github.io/categories/%E4%B8%93%E9%A2%98/"/>
           
         </display>
     </data>
@@ -41,7 +77,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/12/%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/</loc>
+    <loc>https://minzhun.github.io/2020/03/12/%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/</loc>
     <lastmod>2020-03-12T09:39:24.437Z</lastmod>
     <data>
         <display>
@@ -51,7 +87,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -59,7 +95,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/11/06/CAE%E8%BD%AF%E4%BB%B6/</loc>
+    <loc>https://minzhun.github.io/2017/11/06/CAE%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2020-03-10T07:38:48.407Z</lastmod>
     <data>
         <display>
@@ -69,7 +105,7 @@
          
            
              
-              <breadCrumb title="其它" url="http://minzhun.gitee.io/blog/categories/%E5%85%B6%E5%AE%83/"/>
+              <breadCrumb title="其它" url="https://minzhun.github.io/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
@@ -77,7 +113,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/06/%E6%9C%89%E9%99%90%E5%85%83%E8%A7%A3%E7%9A%84%E6%80%A7%E8%B4%A8/</loc>
+    <loc>https://minzhun.github.io/2020/03/06/%E6%9C%89%E9%99%90%E5%85%83%E8%A7%A3%E7%9A%84%E6%80%A7%E8%B4%A8/</loc>
     <lastmod>2020-03-06T15:32:29.257Z</lastmod>
     <data>
         <display>
@@ -87,7 +123,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -95,7 +131,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/04/%E7%BA%BF%E5%BC%B9%E6%80%A7%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://minzhun.github.io/2020/03/04/%E7%BA%BF%E5%BC%B9%E6%80%A7%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-03-04T03:39:40.977Z</lastmod>
     <data>
         <display>
@@ -105,7 +141,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -113,7 +149,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/04/%E5%BE%AE%E5%88%86%E5%BD%A2%E5%BC%8F%E3%80%81%E5%BC%B1%E5%BD%A2%E5%BC%8F%E3%80%81%E5%8F%98%E5%88%86%E5%BD%A2%E5%BC%8F/</loc>
+    <loc>https://minzhun.github.io/2020/03/04/%E5%BE%AE%E5%88%86%E5%BD%A2%E5%BC%8F%E3%80%81%E5%BC%B1%E5%BD%A2%E5%BC%8F%E3%80%81%E5%8F%98%E5%88%86%E5%BD%A2%E5%BC%8F/</loc>
     <lastmod>2020-03-04T01:58:51.547Z</lastmod>
     <data>
         <display>
@@ -123,7 +159,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -131,7 +167,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/04/%E5%BC%B9%E6%80%A7%E5%8A%9B%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%8F%98%E5%88%86%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://minzhun.github.io/2020/03/04/%E5%BC%B9%E6%80%A7%E5%8A%9B%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%8F%98%E5%88%86%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2020-03-04T01:51:24.976Z</lastmod>
     <data>
         <display>
@@ -141,7 +177,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -149,7 +185,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/03/%E6%9C%AC%E6%9E%84%E5%85%B3%E7%B3%BB/</loc>
+    <loc>https://minzhun.github.io/2020/03/03/%E6%9C%AC%E6%9E%84%E5%85%B3%E7%B3%BB/</loc>
     <lastmod>2020-03-04T01:33:38.941Z</lastmod>
     <data>
         <display>
@@ -159,7 +195,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -167,7 +203,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/01/%E5%AE%A2%E8%A7%82%E6%80%A7/</loc>
+    <loc>https://minzhun.github.io/2020/03/01/%E5%AE%A2%E8%A7%82%E6%80%A7/</loc>
     <lastmod>2020-03-04T01:32:29.727Z</lastmod>
     <data>
         <display>
@@ -177,7 +213,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -185,7 +221,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/01/%E5%AE%88%E6%81%92%E5%BE%8B/</loc>
+    <loc>https://minzhun.github.io/2020/03/01/%E5%AE%88%E6%81%92%E5%BE%8B/</loc>
     <lastmod>2020-03-04T01:32:17.868Z</lastmod>
     <data>
         <display>
@@ -195,7 +231,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -203,7 +239,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/02/29/%E5%BA%94%E5%8A%9B/</loc>
+    <loc>https://minzhun.github.io/2020/02/29/%E5%BA%94%E5%8A%9B/</loc>
     <lastmod>2020-03-04T01:32:01.059Z</lastmod>
     <data>
         <display>
@@ -213,7 +249,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -221,7 +257,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/02/29/%E5%BA%94%E5%8F%98/</loc>
+    <loc>https://minzhun.github.io/2020/02/29/%E5%BA%94%E5%8F%98/</loc>
     <lastmod>2020-03-04T01:31:50.456Z</lastmod>
     <data>
         <display>
@@ -231,7 +267,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -239,7 +275,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/02/27/%E5%8F%98%E5%BD%A2/</loc>
+    <loc>https://minzhun.github.io/2020/02/27/%E5%8F%98%E5%BD%A2/</loc>
     <lastmod>2020-03-04T01:31:34.962Z</lastmod>
     <data>
         <display>
@@ -249,7 +285,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -257,7 +293,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/02/25/%E8%BF%90%E5%8A%A8/</loc>
+    <loc>https://minzhun.github.io/2020/02/25/%E8%BF%90%E5%8A%A8/</loc>
     <lastmod>2020-03-04T01:31:20.624Z</lastmod>
     <data>
         <display>
@@ -267,7 +303,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -275,7 +311,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2020/03/03/%E5%8F%98%E5%88%86%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://minzhun.github.io/2020/03/03/%E5%8F%98%E5%88%86%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2020-03-04T01:20:08.622Z</lastmod>
     <data>
         <display>
@@ -285,7 +321,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -293,7 +329,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/09/25/%E8%AF%AF%E5%B7%AE/</loc>
+    <loc>https://minzhun.github.io/2017/09/25/%E8%AF%AF%E5%B7%AE/</loc>
     <lastmod>2020-03-03T15:07:04.226Z</lastmod>
     <data>
         <display>
@@ -303,7 +339,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -311,7 +347,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/11/23/%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86@ADINA/</loc>
+    <loc>https://minzhun.github.io/2017/11/23/%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86@ADINA/</loc>
     <lastmod>2020-03-03T15:06:53.315Z</lastmod>
     <data>
         <display>
@@ -321,7 +357,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -329,7 +365,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/09/03/%E7%A9%BA%E5%8C%96%E7%9B%B8%E5%85%B3/</loc>
+    <loc>https://minzhun.github.io/2017/09/03/%E7%A9%BA%E5%8C%96%E7%9B%B8%E5%85%B3/</loc>
     <lastmod>2020-03-03T15:06:42.799Z</lastmod>
     <data>
         <display>
@@ -339,7 +375,7 @@
          
            
              
-              <breadCrumb title="专题" url="http://minzhun.gitee.io/blog/categories/%E4%B8%93%E9%A2%98/"/>
+              <breadCrumb title="专题" url="https://minzhun.github.io/categories/%E4%B8%93%E9%A2%98/"/>
           
         </display>
     </data>
@@ -347,7 +383,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/08/25/%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91@ADINA-CFD/</loc>
+    <loc>https://minzhun.github.io/2017/08/25/%E7%94%A8%E6%88%B7%E5%BC%80%E5%8F%91@ADINA-CFD/</loc>
     <lastmod>2020-03-03T15:06:32.559Z</lastmod>
     <data>
         <display>
@@ -357,7 +393,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -365,7 +401,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/07/18/%E6%B9%8D%E6%B5%81%E6%A8%A1%E5%9E%8B@ADINA/</loc>
+    <loc>https://minzhun.github.io/2017/07/18/%E6%B9%8D%E6%B5%81%E6%A8%A1%E5%9E%8B@ADINA/</loc>
     <lastmod>2020-03-03T15:06:23.629Z</lastmod>
     <data>
         <display>
@@ -375,7 +411,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -383,7 +419,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/07/17/%E6%B9%8D%E6%B5%81%E4%B8%8E%E6%B9%8D%E6%B5%81%E6%A8%A1%E5%9E%8B/</loc>
+    <loc>https://minzhun.github.io/2017/07/17/%E6%B9%8D%E6%B5%81%E4%B8%8E%E6%B9%8D%E6%B5%81%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2020-03-03T15:06:12.707Z</lastmod>
     <data>
         <display>
@@ -393,7 +429,7 @@
          
            
              
-              <breadCrumb title="专题" url="http://minzhun.gitee.io/blog/categories/%E4%B8%93%E9%A2%98/"/>
+              <breadCrumb title="专题" url="https://minzhun.github.io/categories/%E4%B8%93%E9%A2%98/"/>
           
         </display>
     </data>
@@ -401,7 +437,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/07/18/%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://minzhun.github.io/2017/07/18/%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2020-03-03T15:06:01.058Z</lastmod>
     <data>
         <display>
@@ -411,7 +447,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -419,7 +455,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/07/24/%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88@ADINA/</loc>
+    <loc>https://minzhun.github.io/2017/07/24/%E6%B5%81%E5%9B%BA%E8%80%A6%E5%90%88@ADINA/</loc>
     <lastmod>2020-03-03T15:05:50.079Z</lastmod>
     <data>
         <display>
@@ -429,7 +465,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -437,7 +473,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/08/17/%E5%A3%81%E9%9D%A2%E5%87%BD%E6%95%B0%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
+    <loc>https://minzhun.github.io/2017/08/17/%E5%A3%81%E9%9D%A2%E5%87%BD%E6%95%B0%E6%B3%95%E7%9B%B8%E5%85%B3/</loc>
     <lastmod>2020-03-03T15:04:07.096Z</lastmod>
     <data>
         <display>
@@ -447,7 +483,7 @@
          
            
              
-              <breadCrumb title="专题" url="http://minzhun.gitee.io/blog/categories/%E4%B8%93%E9%A2%98/"/>
+              <breadCrumb title="专题" url="https://minzhun.github.io/categories/%E4%B8%93%E9%A2%98/"/>
           
         </display>
     </data>
@@ -455,7 +491,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/07/01/%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D/</loc>
+    <loc>https://minzhun.github.io/2017/07/01/%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D/</loc>
     <lastmod>2020-03-03T15:03:37.917Z</lastmod>
     <data>
         <display>
@@ -465,7 +501,7 @@
          
            
              
-              <breadCrumb title="其它" url="http://minzhun.gitee.io/blog/categories/%E5%85%B6%E5%AE%83/"/>
+              <breadCrumb title="其它" url="https://minzhun.github.io/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
@@ -473,7 +509,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/10/23/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%88%86%E7%B1%BB/</loc>
+    <loc>https://minzhun.github.io/2017/10/23/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%88%86%E7%B1%BB/</loc>
     <lastmod>2020-03-03T15:03:24.385Z</lastmod>
     <data>
         <display>
@@ -483,7 +519,7 @@
          
            
              
-              <breadCrumb title="有限元法与数值分析" url="http://minzhun.gitee.io/blog/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
+              <breadCrumb title="有限元法与数值分析" url="https://minzhun.github.io/categories/%E6%9C%89%E9%99%90%E5%85%83%E6%B3%95%E4%B8%8E%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
@@ -491,7 +527,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/10/16/%E5%BC%A0%E9%87%8F%E5%88%9D%E6%AD%A5/</loc>
+    <loc>https://minzhun.github.io/2017/10/16/%E5%BC%A0%E9%87%8F%E5%88%9D%E6%AD%A5/</loc>
     <lastmod>2020-03-03T15:02:37.485Z</lastmod>
     <data>
         <display>
@@ -501,7 +537,7 @@
          
            
              
-              <breadCrumb title="连续介质力学" url="http://minzhun.gitee.io/blog/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
+              <breadCrumb title="连续介质力学" url="https://minzhun.github.io/categories/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E5%8A%9B%E5%AD%A6/"/>
           
         </display>
     </data>
@@ -509,7 +545,7 @@
 
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/08/14/%E4%BB%BF%E7%9C%9F%E5%88%86%E6%9E%90%E6%80%8E%E4%B9%88%E5%81%9A/</loc>
+    <loc>https://minzhun.github.io/2017/08/14/%E4%BB%BF%E7%9C%9F%E5%88%86%E6%9E%90%E6%80%8E%E4%B9%88%E5%81%9A/</loc>
     <lastmod>2020-02-21T13:18:33.925Z</lastmod>
     <data>
         <display>
@@ -519,7 +555,7 @@
          
            
              
-              <breadCrumb title="软件与实践" url="http://minzhun.gitee.io/blog/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+              <breadCrumb title="软件与实践" url="https://minzhun.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
           
         </display>
     </data>
@@ -530,7 +566,7 @@
     
     
   <url>
-    <loc>http://minzhun.gitee.io/blog/2017/06/25/Hexo%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://minzhun.github.io/2017/06/25/Hexo%E5%8D%9A%E5%AE%A2%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2017-10-26T15:33:10.887Z</lastmod>
     <data>
         <display>
@@ -542,7 +578,7 @@
          
            
              
-              <breadCrumb title="其它" url="http://minzhun.gitee.io/blog/categories/%E5%85%B6%E5%AE%83/"/>
+              <breadCrumb title="其它" url="https://minzhun.github.io/categories/%E5%85%B6%E5%AE%83/"/>
           
         </display>
     </data>
